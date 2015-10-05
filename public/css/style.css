@@ -1,0 +1,27 @@
+html,
+body {
+	  padding: 0;
+	    margin: 0;
+		  height: 100%;
+		    width: 100%;
+			  font-family: 'Raleway', sans-serif;
+			    font-size: 16px;
+				  font-weight: 100;
+				    color: #000;
+					  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+				  }
+
+				  html {
+					    background: -webkit-radial-gradient(rgba(0, 0, 0, 0), #000000), -webkit-linear-gradient(limegreen, transparent), -webkit-linear-gradient(0deg, skyblue, transparent), -webkit-linear-gradient(180deg, coral, transparent);
+						  background: radial-gradient(rgba(0, 0, 0, 0), #000000), linear-gradient(limegreen, transparent), linear-gradient(90deg, skyblue, transparent), linear-gradient(-90deg, coral, transparent);
+						    background-blend-mode: screen;
+							  background-size: cover;
+							    background-position: fixed;
+								  background-attachment: fixed;
+							  }
+
+							  .table{
+								    font-size: 1.5em;
+									  text-align: center;
+									    font-weight: 300;
+									}
