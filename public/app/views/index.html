@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<base href="/">
+	<base href="/assets/">
 
 	<title>FIU VIP</title>
 
 	<!-- CSS -->
-   	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
 
 	<!-- JS -->
@@ -24,22 +23,31 @@
 	<script src="js/app.js"></script>
 </head>
 <body ng-app="sampleApp" ng-controller="NerdController">
-<div class="container">
-	
+	<div class="logo">
+		<img class ="logo" src="/assets/img/logo.png"/>
+	</div>
+
 	<!-- HEADER -->
-	<nav class="navbar navbar-inverse">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="/">Welcome to FIU VIP</a>
+	<div class="navbar-header">
+		<div class="shell">
+			<h1 class="left" href="/">Welcome to FIU VIP</h1>
+
+			<div class="navbar">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/pages/nerds">Nerds</a></li>
+					<li><a href="/pages/geeks">Geeks</a></li>
+				</ul>
+			</div>
 		</div>
-		<ul class="nav navbar-nav">
-			<li><a href="/pages/nerds">Nerds</a></li>
-			<li><a href="/pages/geeks">Geeks</a></li>
-		</ul>
-	</nav>
 
-	<!-- ANGULAR DYNAMIC CONTENT -->
-	<div ng-view></div>
+	</div>
 
-</div>
+	<div class="container">
+
+		<!-- ANGULAR DYNAMIC CONTENT -->
+		<div ng-view></div>
+
+	</div><!-- end of container -->
 </body>
 </html>
