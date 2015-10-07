@@ -48,7 +48,8 @@ html {
 .navbar-header {
 	height: 80px;
 	width: 100%;
-	background-color: #002146;
+/*	background-color: #002146;*/
+	background-color: rgba(200, 200, 200, 0.2);
 	border-bottom: 2px solid #c5960c;
 	color: #fff;
 	float: left;
