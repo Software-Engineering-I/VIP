@@ -5,6 +5,7 @@
 
 *.iml
 node_modules/
+bower_components/
 
 ## Directory-based project format:
 .idea/
