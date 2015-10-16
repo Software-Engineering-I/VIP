@@ -1,30 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<base href="/assets/">
-
 	<title>FIU VIP</title>
 
+	<base href="/">	
+
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+	<link rel="stylesheet" href="assets/css/style.css"> <!-- custom styles -->
+	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">-->
 
 	<!-- JS -->
-	<script src="libs/angular/angular.min.js"></script>
-	<script src="libs/angular-route/angular-route.min.js"></script>
+	<script src="assets/libs/angular.js"></script>
+	<script src="assets/libs/angular-route.js"></script> 
 
 	<!-- ANGULAR CUSTOM -->
-	<script src="js/controllers/MainCtrl.js"></script>
-	<script src="js/controllers/NerdCtrl.js"></script>
-	<script src="js/services/NerdService.js"></script>
-	<script src="js/controllers/GeekCtrl.js"></script>
-	<script src="js/services/GeekService.js"></script>
-	<script src="js/appRoutes.js"></script>
-	<script src="js/app.js"></script>
+	<script src="assets/js/appRoutes.js"></script>
+	<script src="assets/js/app.js"></script>
 </head>
-<body ng-app="sampleApp" ng-controller="NerdController">
+<body ng-app="mainApp" ng-controller="mainController as main">
 	<div class="logo">
-		<img class ="logo" src="/assets/img/logo.png"/>
+		<img class ="logo" src="assets/img/logo.png"/>
 	</div>
 
 	<!-- HEADER -->
@@ -35,8 +31,9 @@
 			<div class="navbar">
 				<ul>
 					<li><a href="/">Home</a></li>
-					<li><a href="/About">About</a></li>
-					<li><a href="/Programs">Programs</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/programs">Programs</a></li>
+					<li><a href="/report">Report</a></li>
 				</ul>
 			</div>
 		</div>
