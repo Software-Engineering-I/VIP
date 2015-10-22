@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <title>FIU VIP</title>
+
+    <!-- CSS -->
+   <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css">-->
+    <!--<link rel="stylesheet" href="../../assets/css/bootstrap-theme.css">-->
+    <!-- custom styles -->
+    <link rel="stylesheet" href="../../assets/css/twitter_bootstrap_targeted_css.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+    <!-- JS/Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+<!--
+    <script src="../../assets/js/sorttable.js"></script>
+-->
+
+    <!-- ANGULAR CUSTOM -->
+
+    <script src="../app/services/projectServices.js"></script>
+    <script src="../app/controllers/MainController.js"></script>
+    <script src="../app/controllers/projectsController.js"></script>
+    <script src="../app/controllers/AboutController.js"></script>
+    <script src="../app/appRoutes.js"></script>
+    <script src="../app/app.js"></script>
+
+</head>
+
+<body ng-app="vipApp" ng-controller="MainController">
+
+    <!--<div class="logo">
+        <img class ="logo" src="../../assets/img/logo.png"/>
+    </div>-->
+
+    <!-- HEADER -->
+    <nav class="navbar-header">
+        <div class="shell">
+                <h1 class="left" href="/">FIU - VIP</h1>
+            <!--TODO: add dropdown menu for projects (all/user specific)-->
+            <!--TODO: create form for project creation-->
+            <div class="navbar">
+                <ul>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/projects">Project</a></li>
+                </ul>
+            </div>
+<!--            <div class="nav navbar-nav navbar-right">
+                <li><a href="/login">Login</a></li>
+            </div>-->
+        </div>
+    </nav>
+    <!--<div class="navbar-header">
+        <div class="shell">
+            <h2 class="left" href="/">FIU VIP</h2>
+
+            <div class="navbar">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/login">Login</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>-->
+
+    <div class="container">
+
+        <!-- ANGULAR DYNAMIC CONTENT -->
+        <div ng-view></div>
+
+    </div><!-- end of container -->
+</body>
+</html>

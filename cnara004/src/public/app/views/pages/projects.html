@@ -1,0 +1,49 @@
+<div class="container">
+    <h4 align="center">Submitted Projects</h4>
+    <div class = "tw-bs">
+        <div class = "alert alert-info">
+            <p>Type: {{sortType}}</p>
+            <p>SortRev: {{sortReverse}}</p>
+            <p>Query: {{searchBar}}</p>
+        </div>
+        <table class = "table table-bordered" align="center" cellpadding="5" ng-show="projects">
+            <thread>
+                <tr>
+                    <td>
+                        <a href="#" ng-click="sortType = 'proj'">
+                            Project Name
+                            <span ng-show="sortType == 'proj'"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" ng-click="sortType = 'user'">
+                            Owner (username)
+                            <span ng-show="sortType == 'user'"></span>
+                        </a>
+                    </td>
+<!--                <th>id</th>-->
+                    <!--<th>Project Name</th>
+                    <th>Owner</th>-->
+                    <!--<th>Email</th>
+                    <th>Discipline</th>
+                    <th>Students Requested</th>
+                    <th>Student Max</th>
+                    <th>Approval Status</th>-->
+                </tr>
+
+            </thread>
+            <tbody>
+                <tr ng-repeat="project in projects | orderBy:sortType:sortReverse">
+<!--                    <td><a ng-href="/projects/{{project._id}}">{{project._id}}</a></td>-->
+                    <td>{{project.proj}}</td>
+                    <td>{{project.user}}</td>
+                    <!--<td>{{project.email}}</td>
+                    <td>{{project.disc}}</td>
+                    <td>{{project.request}}</td>
+                    <td>{{project.max}}</td>
+                    <td>{{project.status}}</td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
