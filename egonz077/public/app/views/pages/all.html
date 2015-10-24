@@ -1,0 +1,39 @@
+<div class="allUsers" >
+    <h1 class="timmy" >Users</h1>
+    <a href="/users/create">Create Users</a>
+    <table    ng-show="aUser.users">
+
+
+
+        <thead>
+
+        <tr>
+
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Project</th>
+            <th>Rank</th>
+            <th>Major</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr  ng-repeat="person in aUser.users | orderBy: 'project'">
+            <td>{{ person.f_name + " " + person.l_name}}</td>
+            <td>{{ person.username }}</td>
+            <td>{{ person.email }}</td>
+            <td>{{ person.project }}</td>
+            <td>{{ person.Rank }}</td>
+            <td>{{ person.Major }}</td>
+            <td>
+                <a ng-href="/users/{{ person._id }}" class="button-success pure-button">Edit</a>
+            </td>
+            <td>
+                <a ng-click="aUser.deleteUser(person._id)" class="button-error pure-button" >Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>

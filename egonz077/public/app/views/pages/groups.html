@@ -1,0 +1,30 @@
+<ul>
+    <h1 class="timmy"> VIP Groups</h1>
+    <ta ng-repeat="(key, value) in gUser.users | groupBy: 'project'">
+
+        <table>
+            <label class="timmy">{{ key }}</label>
+            <th align="left" >Name</th>
+            <th align="left">Username</th>
+            <th align="left">Email</th>
+            <th align="left">Project</th>
+            <th align="left">Rank</th>
+            <th align="left">Major</th>
+            <th></th>
+
+
+            <tr ng-repeat="person in value">
+                <td nowrap>{{ person.f_name + " " + person.l_name}}</td>
+                <td>{{ person.username }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.project }}</td>
+                <td>{{ person.Rank }}</td>
+                <td>{{ person.Major }}</td>
+
+                <td>
+                    <a ng-click="gUser.deleteUser(person._id)" class="button-error pure-button" >Delete</a>
+                </td>
+            </tr>
+        </table>
+    </ta>
+</ul>

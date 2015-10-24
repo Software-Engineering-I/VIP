@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FIU VIP</title>
+
+	<base href="/">	
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/style.css"> <!-- custom styles -->
+	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">-->
+
+	<!-- JS -->
+	<script src="assets/libs/angular.js"></script>
+	<script src="assets/libs/angular-route.js"></script> 
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="assets/js/appRoutes.js"></script>
+	<script src="assets/js/app.js"></script>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>
+		$(document).ready(function(){
+    		var from,to,subject,text;
+    		$("#send_email").click(function(){      
+        	to=$("#to").val();
+        	subject=$("#subject").val();
+        	text=$("#content").val();
+        	$("#message").text("Sending E-mail...Please wait");
+        	$.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        		if(data=="sent")
+        		{		
+            			$("#message").empty().html("Email is been sent at " + to + " . Please check inbox !");
+        		}
+
+		});
+    		});
+		});
+</script>
+
+</head>
+<body ng-app="mainApp" ng-controller="mainController as main">
+	<div class="logo">
+		<img class ="logo" src="assets/img/logo.png"/>
+	</div>
+
+	<!-- HEADER -->
+	<div class="navbar-header">
+		<div class="shell">
+			<h1 class="left" href="/">Welcome to FIU VIP</h1>
+
+			<div class="navbar">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/programs">Programs</a></li>
+					<li><a href="/report">Report</a></li>
+					<li><a href="/feedback">Feedback</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="container">
+
+			<!-- ANGULAR DYNAMIC CONTENT -->
+			<div ng-view></div>
+
+		</div><!-- end of container -->
+
+</body>
+</html>

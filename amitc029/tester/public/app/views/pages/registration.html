@@ -1,0 +1,148 @@
+﻿<h1> Registration Page </h1>
+<li>
+  <p>Current Bug - Chrome cannot 'select' college, major, etc with arrow keys!</p>
+</li>
+
+<form class="RegistrationForm" ng-submit="cUser.saveUser()">
+  <li>
+    <label>First Name:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.f_name" />
+  </div>
+  <li>
+    <label>Middle Name:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.m_name" />
+  </div>
+  <li>
+    <label>Last Name:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.l_name" />
+  </div>
+  <li>
+    <label>Panther ID:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.pID" />
+  </div>
+  <li>
+    <label>User Name:</label>
+  </li>
+    <div>
+      <input type="text" ng-model="cUser.userData.username" />
+    </div>
+  <li>
+    <label>Email:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.email" />
+  </div>
+  <li>
+    <label>Password:</label>
+  </li>
+  <div>
+    <input type="password" ng-model="cUser.userData.password" />
+  </div>
+  <li>
+    <label>Confirm Password:</label>
+  </li>
+  <div>
+    <input type="password" ng-model="cUser.userData.passconf" />
+  </div>
+  <li>
+    <label> Cell Phone:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.cell" />
+  </div>
+  <li>
+    <label>Rank:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Rank">
+      <option selected="" value="Default">(Please select a rank)</option>
+      <option value="fresh">Freshman</option>
+      <option value="sophomore">Sophomore</option>
+      <option value="junior">Junior</option>
+      <option value="senior">Senior</option>
+      <option value="supersenior">Senior+</option>
+      <option value="graduate">Graduate</option>
+      <option value="master">Masters</option>
+      <option value="phd">Ph.D</option>
+      <option value="postdoc">Post-Doc</option>
+    </select>
+  </div>
+  <li>
+    <label> College:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.College">
+      <option selected="" value="Defaultzzz">(Please select a College)</option>
+      <option value="compsci">College of Computing and Information Sciences</option>
+    </select>
+  </div>
+  <li>
+    <label> Major:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Major">
+      <option selected="" value="Default">(Please select a Major)</option>
+      <option value="compsci">Computer Science</option>
+    </select>
+  </div>
+  <li>
+    <label>Ethnicity:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Ethnicity">
+      <option selected="" value="Default">(Please select an Ethnicity)</option>
+      <option value="african">African</option>
+      <option value="africanAmerican">African American</option>
+      <option value="americanIndian">American Indian</option>
+      <option value="asian">Asian</option>
+      <option value="alaskanNative">Alaskan Native</option>
+      <option value="hispanic">Hispanic</option>
+      <option value="white">White</option>
+      <option value="pacificIslander">Pacific Islander</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <li>
+    <label>Sex:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Sex">
+      <option selected="" value="Default">(Please select a sex)</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+  </div>
+  <li>
+    <label>Visa Status:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.visaStatus">
+      <option selected="" value="Default">(Please select a Visa Status)</option>
+      <option value="permRes">Permanent Resident</option>
+      <option value="citizen">Citizen</option>
+      <option value="studentvisa">Student Visa</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-success btn-lg btn-block" >Register!</button>
+  </div>
+</form>
+
+<div class="row show-hide-message" ng-show="cUser.message">
+  <div class="col-sm-6 col-sm-offset-2">
+
+    <div class="alert alert-info">
+      {{ cUser.message }}
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,15 @@
+/**
+ * Created by Chris on 9/30/2015.
+ */
+var project    = require('../models/project');
+var config     = require('../../config.js');
+var url        = '/projects'
+
+module.exports = function(app, apiRoutes) {
+    //var apiRoutes = express.Router();
+
+    //Returns all the current projects awaiting approval in database, with a GET.
+
+
+    //app.use('/', apiRoutes);//apply route to our app
+};

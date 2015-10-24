@@ -1,0 +1,17 @@
+{
+  "name": "vip-api",
+  "version": "0.0.1",
+  "description": "",
+  "main": "main.js",
+  "git": "https://github.com/Software-Engineering-I/VIP",
+  "author": "COP4010",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.9",
+    "morgan": "^1.6.1",
+    "fs": "0.0.2",
+    "shortid": "^2.2.2"
+  }
+}
