@@ -1,0 +1,104 @@
+<h1>Create User</h1>
+
+
+
+<form class="InputUser" ng-submit="cUser.saveUser()">
+
+    <div>
+        <label>First Name</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.f_name">
+        </div>
+    </div>
+    <div>
+        <label>Middle Name</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.m_name">
+        </div>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.l_name">
+        </div>
+    </div>
+    <div>
+        <label>Panther ID</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.pID">
+        </div>
+    </div>
+    <div>
+        <label>Username</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.username">
+        </div>
+    </div>
+    <div>
+        <label>Password</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.password">
+        </div>
+    </div>
+    <div>
+        <label>Email</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.email">
+        </div>
+    </div>
+    <div>
+        <label>Project</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.project">
+        </div>
+    </div>
+    <div>
+        <label>Cell Phone Number</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.cell">
+        </div>
+    </div>
+    <div>
+        <label>Rank</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.Rank">
+        </div>
+    </div>
+    <div>
+        <label>Major</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.Major">
+        </div>
+    </div>
+    <div>
+        <label>Ethnicity</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.Ethnicity">
+        </div>
+    </div>
+    <div>
+        <label>Visa Status</label>
+        <div>
+            <input type="text" ng-model="cUser.userData.visaStatus">
+        </div>
+    </div>
+
+
+
+
+    <div >
+        <button type="submit" class="btn btn-success btn-lg btn-block" >Create User</button>
+
+    </div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="cUser.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ cUser.message }}
+        </div>
+
+    </div>
+</div>
