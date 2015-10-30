@@ -1,5 +1,5 @@
 {
-  "name": "FIU-VIP",
+  "name": "FIU-VIP-backend",
   "main": "server.js",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
