@@ -11,8 +11,8 @@ This is the repository for skeleton of the FIU VIP web app. Download this and fa
 	-run `npm -g install bower`  
 	-now you should be able to run `bower install`  
 6. Start up the server: `node server.js`
-7. ## Linux and OS X
-8. Open terminal, ssh -p 2222 3000:localhost:3000 bitnami@localhost
-9. ## Windows:
-10. Open PuTTY, create a tunnel and ssh in normally
-11. View in browser at http://localhost:3000
+## Linux and OS X
+7. Open terminal, ssh -p 2222 3000:localhost:3000 bitnami@localhost
+## Windows:
+9. Open PuTTY, create a tunnel and ssh in normally
+10. View in browser at http://localhost:3000
