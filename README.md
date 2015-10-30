@@ -10,3 +10,8 @@ This is a repository for the skeleton of the FIU VIP web app. Download this and 
 5. Install npm modules again: `npm install`
 6. Start up the server: `node server.js`
 7. View in browser at http://localhost:3000
+8. Linux and OS X:
+9. Open terminal, ssh -p 2222 3000:localhost:3000 bitnami@localhost
+10. Windows:
+12. Open PuTTY, create a tunnel and ssh in normally
+12. View in browser at http://localhost:3000
