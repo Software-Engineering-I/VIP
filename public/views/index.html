@@ -12,7 +12,8 @@
 
 	<!-- JS -->
 	<script src="node_modules/angular/angular.js"></script>
-	<script src="node_modules/angular-route/angular-route.js"></script>
+	<!--<script src="node_modules/angular-route/angular-route.js"></script>-->
+	<script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
 
 	<!-- ANGULAR CUSTOM -->
 	<script src="js/appRoutes.js"></script>
@@ -30,9 +31,9 @@
 
 			<div class="navbar">
 				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-					<li><a href="/programs">Programs</a></li>
+					<li><a ui-sref="home">Home</a></li>
+					<li><a ui-sref="about">About</a></li>
+					<li><a ui-sref="programs">Programs</a></li>
 				</ul>
 			</div>
 		</div>
@@ -42,7 +43,7 @@
 	<div class="container">
 
 		<!-- ANGULAR DYNAMIC CONTENT -->
-		<div ng-view></div>
+		<div ui-view></div>
 
 	</div><!-- end of container -->
 </body>
