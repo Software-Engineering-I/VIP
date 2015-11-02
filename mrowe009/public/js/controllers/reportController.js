@@ -18,6 +18,5 @@ angular.module('reportControl', ['reportService'])
                     vm.formData = {};
                     vm.message = data.message;
                 });
-
         };
     });
