@@ -1,0 +1,40 @@
+<div class='eventscontainer'>
+    <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+        <div class = 'eventslist'>
+            <li class='next' ng-repeat="anEvent in value">
+                <label class='date'>
+                    <span class='weekday'>{{ anEvent.month }}</span>
+                    <span class='day'>{{ anEvent.day }}</span>
+                </label>
+                <a href='#'>
+                    <span class='ion-ios-arrow-forward'></span>
+                </a>
+                <h3>{{ anEvent.eName }}</h3>
+                <p>
+                    <span class='duration'>{{ anEvent.hour }} o'clock</span>
+                    <span class='location'>{{ anEvent.description }}</span>
+                </p>
+            </li>
+        </div>
+    </ta>
+    <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+
+        <table>
+            <th align="left" >Date</th>
+            <th align="left">Event Name</th>
+            <th align="left">Description</th>
+            <th></th>
+
+
+            <tr ng-repeat="anEvent in value">
+                <td nowrap>{{ anEvent.date}}</td>
+                <td>{{ anEvent.eName }}</td>
+                <td>{{ anEvent.description }}</td>
+
+                <td>
+                    <a ng-click="upEvent.deleteEvent(anEvent._id)" class="button-error pure-button" >Delete</a>
+                </td>
+            </tr>
+        </table>
+    </ta>
+</div>

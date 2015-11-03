@@ -1,0 +1,44 @@
+<h1>Create Event</h1>
+
+
+
+<form class="InputEvent" ng-submit="upCEvent.saveEvent()">
+
+    <div>
+        <label>Date</label>
+        <div>
+            <input type="text" ng-model="upCEvent.eventData.date">
+        </div>
+    </div>
+    <div>
+        <label>Event Name</label>
+        <div>
+            <input type="text" ng-model="upCEvent.eventData.eName">
+        </div>
+    </div>
+    <div>
+        <label>Event Description</label>
+        <div>
+            <input type="text" ng-model="upCEvent.eventData.description">
+        </div>
+    </div>
+
+
+
+
+    <div >
+        <button type="submit" class="btn btn-success btn-lg btn-block" >Create Event</button>
+
+    </div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="upCEvent.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ upCEvent.message }}
+        </div>
+
+    </div>
+</div>
