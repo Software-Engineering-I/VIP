@@ -28,6 +28,12 @@ angular.module('userService', [])
             return $http.put('/api/users/' + id, userData);
         };
 
+        // change a users project
+        userFactory.changeProject = function(id, project){
+            var data = {"userId": id,"project": project};
+            return $http.put('/api/users/',data);
+        };
+
         // delete a user
         userFactory.delete = function(id) {
             return $http.delete('/api/users/' + id);

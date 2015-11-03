@@ -16,7 +16,7 @@ var UserSchema = new Schema({
 	username:   {type: String, required: true, index: {unique:true}},
 	password:   {type: String, required: true, select: false},
 	email:      {type: String, required: true, index: {unique:true}},
-	project:    {type: String, required: true},
+	project:    String,
 	cell:       String,
 	Rank:       String,
 	Major:      String,
