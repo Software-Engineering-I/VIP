@@ -1,13 +1,14 @@
 <div class='eventscontainer'>
-    <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+    <div ng-controller="eventController">
+    <ta ng-repeat="anEvent in upEvent.events | orderBy: 'date'">
         <div class = 'eventslist'>
-            <li class='next' ng-repeat="anEvent in value">
+            <li class='next' >
                 <label class='date'>
                     <span class='weekday'>{{ anEvent.month }}</span>
                     <span class='day'>{{ anEvent.day }}</span>
                 </label>
                 <a href='#'>
-                    <span class='ion-ios-arrow-forward'></span>
+                    <a ng-click="upEvent.deleteEvent(anEvent._id)" class='ion-ios-arrow-forward'></a>
                 </a>
                 <h3>{{ anEvent.eName }}</h3>
                 <p>
@@ -17,7 +18,8 @@
             </li>
         </div>
     </ta>
-    <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+    </div>
+   <!-- <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
 
         <table>
             <th align="left" >Date</th>
@@ -36,5 +38,5 @@
                 </td>
             </tr>
         </table>
-    </ta>
+    </ta>-->
 </div>
