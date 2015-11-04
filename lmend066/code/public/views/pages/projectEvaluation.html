@@ -1,0 +1,31 @@
+<div>
+    <br>
+    <h1>{{evaluation.title}}</h1>
+    <form name="addEvaluation" ng-submit="evaluation.saveEvaluation()">
+        <br>
+        <p>Student Name</p>
+        <input type="text" autofocus required size="48"  ng-model="evaluation.feedback.studentName"></input>
+        <br><br>
+        <p>Student Email</p>
+        <input type="email" required title="Please Enter Valid Email Address" size="48"  ng-model="evaluation.feedback.studentEmail"></input>
+        <br><br>
+        <p>Subject</p>
+        <input type="text" required size="48"  ng-model="evaluation.feedback.subjectTitle"></input>
+        <br><br>
+        <p>Message</p>
+        <textarea required cols="50" rows="8"  ng-model="evaluation.feedback.feedbackMessage"></textarea>
+
+        <br>
+        <button type="submit" class="btn btn-success">Send Message</button>
+    </form>
+</div>
+
+<div class="row show-hide-message" ng-show="evaluation.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ evaluation.message }}
+        </div>
+
+    </div>
+</div>
