@@ -1,6 +1,6 @@
 var bodyParser		= require('body-parser');    // get body-parser
 var Report			= require('../models/report');
-var config			= require('../../config');
+//var nodemailer      = require('nodemailer');
 
 module.exports = function(app, express) {
 
@@ -32,7 +32,41 @@ module.exports = function(app, express) {
                 // return a message
                 res.json({ message: 'Report created!' });
             });
+/*
+
+            // create reusable transporter object using SMTP transport
+            var transporter = nodemailer.createTransport({
+                host:'a2plcpnl0330.prod.iad2.secureserver.net',
+                port:465,
+                secure:true,
+                auth: {
+                    user: 'nodemail@amcustomprints.com',
+                    pass: 'spaceCC120'
+                }
+            });
+
+            // NB! No need to recreate the transporter object. You can use
+            // the same transporter object for all e-mails
+
+            // setup e-mail data with unicode symbols
+            var mailOptions = {
+                from: 'Fred Foo ✔ <nodemail@amcustomprints.com>', // sender address
+                to: 'mrowe122@gmail.com', // list of receivers
+                subject: 'Hello ✔', // Subject line
+                text: req.body.question1 + "</br><b>Hello world ✔</b>" + 
+                req.body.question2 // plaintext body
+            };
+
+            // send mail with defined transport object
+            transporter.sendMail(mailOptions, function(error, info){
+                if(error){
+                    return console.log(error);
+                }
+                console.log('Message sent: ' + info.response);
+            });
+
+        */
 
         });
-return apiRouter;
+        return apiRouter;
 };
