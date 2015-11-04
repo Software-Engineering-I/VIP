@@ -2,6 +2,7 @@ $(document).ready(function() {
   	$('#rootwizard').bootstrapWizard();
 });
 
+$("a.tooltipLink").tooltip();
 /*!
  * jQuery twitter bootstrap wizard plugin
  * Examples and documentation at: http://github.com/VinceG/twitter-bootstrap-wizard
@@ -24,6 +25,3 @@ a+") a").tab("show")};this.currentIndex=function(){return b.find('li:has([data-t
 b,a.currentIndex(),d))return!1;f=$element;a.fixNavigationButtons()};this.resetWizard=function(){e('a[data-toggle="tab"]',b).off("click",l);e('a[data-toggle="tab"]',b).off("shown shown.bs.tab",m);b=d.find("ul:first",d);f=b.find('li:has([data-toggle="tab"]).active',d);e('a[data-toggle="tab"]',b).on("click",l);e('a[data-toggle="tab"]',b).on("shown shown.bs.tab",m);a.fixNavigationButtons()};b=d.find("ul:first",d);f=b.find('li:has([data-toggle="tab"]).active',d);b.hasClass(c.tabClass)||b.addClass(c.tabClass);
 if(c.onInit&&"function"===typeof c.onInit)c.onInit(f,b,0);if(c.onShow&&"function"===typeof c.onShow)c.onShow(f,b,a.nextIndex());e('a[data-toggle="tab"]',b).on("click",l);e('a[data-toggle="tab"]',b).on("shown shown.bs.tab",m)};e.fn.bootstrapWizard=function(d){if("string"==typeof d){var k=Array.prototype.slice.call(arguments,1);1===k.length&&k.toString();return this.data("bootstrapWizard")[d](k)}return this.each(function(a){a=e(this);if(!a.data("bootstrapWizard")){var g=new n(a,d);a.data("bootstrapWizard",
 g);g.fixNavigationButtons()}})};e.fn.bootstrapWizard.defaults={tabClass:"nav nav-pills",nextSelector:".wizard li.next",previousSelector:".wizard li.previous",firstSelector:".wizard li.first",lastSelector:".wizard li.last",backSelector:".wizard li.back",onShow:null,onInit:null,onNext:null,onPrevious:null,onLast:null,onFirst:null,onBack:null,onTabChange:null,onTabClick:null,onTabShow:null}})(jQuery);
-
-
-

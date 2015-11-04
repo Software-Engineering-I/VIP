@@ -1,6 +1,18 @@
-<html>
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>FIUVIP Resume</title>
+
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+  </head>
+
+  <body>
+
+    <html>
 <head>
-  
+
 <meta charset="ISO-8859-1">
   <style >
   .background{background: rgba(0,46,98,1);
@@ -17,175 +29,329 @@
   </style>
   <!-- jQuery --->
  <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-
 </head>
-  
 <body class = "background">
- <h1> <p class ="text-center"color="white"<\p> 
-   <font color = "white">Submit Your Resume</font> </h1>
-
+ <h1> <p class ="text-center"color="white"<\p>
+   <font color = "white">Submit Your Resume</font>
+  </h1>
+	
 <div id="rootwizard">
 	<div class="navbar">
 	  <div class="navbar-inner">
 	    <div class="container">
-	<ul class="nav nav-tabs nav-justified" role="tablist">>
+	<ul class="nav nav-tabs nav-justified" role="tablist">
 	  	<li><a href="#tab1" data-toggle="tab">Demographics</a></li>
-		<li><a href="#tab2" data-toggle="tab">Relevant Courses</a></li>
-		<li><a href="#tab3" data-toggle="tab">Work Expirience</a></li>
+		<li><a href="#tab2" data-toggle="tab">Education</a></li>
+		<li><a href="#tab3" data-toggle="tab">Work Experience</a></li>
 		<li><a href="#tab4" data-toggle="tab">Skills</a></li>
-		<li><a href="#tab5" data-toggle="tab">Hobbies</a></li>
+		<li><a href="#tab5" data-toggle="tab">Volunteer</a></li>
 		<li><a href="#tab6" data-toggle="tab">Interests</a></li>
-		<li><a href="#tab7" data-toggle="tab">Publications</a></li>
+		<li><a href="#tab7" data-toggle="tab">References</a></li>
 	</ul>
 	 </div>
 	  </div>
 	</div>
-	<div class="tab-content">
-<div class="tab-pane" id="tab1">
-	    <div class = "row">
-  <!--My first page -->
-  <div class = "col-md-2"></div>  
-  <div id="main_container_middle" class = "col-md-8"> 
-    
-    
-   <font color = "white"> Please enter your demogaphic data in the fields below. Upon completion, click save.  </font>
-  <br><br> 
-   
-  <table class ="table" >
-    <tr id="s1Row1">
-    <td><strong><font color="white"> Major:</font></strong></td>
-    <td><input id="major" class = "form-control" type="text" placeholder = "Chemistry"></td>		
-    <td><strong>  <font color="white">GPA:</font> </strong></td>
-    <td><input id="gpa" class = "form-control" type="text" placeholder = "4.0"></td>	
+<div class = "row" id= "wizardRow">
+  <div class = col-md-2></div>
+
+<div id="main_container_middle" class = "col-md-8">
+<div class="tab-content">
+	    <div class="tab-pane" id="tab1">
+          <font color = "white">Enter demographic data below. Demographic data are requested for aggregate reporting and tracking purposes and are not associated with your application. These questions are optional and the decision not to answer them will not affect your consideration in any way.</font>
+          <br><br>
+
+	  <table class ="table" >
+
+      <tr id="s1Row1">
+    <td><strong><font color="white"> Visa Status:</font></strong></td>
+    <td>
+        <select id = "visa-status" class = "form-control">
+          <option></option>
+          <option>Permanent</option>
+          <option>Resident</option>
+          <option>Citizen</option>
+          <option>Other</option>
+        </select>
+    </td>
+    <td><strong>  <font color="white">Professional Status:</font> </strong></td>
+    <td><input id="professional-status" class = "form-control" type="text" placeholder = "Student"></td>
     </tr>
-    <tr id="s1Row2">
+       <tr id="s1Row2">
+    <td><strong><font color="white"> Gender:</font></strong></td>
+     <td>
+        <select id = "gender" class = "form-control">
+          <option></option>
+          <option>Male</option>
+          <option>Female</option>
+        </select>
+    </td>
+    <td><strong>  <font color="white">Place of Birth:</font> </strong></td>
+    <td><input id="placeofbirth" class = "form-control" type="text" placeholder = "China"></td>
+    </tr>
+    <tr id="s1Row3">
     <td><strong><font color="white"> Race:</font></strong></td>
-    <td><input id="race" class = "form-control" type="text" placeholder = "Black"></td>		
+     <td>
+        <select id = "race" class = "form-control">
+          <option></option>
+          <option>Black/African American</option>
+          <option>White</option>
+          <option>Asian</option>
+          <option>American Indian/Alaska Native</option>
+          <option>Native Hawaiian/Pacific Islander</option>
+          <option>Other</option>
+
+        </select>
+    </td>
     <td><strong>  <font color="white">Ethnicity:</font> </strong></td>
-    <td><input id="ethnicity" class = "form-control" type="text" placeholder = "Latino"></td>	
+        <td>
+        <select id = "ethnicity" class = "form-control">
+          <option></option>
+          <option>Hispanic/Latino</option>
+          <option>Not Hispanic/Latino</option>
+          <option>Other</option>
+        </select>
+    </td>
     </tr>
-      <tr id="s1Row3">
-   <td><strong><font color="white"> Year:</font></strong></td>
-    <td><input id="year" class = "form-control" type="text" placeholder = "Senior"></td>		
-    <td><strong><font color="white"> Study Type:</font></strong></td>
-    <td><input id="studytype" class = "form-control" type="text" placeholder = "Bachelor"></td>		
+     <tr id="s1Row4">
+    <td><strong><font color="white"> Summary:</font></strong></td>
+    <td colspan = "3"><textarea  id = "userSummary"class="form-control" rows="3" placeholder = "A summary of user..."></textarea>
     </tr>
-    
- </table>  
-   <br>
-    <button id="submit-button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
-	<br>
-	<br>
-	<div id="error-message">
-	</div>
-  </div>  
-  <div class = col-md-2></div>  
-</div>
+ </table>
+        <div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+          </div>
+        </div>
 	    </div>
-	<div class="tab-pane" id="tab2">
-    
- <font color = "white"> Please list any relevant courses below. Upon completion, click save.  </font>
+	    <div class="tab-pane" id="tab2">
+	     <font color = "white"> Please enter most relevant education below:  </font>
      <br><br>
-	   <td><strong><font color="white"> Relevant Cources:</font></strong></td>
-    <td><input id="gpa" class = "form-control" type="text" placeholder = "Chemistry,Programming Languages, Operating Systems, Software Engineering......"></td>		
-     <br><br>
-     <button id="submit-button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
-	<br>
-	<br>
-	<div id="error-message">
-	</div>
-  
-	</div>
+
+      <table class = "table">
+         <tr id="s2Row1">
+    <td><strong><font color="white"> Institution:</font></strong></td>
+    <td><input id="institution" class = "form-control" type="text" placeholder = "Florida International University"></td>
+    <td><strong>  <font color="white">Credits Completed:</font> </strong></td>
+    <td><input id="credits-completed" class = "form-control" type="text" placeholder = "5"></td>
+    </tr>
+     <tr id="s2Row2">
+    <td><strong><font color="white"> Major:</font></strong></td>
+    <td><input id="major" class = "form-control" type="text" placeholder = "Chemistry"></td>
+    <td><strong>  <font color="white">GPA:</font> </strong></td>
+    <td><input id="gpa" class = "form-control" type="text" placeholder = "4.0"></td>
+    </tr>
+    <tr id="s2Row3">
+    <td><strong><font color="white"> Degree:</font></strong></td>
+     <td>
+        <select id = "degree" class = "form-control">
+          <option></option>
+          <option>Associate</option>
+          <option>Bachelor</option>
+          <option>Master</option>
+          <option>Doctoral</option>
+        </select>
+     </td>
+   <td><strong><font color="white"> Status:</font></strong></td>
+        <td>
+        <select id = "degree" class = "form-control">
+          <option></option>
+          <option>Completed</option>
+          <option>Not Completed</option>
+        </select>
+     </td>
+    </tr>
+    <tr id="s2Row4">
+	   <td ><strong><font color="white"> Relevant Cources:</font></strong></td>
+    <td colspan = "3"><input id="courses" class = "form-control" type="text" placeholder = "Chemistry,Programming Languages, Operating Systems, Software Engineering......"></td>
+     </tr>
+        </table>
+   <div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+
+          </div>
+        </div>
+	    </div>
+
 		<div class="tab-pane" id="tab3">
-  <tr id="S3row1" >
-    <td><strong><font color="white">Prior Expirience #1:</font></strong></td>
-    <td colspan="3"><input class="form-control" type="text" placeholder = "Mcdonalds"></td>	
+	     <font color = "white"> Please enter most relevant work experience below:  </font>
+     <br><br>
+<table class = "table">
+
+  <tr id="s3Row1">
+  <td><strong><font color="white"> Company:</font></strong></td>
+  <td><input id="company" class = "form-control" type="text" placeholder = "Pied Piper"></td>
+ <td><strong><font color="white"> Position:</font></strong></td>
+  <td><input id="position" class = "form-control" type="text" placeholder = "CEO/President"></td>
   </tr>
-      <tr id="S3row1" >
-    <td><strong><font color="white">Prior Expirience #2:</font></strong></td>
-    <td colspan="3"><input class="form-control" type="text" placeholder = "Burger King"></td>	
+
+    <tr id="s3Row2">
+    <td><strong><font color="white"> Months Worked:</font></strong></td>
+    <td><input id="monthsWorked" class = "form-control" type="text" placeholder = "14"></td>
+   <td><strong><font color="white"> Position Status :</font></strong></td>
+    <td>
+        <select id = "position-status" class = "form-control">
+          <option>Full-Time</option>
+          <option>Part-Time</option>
+        </select>
+    </td>
+    </tr>
+    <tr id="s3Row3">
+
+   <td><strong>
+   <font color="white">Job Summary:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example: Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores that are not merely competitive, but approach the theoretical limit of lossless compression.">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+   <td colspan = "3"><textarea  id = "job-summary"class="form-control" rows="3"></textarea>
+   </tr>
+   <tr id="s3Row4">
+ <td><strong>
+   <font color="white">Highlights:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example:Build an algorithm for artist to detect if their music was violating copy right infringement laws.
+        Successfully won Techcrunch Disrupt.Optimized an algorithm that holds the current world record for Weisman Scores">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+  <td colspan = "3"><textarea  id = "job-highlights"class="form-control" rows="3"></textarea>
   </tr>
-      <tr id="S3row1" >
-    <td><strong><font color="white">Prior Expirience #3:</font></strong></td>
-    <td colspan="3"><input class="form-control" type="text" placeholder = "Taco Bell"></td>	
-  </tr>
+</table>
+        <div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+          </div>
+        </div>
 	    </div>
 		<div class="tab-pane" id="tab4">
-	    <div class = "row">
-  <!--My first page -->
-  <div class = "col-md-2"></div>  
-  <div id="main_container_middle" class = "col-md-8"> 
-    
-  <br><br> 
-   
-    <tr id="S4row1">
+<font color = "white">Please list any relevant skills below: </font>
+     <br><br>
+<tr id="S4row1">
     <td><strong><font color="white"> Skill List :</font></strong></td>
-    <td><input id="gpa" class = "form-control" type="text" placeholder = "Java,C++,C...."></td>		
+    <td><input id="gpa" class = "form-control" type="text" placeholder = "Java,C++,C...."></td>
   </tr>
-       
-   <br>
-    <button id="submit-button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
-	<br>
-	<br>
-	<div id="error-message">
-	</div>
-  </div>  
-  <div class = col-md-2></div>  
-</div>
+        <div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+              </div>
+        </div>
 	    </div>
 		<div class="tab-pane" id="tab5">
-	    <div class = "row">
-  <!--My first page -->
-  <div class = "col-md-2"></div>  
-  <div id="main_container_middle" class = "col-md-8"> 
-    
-  
-   <br>
-    <button id="submit-button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
-	<br>
-	<br>
-	<div id="error-message">
-	</div>
-  </div>  
-  <div class = col-md-2></div>  
-</div>
+   <font color = "white">Enter voluntary or extracurricular work below : </font>
+<table class = "table">
+  <tr id="s3Row1">
+  <td><strong><font color="white"> Organization:</font></strong></td>
+  <td><input id="volunteer-organization" class = "form-control" type="text" placeholder = "CoderDojo"></td>
+ <td><strong><font color="white"> Position:</font></strong></td>
+  <td><input id="volunteer-position" class = "form-control" type="text" placeholder = "Teacher"></td>
+  </tr>
+    <tr id="s3Row2">
+    <td><strong><font color="white"> Months Involved:</font></strong></td>
+    <td><input id="volunteer-months-involved" class = "form-control" type="text" placeholder = "3"></td>
+   <td><strong><font color="white">Website :</font></strong></td>
+ <td><input id="volunteer-website" class = "form-control" type="text" placeholder = "www.coderdojo.com"></td>
+    </tr>
+    <tr id="s3Row3">
+   <td><strong>
+   <font color="white">Summary:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example: Global movement of free coding clubs for young people.">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+   <td colspan = "3"><textarea  id = "job-summary"class="form-control" rows="3"></textarea>
+   </tr>
+   <tr id="s3Row4">
+ <td><strong>
+   <font color="white">Highlights:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example:Awarded 'Teacher of the Month'">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+  <td colspan = "3"><textarea  id = "job-highlights"class="form-control" rows="3"></textarea>
+  </tr>
+</table>
+       <div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+          </div>
+        </div>
+
 	    </div>
-		<div class="tab-pane" id="tab6"></div>
-	 
+		<div class="tab-pane" id="tab6">
+      	     <font color = "white"> Please list your interests below: </font>
+     <br><br>
+<tr id="S6row1">
+    <td><strong><font color="white"> Interest List :</font></strong></td>
+    <td><input id="interest-list" class = "form-control" type="text" placeholder = "Coding,Wildfile,Unicorns,Ferrets,Robotics,AI..."></td>
+  </tr>
+	    </div>
 		<div class="tab-pane" id="tab7">
-	   
-   <br>
-    <button id="submit-button" class="btn btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Save</button>
-    <button class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Clear</button>
-	<br>
-	<br>
-	<div id="error-message">
-	</div>
-  </div>  
-  <div class = col-md-2></div>  
-</div>
+  <font color = "white"> Please list your references below: </font>
+      <br><br>
+
+<table class = "table">
+  <font color = "white"> Reference #1: </font>
+  <tr id="s3Row1">
+  <td><strong><font color="white"> Reference Name:</font></strong></td>
+  <td><input id="reference-one" class = "form-control" type="text" placeholder = "Dr. Murphy"></td>
+ <td><strong><font color="white"> Email Address:</font></strong></td>
+  <td><input id="reference-email-one" class = "form-control" type="text" placeholder = "drmurphy.fiu.edu"></td>
+  </tr>
+  <tr id = "s7Row3">
+     <td><strong>
+   <font color="white">References:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example: It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company.">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+   <td colspan = "3"><textarea  id = "job-summary"class="form-control" rows="3"></textarea>
+  </tr>
+  </table>
+      <table class = "table">
+  <font color = "white"> Reference #2: </font>
+  <tr id="s3Row1">
+  <td><strong><font color="white"> Reference Name:</font></strong></td>
+  <td><input id="reference-one" class = "form-control" type="text" placeholder = "Dr. Trask"></td>
+ <td><strong><font color="white"> Email Address:</font></strong></td>
+  <td><input id="reference-email-two" class = "form-control" type="text" placeholder = "trask.fiu.edu"></td>
+  </tr>
+  <tr id = "s7Row3">
+     <td><strong>
+   <font color="white">References:
+       <a data-toggle="tooltip" class="tooltipLink" data-original-title= "Example: It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company.">
+    <span class="glyphicon glyphicon-question-sign"></span>
+      </a>
+    </font></strong></td>
+   <td colspan = "3"><textarea  id = "job-summary"class="form-control" rows="3"></textarea>
+  </tr>
+  </table>
+
+<div class = "row">
+        <div class="col-md-3 col-md-offset-5">
+       <br>
+    <button id="submit-button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Submit Resume</button>
+	    <br>
+          </div>
+        </div>
 	    </div>
-		<ul class="pager wizard">
+
+ <ul class="pager wizard">
 			<li class="previous first" style="display:none;"><a href="#">First</a></li>
 			<li class="previous"><a href="#">Previous</a></li>
 			<li class="next last" style="display:none;"><a href="#">Last</a></li>
 		  	<li class="next"><a href="#">Next</a></li>
 		</ul>
-	</div>	
+
 </div>
-
-
-  
+<div class = col-md-2></div>
+</div>
+</div>
 <script>
-
-
-
 </script>
-  
-  
 </body>
+</html>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js'></script>
+
+        <script src="/js/index.js"></script>
+
+
+
+
+  </body>
 </html>
