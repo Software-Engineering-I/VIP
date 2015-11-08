@@ -1,8 +1,12 @@
 var MyApp = angular.module('MyApp', ['ui.router', 'satellizer'])
-	.config(['$urlRouterProvider', '$stateProvider', function($urlRouterProvider, $stateProvider){
+	.config(function($urlRouterProvider, $stateProvider, $locationProvider){
 		$urlRouterProvider.otherwise('/home');
 	
 		$stateProvider
+		.state('home', {
+			 url:'/',
+			 templateUrl: "views/pages/home.html"
+		 })
 		.state('signin', {
 			url:'/signin',
 			templateUrl: "views/pages/signin.html",
@@ -17,23 +21,21 @@ var MyApp = angular.module('MyApp', ['ui.router', 'satellizer'])
 			url:'/register',
 			templateUrl:"views/pages/register.html",
 		})
-		.state('home', {
-			 url:'/home',
-			 templateUrl: "/views/pages/home.html"
-		 })
 		.state('about',{
 			 url:'/about',
-			 templateUrl: "/views/pages/about.html"
+			 templateUrl: "views/pages/about.html"
 		})
 		.state('programs',{
 			url:'/programs',
-			templateUrl: "/views/pages/programs.html"
+			templateUrl: "views/pages/programs.html"
 		})
 		.state('profile',{
 			url: '/profile',
 			templateUrl: "views/pages/profile.html"
 		})
-	}]);
+
+		$locationProvider.html5Mode(true);
+	});
 
 MyApp.config(function($authProvider) {
 

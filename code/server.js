@@ -77,8 +77,10 @@ var userSchema = new mongoose.Schema({
 		protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
 	}); 
  }
- app.use(express.static(path.join(__dirname, '/public')));
- require('./app/routes/routes.js')(app);
+app.use(express.static(__dirname + '/public'));
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/views/index.html'));
+});
 
 /*
  |--------------------------------------------------------------------------
