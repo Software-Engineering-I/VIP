@@ -1,6 +1,6 @@
 module.exports = {
 	TOKEN_SECRET: process.env.TOKEN_SECRET || 'JWT Token Secret',
-	MONGO_URI: process.env.MONGO_URI || 'localhost',
+	MONGO_URI: 'mongodb://vipadmin:admin123@vip-dev.cis.fiu.edu:27017/vip',
 
 	//OAuth 2.0
 	FOURSQUARE_SECRET: process.env.FOURSQUARE_SECRET || '',

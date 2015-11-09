@@ -13,10 +13,9 @@ body {
 }
 
 body {
-	padding-top: 5%; 
+	padding-top: 50px; 
 }
 
-.whiteFont
-{
+.whiteFont{ 
 	color: rgba(255, 255, 255, 1);
 }

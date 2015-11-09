@@ -1,22 +1,36 @@
-module.exports = function(app) {
+var bodyParser		= require('body-parser');    // get body-parser
+var Report			= require('../models/report');
 
-	// server routes ===========================================================
-	// handle things like api calls
-	// authentication routes
+module.exports = function(app, express) {
 
-	// frontend routes =========================================================
-	// route to handle all angular requests
-	/* new route 
-	app.set('appPath', 'public');
-	app.use(express.static(__dirname + '/public'));
+	var apiRouter = express.Router();
 
-	app.route('/*')
-	  .get(function(req, res){
-	    res.sendfile(app.get('appPath') + '/index.html');
-	});*/
+    // on routes that end in /reports
+    // ----------------------------------------------------
+    apiRouter.route('/reports')
+        .post(function(req, res) {
 
-	//old app route
-	app.get('/', function(req, res) {
-		res.sendfile('./public/views/index.html');
-	});
+            var report = new Report();      // create a new instance of the Report model
+            report.question1		= req.body.question1;
+            report.question2		= req.body.question2;
+            report.question3		= req.body.question3;
+            report.question4		= req.body.question4;
+            report.question5		= req.body.question5;
+            report.question6		= req.body.question6;
+            report.question7		= req.body.question7;
+            report.question8		= req.body.question8;
+            report.question9		= req.body.question9;
+            report.question10		= req.body.question10;
+            report.question11		= req.body.question11;
+
+            report.save(function(err) {
+            	if (err)
+            		return res.send({message: err});
+
+                // return a message
+                res.json({ message: 'Report created!' });
+            });       
+
+        });
+        return apiRouter;
 };

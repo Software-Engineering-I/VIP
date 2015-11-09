@@ -1,7 +1,6 @@
 // modules =================================================
 var path		   = require('path');
 var qs			   = require('querystring');
-
 var async 		   = require('async');
 var bcrypt		   = require('bcryptjs');
 var bodyParser	   = require('body-parser');
@@ -36,7 +35,7 @@ var userSchema = new mongoose.Schema({
 	twitch: String*/
 });
 
- userSchema.pre('save', function(next){
+userSchema.pre('save', function(next){
 	var user = this;
 	if(!user.isModified('password')){
 		return next();
@@ -47,39 +46,44 @@ var userSchema = new mongoose.Schema({
 			next();
 		});
 	});
+});
+
+userSchema.methods.comparePassword = function(password, done){
+  bcrypt.compare(password, this.passwowrd, function(err, isMatch){
+   done(err, isMatch);
  });
+};
 
- userSchema.methods.comparePassword = function(password, done){
-	 bcrypt.compare(password, this.passwowrd, function(err, isMatch){
-		 done(err, isMatch);
-	 });
- };
+var User = mongoose.model('User', userSchema);
 
- var User = mongoose.model('User', userSchema);
+mongoose.connect(config.MONGO_URI);
+mongoose.connection.on('error', function(err){
+  console.log('Error: could not connect to MongoDB. Did you forget to run `mongod`?'.red);
+});
 
- mongoose.connect(config.MONGO_URI);
- mongoose.connection.on('error', function(err){
-	 console.log('Error: could not connect to MongoDB. Did you forget to run `mongod`?'.red);
- });
+var app = express();
 
- var app = express();
-
- app.set('port', process.env.PORT || 3000);
- app.use(cors());
- app.use(logger('dev'));
- app.use(bodyParser.json());
- app.use(bodyParser.urlencoded({extended:true}));
+app.set('port', process.env.PORT || 3000);
+app.use(cors());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
  //Force HTTPS on Heroku :: example specific, maybe unnecessary
  if(app.get('env') === 'production'){
  	app.use(function(req, res, next){
-		var protocol = req.get('x-forward-proto');
-		protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
-	}); 
+    var protocol = req.get('x-forward-proto');
+    protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
+  }); 
  }
-app.use(express.static(__dirname + '/public'));
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/views/index.html'));
+
+ app.use(express.static(__dirname + '/public'));
+
+ var apiRoutes = require('./app/routes/routes')(app, express);
+ app.use('/report', apiRoutes);
+
+ app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
 /*
@@ -87,7 +91,7 @@ app.get('*', function(req, res) {
  | Login Required Middleware
  |--------------------------------------------------------------------------
  */
-function ensureAuthenticated(req, res, next) {
+ function ensureAuthenticated(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
   }
@@ -113,7 +117,7 @@ function ensureAuthenticated(req, res, next) {
  | Generate JSON Web Token
  |--------------------------------------------------------------------------
  */
-function createJWT(user) {
+ function createJWT(user) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
@@ -127,7 +131,7 @@ function createJWT(user) {
  | GET /api/me
  |--------------------------------------------------------------------------
  */
-app.get('/api/me', ensureAuthenticated, function(req, res) {
+ app.get('/api/me', ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     res.send(user);
   });
@@ -153,7 +157,7 @@ app.post('api/me', ensureAuthenticated, function(req, res){
  | PUT /api/me
  |--------------------------------------------------------------------------
  */
-app.put('/api/me', ensureAuthenticated, function(req, res) {
+ app.put('/api/me', ensureAuthenticated, function(req, res) {
   User.findById(req.user, function(err, user) {
     if (!user) {
       return res.status(400).send({ message: 'User not found' });
@@ -172,7 +176,7 @@ app.put('/api/me', ensureAuthenticated, function(req, res) {
  | Log in with Email
  |--------------------------------------------------------------------------
  */
-app.post('/auth/login', function(req, res) {
+ app.post('/auth/login', function(req, res) {
   User.findOne({ email: req.body.email }, '+password', function(err, user) {
     if (!user) {
       return res.status(401).send({ message: 'Wrong email and/or password' });
@@ -191,7 +195,7 @@ app.post('/auth/login', function(req, res) {
  | Create Email and Password Account
  |--------------------------------------------------------------------------
  */
-app.post('/auth/signup', function(req, res) {
+ app.post('/auth/signup', function(req, res) {
   User.findOne({ email: req.body.email }, function(err, existingUser) {
     if (existingUser) {
       return res.status(409).send({ message: 'Email is already taken' });
@@ -212,7 +216,7 @@ app.post('/auth/signup', function(req, res) {
  | Login with Google
  |--------------------------------------------------------------------------
  */
-app.post('/auth/google', function(req, res) {
+ app.post('/auth/google', function(req, res) {
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
   var params = {
@@ -240,9 +244,9 @@ app.post('/auth/google', function(req, res) {
 	  var splitStr = str.split("@");
 	  if(Array.isArray(splitStr)) {
 	  	if(splitStr[1].toLowerCase() !== "fiu.edu") {
-			return res.status(500).send({message: 'This is not an FIU mail'});
-		}
-	  }
+       return res.status(500).send({message: 'This is not an FIU mail'});
+     }
+   }
 
       // Step 3a. Link user accounts.
       if (req.headers.authorization) {
@@ -261,7 +265,7 @@ app.post('/auth/google', function(req, res) {
             user.displayName = user.displayName || profile.name;
             user.save(function() {
               var token = createJWT(user);
-			  res.send({ token: token });
+              res.send({ token: token });
             });
           });
         });
@@ -282,7 +286,7 @@ app.post('/auth/google', function(req, res) {
         });
       }
     });
-  });
+});
 });
 
 /*
@@ -290,10 +294,10 @@ app.post('/auth/google', function(req, res) {
  | Unlink Provider
  |--------------------------------------------------------------------------
  */
-app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
+ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
   var provider = req.body.provider;
   var providers = ['facebook', 'foursquare', 'google', 'github', 'instagram',
-    'linkedin', 'live', 'twitter', 'twitch', 'yahoo'];
+  'linkedin', 'live', 'twitter', 'twitch', 'yahoo'];
 
   if (providers.indexOf(provider) === -1) {
     return res.status(400).send({ message: 'Unknown OAuth Provider' });
@@ -315,6 +319,6 @@ app.post('/auth/unlink', ensureAuthenticated, function(req, res) {
  | Start the Server
  |--------------------------------------------------------------------------
  */
-app.listen(app.get('port'), function() {
+ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
