@@ -35,6 +35,7 @@
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
 
                             <li><a ng-repeat="people in user.users | unique: 'project'"  ng-if="people.project!='Unassigned'&& people.project!=projects"  ng-click="user.updateProject(person._id,people.project)" class="btn btn-primary">{{people.project}}</a></li>
+                            
                             <li><a ng-click="user.updateProject(person._id)" ng-if="projects!='Unassigned'" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></span></a></li>
 
                         </ul>

@@ -91,39 +91,7 @@ module.exports = function(app, express) {
     // ----------------------------------------------------
     apiRouter.route('/users/:user_id')
 
-        //// get the user with that id
-        //.get(function(req, res) {
-        //    User.findById(req.params.user_id, function(err, user) {
-        //        if (err) res.send(err);
-        //
-        //        // return that user
-        //        res.json(user);
-        //    });
-        //})
 
-        //// update the user with this id
-        //.put(function(req, res) {
-        //    User.findById(req.params.user_id, function(err, user) {
-        //
-        //        if (err) res.send(err);
-        //
-        //        // set the new user information if it exists in the request
-        //        if (req.body.name) user.name = req.body.name;
-        //        if (req.body.username) user.username = req.body.username;
-        //        if (req.body.password) user.password = req.body.password;
-        //
-        //        // save the user
-        //        user.save(function(err) {
-        //            if (err) res.send(err);
-        //
-        //            // return a message
-        //            res.json({ message: 'User updated!' });
-        //        });
-        //
-        //    });
-        //})
-
-        // delete the user with this id
         .delete(function(req, res) {
             User.remove({
                 _id: req.params.user_id
