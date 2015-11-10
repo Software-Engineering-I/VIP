@@ -1,7 +1,7 @@
 // modules =================================================
 var path			  = require('path');
 var qs				  = require('querystring');
-var async			  = require('asyfnc');
+var async			  = require('async');
 var bcrypt			= require('bcryptjs');
 var bodyParser	= require('body-parser');
 var colors			= require('colors');
