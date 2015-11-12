@@ -40,9 +40,11 @@ app.use(bodyParser.urlencoded({extended:true}));
  var reportRoutes = require('./app/routes/reportRoutes')(app, express);
  var apiRoutes = require('./app/routes/apiRoutes')(app, express);
  var authRoutes = require('./app/routes/authRoutes')(app, express);
+ var projEvalRoutes = require('./app/routes/projEvalRoutes')(app, express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
+ app.use('/projectEvaluation', projEvalRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));

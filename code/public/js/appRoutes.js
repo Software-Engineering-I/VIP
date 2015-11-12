@@ -46,6 +46,12 @@ angular.module('appRoutes', ['ui.router'])
 		controller: 'membershipReport',
 		controllerAs: 'mReport'
 	})
+	.state('projectEvaluation', {
+		url: '/projectEvaluation',
+		templateUrl: 'views/pages/projectEvaluation.html',
+		controller: 'projectEvaluationController',
+		controllerAs: 'evaluation'
+	})
 	;
 
 	$locationProvider.html5Mode(true);
