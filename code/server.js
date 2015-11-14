@@ -1,14 +1,14 @@
 // modules =================================================
-var path			  = require('path');
-var qs				  = require('querystring');
-var async			  = require('async');
+var path			= require('path');
+var qs				= require('querystring');
+var async			= require('async');
 var bcrypt			= require('bcryptjs');
-var bodyParser	= require('body-parser');
+var bodyParser		= require('body-parser');
 var colors			= require('colors');
-var cors			  = require('cors');
+var cors			= require('cors');
 var express			= require('express');
 var logger			= require('morgan');
-var jwt				  = require('jwt-simple');
+var jwt				= require('jwt-simple');
 var moment			= require('moment');
 var mongoose		= require('mongoose');
 var request			= require('request');
@@ -48,9 +48,11 @@ app.use(function(req, res, next) {
  var reportRoutes = require('./app/routes/reportRoutes')(app, express);
  var apiRoutes = require('./app/routes/apiRoutes')(app, express);
  var authRoutes = require('./app/routes/authRoutes')(app, express);
+ var projectRoutes = require('./app/routes/projectsRoutes')(app, express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
+ app.use('/projects', projectRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));

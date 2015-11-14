@@ -20,17 +20,20 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="/js/app.js"></script>
 	<script src="/js/appRoutes.js"></script>
+	<script src="/js/ui-bootstrap-tpls-0.14.2.js"></script>
 
 	<!-- Controllers -->
 	<script src="/js/controllers/reportController.js"></script>
 	<script src="/js/controllers/membershipController.js"></script>
 	<script src="/js/controllers/accountController.js"></script>
 	<script src="/js/controllers/userCtrl.js"></script>
+	<script src="/js/controllers/projectsController.js"></script>
 
 	<!-- Services -->
 	<script src="/js/services/reportService.js"></script>
 	<script src="/js/services/accountService.js"></script>
 	<script src="/js/services/userService.js"></script>
+	<script src="/js/services/projectServices.js"></script>
 
 </head>
 <body ng-app="MyApp">
@@ -66,6 +69,7 @@
 					</li>
 					<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
 					<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
+					<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
 				</ul>
 			</div>
 		</nav>

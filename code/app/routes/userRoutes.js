@@ -1,73 +1,17 @@
-var bodyParser    = require('body-parser');    // get body-parser
-var User          = require('../models/user');
-var config        = require('../../config/config');
-var UserReg       = require('../models/userRegistration');
-
-/*
- |--------------------------------------------------------------------------
- | Login Required Middleware
- |--------------------------------------------------------------------------
- */
- function ensureAuthenticated(req, res, next) {
-  if (!req.headers.authorization) {
-    return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
-  }
-  var token = req.headers.authorization.split(' ')[1];
-
-  var payload = null;
-  try {
-    payload = jwt.decode(token, config.TOKEN_SECRET);
-  }
-  catch (err) {
-    return res.status(401).send({ message: err.message });
-  }
-
-  if (payload.exp <= moment().unix()) {
-    return res.status(401).send({ message: 'Token has expired' });
-  }
-  req.user = payload.sub;
-  next();
-}
+var User       = require('../models/userRegistration');
 
 module.exports = function(app, express) {
+    var apiRouter = express.Router();
 
-  var apiRouter = express.Router();
-
-    // on routes that end in /reports
+    // on routes that end in /users
     // ----------------------------------------------------
-    apiRouter.route('/me')
-    /*
-    |--------------------------------------------------------------------------
-    | GET /api/me
-    |--------------------------------------------------------------------------
-    */
-    .get(ensureAuthenticated, function(req, res) {
-      User.findById(req.user, function(err, user) {
-        res.send(user);
-    });
-    })
-
-    .put(ensureAuthenticated, function(req, res) {
-        User.findById(req.user, function(err, user) {
-            if (!user) {
-              return res.status(400).send({ message: 'User not found' });
-          }
-          user.displayName = req.body.displayName || user.displayName;
-          user.email = req.body.email || user.email;
-          user.save(function(err) {
-              res.status(200).end();
-          });
-      });
-    });
-    //end of /me route
-
     apiRouter.route('/users')
 
 
         // create a user (accessed at POST http://localhost:8080/users)
         .post(function(req, res) {
 
-            var user = new UserReg();    // create a new instance of the User model
+            var user = new User();		// create a new instance of the User model
             user.f_name     = req.body.f_name;  // set the users name (comes from the request)
             user.m_name     = req.body.m_name;  // set the users middle name
             user.l_name     = req.body.l_name;  // set the users last name
@@ -103,7 +47,8 @@ module.exports = function(app, express) {
 
         // get all the users (accessed at GET http://localhost:8080/api/users)
         .get(function(req, res) {
-            UserReg.find({}, function(err, users) {
+            console.log("Here come the users!!!")
+            User.find({}, function(err, users) {
                 if (err) res.send(err);
 
                 // return the users
@@ -114,7 +59,8 @@ module.exports = function(app, express) {
         // remove the user from the project
         .put(function(req, res){
 
-            UserReg.findById(req.body.userId, function(err, user){
+            User.findById(req.body.userId, function(err, user){
+                    console.log("HAHA bitch! your put request is working!!!")
                     if(err) res.send(err);
 
                     if(!req.body.project){

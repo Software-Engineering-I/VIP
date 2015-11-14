@@ -18,6 +18,8 @@
     "jsonwebtoken": "^5.4.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.2.4",
-    "nodemailer": "^1.8.0"
+    "nodemailer": "^1.8.0",
+    "fs": "0.0.2",
+    "shortid": "^2.2.2"
   }
 }

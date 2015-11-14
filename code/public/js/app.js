@@ -6,7 +6,9 @@ angular.module('MyApp', [
 	'membershipController',
 	'userCtrl',
 	'userService',
-	'angular.filter'
+	'angular.filter',
+	'projectsController',
+	'ui.bootstrap'
 ])
 .config(function($authProvider) {
 

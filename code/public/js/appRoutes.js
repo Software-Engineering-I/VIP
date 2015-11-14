@@ -67,8 +67,24 @@ angular.module('appRoutes', ['ui.router'])
 		templateUrl:'/views/pages/create.html',
 		controller: 'userCreateController',
 		controllerAs: 'user'
+	})
+	//create project page
+	.state('projects', {
+		url: '/projects',
+		templateUrl:'/views/pages/projects.html',
+		controller: 'projectsController'
+	})
+	//create project page
+	.state('projectCreate', {
+		url: '/projects/create',
+		templateUrl:'/views/pages/project-create.html',
+		controller: 'projectsController'
+	})
+	.state('edit', {
+		url: '/projects/edit/:project_id',
+		templateUrl:'/views/pages/project-edit.html',
+		controller: 'projectsEditController'
 	});
-		;
 
 		$locationProvider.html5Mode(true);
 	});
