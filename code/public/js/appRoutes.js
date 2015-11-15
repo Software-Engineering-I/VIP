@@ -52,6 +52,12 @@ angular.module('appRoutes', ['ui.router'])
 		controller: 'projectEvaluationController',
 		controllerAs: 'evaluation'
 	})
+  .state('feedback', {
+    url: '/feedback',
+    templateUrl: 'views/pages/feedbackForm.html',
+    controller: 'feedbackController',
+    controllerAs: 'fcontrol'
+  })
 	;
 
 	$locationProvider.html5Mode(true);
