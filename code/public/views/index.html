@@ -28,12 +28,15 @@
 	<script src="/js/controllers/accountController.js"></script>
 	<script src="/js/controllers/userCtrl.js"></script>
 	<script src="/js/controllers/projectsController.js"></script>
+	<script src="/js/controllers/proposalFeedbackCtrl.js"></script>
+	<script src="/js/controllers/selectedViewController.js"></script>
 
 	<!-- Services -->
 	<script src="/js/services/reportService.js"></script>
 	<script src="/js/services/accountService.js"></script>
 	<script src="/js/services/userService.js"></script>
 	<script src="/js/services/projectServices.js"></script>
+	<script src="/js/services/projectProposalsService.js"></script>
 
 </head>
 <body ng-app="MyApp">
@@ -65,11 +68,13 @@
 						<ul class="dropdown-menu">
 							<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
 							<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
+							<li><a ui-sref="partial_reports"><i class="fa fa-question"></i> Partial Report</a></li>
 						</ul>
 					</li>
 					<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
 					<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
 					<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
+					<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>
 				</ul>
 			</div>
 		</nav>

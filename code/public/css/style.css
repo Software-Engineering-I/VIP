@@ -16,6 +16,10 @@ body {
 	padding-top: 50px; 
 }
 
-p, h1, label, h3 {
+p, h1, label, h3, h2 {
+	color: #fff;
+}
+
+.whiteFont {
 	color: #fff;
 }

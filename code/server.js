@@ -49,10 +49,12 @@ app.use(function(req, res, next) {
  var apiRoutes = require('./app/routes/apiRoutes')(app, express);
  var authRoutes = require('./app/routes/authRoutes')(app, express);
  var projectRoutes = require('./app/routes/projectsRoutes')(app, express);
+ var proposalRoutes = require('./app/routes/proposalRoutes')(app, express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
  app.use('/projects', projectRoutes);
+ app.use('/proposals', proposalRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));

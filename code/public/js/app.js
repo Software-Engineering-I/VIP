@@ -8,7 +8,10 @@ angular.module('MyApp', [
 	'userService',
 	'angular.filter',
 	'projectsController',
-	'ui.bootstrap'
+	'ui.bootstrap',
+	'feedbackCtrl',
+	'selectedViewCtrl',
+	'projectService'
 ])
 .config(function($authProvider) {
 

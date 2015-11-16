@@ -84,6 +84,22 @@ angular.module('appRoutes', ['ui.router'])
 		url: '/projects/edit/:project_id',
 		templateUrl:'/views/pages/project-edit.html',
 		controller: 'projectsEditController'
+	})
+	.state('proposal-feedback', {
+		url: '/proposal-feedback',
+		templateUrl: '/views/pages/proposal-feedback.html',
+		controller: 'feedbackController',
+		controllerAs: 'feedback'
+	})
+	.state('proposal-feedback/project_id',{
+		url: '/proposal-feedback/:project_id',
+		templateUrl: '/views/pages/proposal-view.html',
+		controller: 'viewController',
+		controllerAs: 'selected'
+	})
+	.state('partial_reports',{
+		url: '/proposal-report',
+		templateUrl: '/views/pages/report2.html'
 	});
 
 		$locationProvider.html5Mode(true);
