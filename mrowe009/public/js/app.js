@@ -1,21 +1,20 @@
-angular.module('mainApp', ['appRoutes', 'reportControl', 'reportService'])
+angular.module('MyApp', [
+	'appRoutes', 
+	'satellizer', 
+	'reportControl', 
+	'accountController', 
+	'membershipController',
+	'userCtrl',
+	'userService',
+	'angular.filter'
+])
+.config(function($authProvider) {
 
-.controller('mainController', function() {
-	var vm = this;
-	vm.tagline = 'Home sweet home!';	
-})
+	$authProvider.google({
+		clientId: '577160044779-hjsgal811fa0jlmd6jrl9lv0ab17hfgs.apps.googleusercontent.com'
+	});
 
-.controller('homeController', function() {
-	var vm = this;
-	vm.tagline = 'To the moon and back!';	
-})
-
-.controller('aboutController', function() {
-	var vm = this;
-	vm.tagline = 'Nothing beats a pocket protector!';
-})
-
-.controller('programsController', function() {
-	var vm = this;
-	vm.tagline = 'The square root of life is pi!';	
+	$authProvider.live({
+		clientId: 'Microsoft Client ID'
+	});
 });

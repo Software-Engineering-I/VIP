@@ -1,51 +1,61 @@
-// CALL THE PACKAGES --------------------
-var express    = require('express');        // call express
-var app        = express();                 // define our app using express
-var bodyParser = require('body-parser');    // get body-parser
-var morgan     = require('morgan');         // used to see requests
-var mongoose   = require('mongoose');
-var config     = require('./config');
-var path       = require('path');
+// modules =================================================
+var path			= require('path');
+var qs				= require('querystring');
+var async			= require('async');
+var bcrypt			= require('bcryptjs');
+var bodyParser		= require('body-parser');
+var colors			= require('colors');
+var cors			= require('cors');
+var express			= require('express');
+var logger			= require('morgan');
+var jwt				= require('jwt-simple');
+var moment			= require('moment');
+var mongoose		= require('mongoose');
+var request			= require('request');
+var config			= require('./config/config.js');
 
-// APP CONFIGURATION ==================
-// ====================================
-// use body parser so we can grab information from POST requests
-app.use(bodyParser.urlencoded({ extended: true }));
+mongoose.connect(config.MONGO_URI);
+mongoose.connection.on('error', function(err){
+  console.log('Error: could not connect to MongoDB. Did you forget to run `mongod`?'.red);
+});
+
+var app = express();
+
+app.set('port', process.env.PORT || 3000);
+app.use(cors());
+app.use(logger('dev'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 // configure our app to handle CORS requests
 app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
-    next();
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+	next();
 });
 
-// log all requests to the console 
-app.use(morgan('dev'));
+ //Force HTTPS on Heroku :: example specific, maybe unnecessary
+ if(app.get('env') === 'production'){
+ 	app.use(function(req, res, next){
+    var protocol = req.get('x-forward-proto');
+    protocol == 'https' ? next() : res.redirect('https://' + req.hostname + req.url);
+  }); 
+ }
 
-// connect to our database (hosted on modulus.io)
-mongoose.connect(config.database);
+ app.use(express.static(__dirname + '/public'));
 
-// set static files location
-// used for requests that our frontend will make
-app.use(express.static(__dirname + '/public'));
+ var reportRoutes = require('./app/routes/reportRoutes')(app, express);
+ var apiRoutes = require('./app/routes/apiRoutes')(app, express);
+ var authRoutes = require('./app/routes/authRoutes')(app, express);
+ app.use('/report', reportRoutes);
+ app.use('/api', apiRoutes);
+ app.use('/auth', authRoutes);
 
-// ROUTES FOR OUR API =================
-// ====================================
-
-// API ROUTES ------------------------
-var apiRoutes = require('./app/routes/routes')(app, express);
-app.use('/report', apiRoutes);
-
-// MAIN CATCHALL ROUTE --------------- 
-// SEND USERS TO FRONTEND ------------
-// has to be registered after API ROUTES
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/views/index.html'));
+ app.get('*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
-// START THE SERVER
-// ====================================
-app.listen(config.port);
-console.log('Magic happens on port ' + config.port);
+ app.listen(app.get('port'), function() {
+  console.log('Express server listening on port ' + app.get('port'));
+});
