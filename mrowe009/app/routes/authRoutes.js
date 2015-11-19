@@ -6,6 +6,12 @@ var request        = require('request');
 var moment         = require('moment');
 var jwt            = require('jwt-simple');
 
+var passport = {
+  userType: String,
+  userEmail: String
+};
+
+
 function ensureAuthenticated(req, res, next) {
   if (!req.headers.authorization) {
     return res.status(401).send({ message: 'Please make sure your request has an Authorization header' });
@@ -36,7 +42,9 @@ function ensureAuthenticated(req, res, next) {
   var payload = {
     sub: user._id,
     iat: moment().unix(),
-    exp: moment().add(14, 'days').unix()
+    exp: moment().add(14, 'days').unix(),
+    type: passport.userType,
+    mail: passport.userEmail
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
@@ -83,10 +91,17 @@ module.exports = function(app, express) {
 
         console.log(user);
         userregs.findOne({'email' : profile.email}, function(err, userreg) {
-            console.log(userreg.userType);
+            passport.userType = userreg.userType;
+            passport.userEmail = userreg.email;
 
             var token = createJWT(user);
-            res.send({ token: token });
+            /*console.log(token);
+            console.log(jwt.decode(token, config.TOKEN_SECRET));
+            console.log(userreg.userType);*/
+            res.send({
+              userType: userreg.userType,
+              token: token
+            });
         });
     });
 });

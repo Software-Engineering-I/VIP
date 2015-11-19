@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>FIU VIP</title>
+	<title>FIU VIP - Students</title>
 
 	<base href="/">	
 
@@ -41,30 +41,13 @@
 			<div class="navbar-header">
 				<a class="navbar-brand" ui-sref="home">FIU VIP</a>
 			</div>
-			<!-- user not auth'd -->
-			<ul class="nav navbar-nav" ng-if="!isAuthenticated()" ng-controller="SignInCtrl">
-				<li><a style="cursor:pointer;" ng-click="authenticate('google')"><i class="fa fa-sign-in"></i> Sign In</a></li> 
-				<li><a ui-sref="register"><i class="fa fa-pencil-square-o"></i> Register</a></li>
-				<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
-				<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
-				<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
-				</ul>
-				<!-- user auth'd -->
 				<ul class="nav navbar-nav" ng-if="isAuthenticated()">
 					<li><a ui-sref="signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 					<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>
 					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
-							<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
-						</ul>
-					</li>
-					<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
-					<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
+					<li><a ui-sref="about"><i class="fa fa-question"></i> Student Stuff</a></li>
 				</ul>
 			</div>
 		</nav>
