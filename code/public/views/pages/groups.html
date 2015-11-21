@@ -1,0 +1,64 @@
+<div>
+    <h1 class="timmy"> VIP Groups</h1>
+    <br>
+    <div  ng-repeat="(projects, membership) in user.users | orderBy: 'project'| groupBy: 'project'" class="bs-less">
+
+        <table class="table table-bordered">
+            <label class="timmy">{{ projects }}</label>
+            <!--<a ng-if="projects!='Unassigned'"  href="/groups/{{projects}}" class="btn-success" ><span class="glyphicon glyphicon-plus"></span>  </a> <a ng-if="projects!='Unassigned'" class="glyphicon glyphicon-minus" href="/groups/remove"> </a>-->
+            <th align="left" >Name</th>
+            <th align="left">Username</th>
+            <th align="left">Email</th>
+            <th align="left">Rank</th>
+            <th align="left">Major</th>
+            <th align="left">Action</th>
+            <th ng-if="projects!='Unassigned'" align="left">Pi Approval</th>
+            <th ng-if="projects!='Unassigned'" align="left">Staff Approval</th>
+
+
+            <tr ng-repeat="person in membership">
+                <td nowrap>{{ person.f_name + " " + person.l_name}}</td>
+                <td>{{ person.username }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.Rank }}</td>
+                <td>{{ person.Major }}</td>
+
+
+                <!--<td><a ng-click="user.updateProject(person._id)" class="button-error pure-button">Reassign</a></td>-->
+                <td><a ng-click="showDrop=true"  class="btn btn-success">Reassign</a>
+                <div ng-show="showDrop" >
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Select Project
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+
+                            <li><a ng-repeat="people in user.users | unique: 'project'"  ng-if="people.project!='Unassigned'&& people.project!=projects"  ng-click="user.updateProject(person._id,people.project)" class="btn btn-primary">{{people.project}}</a></li>
+                            <li><a ng-click="user.updateProject(person._id)" ng-if="projects!='Unassigned'" class="btn btn-danger" ><span class="glyphicon glyphicon-remove"></span></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                </td>
+
+                <!-- As of right now, if a student was approved to a project and gets switched to a project
+                he would still show as approved to the new project-->
+
+                <td ng-if="projects!='Unassigned'">
+                    <span ng-if="person.piApproval=='Approved'" class="label label-success"> Approved </span>
+                    <span ng-if="person.piApproval!='Approved'" class="label label-danger"> Not Approved</span>
+                </td >
+
+                <td ng-if="projects!='Unassigned'">
+                    <span ng-if="person.staffApproval=='Approved'"  class="label label-success"> Approved </span>
+                    <span ng-if="person.staffApproval!='Approved'"  class="label label-danger"> Not Approved</span>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+
+
+    </div>
+</div>

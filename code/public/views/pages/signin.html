@@ -1,0 +1,25 @@
+<div ng-controller="NavbarCtrl">
+	<div class="text-center" ng-if="!isAuthenticated()">
+		<h1>Login</h1>
+		<button class="pure-button" ng-click="authenticate('google')">
+			<i class="fa fa-sign-in"></i>
+			Login with FIU mail
+		</button>
+	</div>
+	<div class="text-center" ng-if="isAuthenticated()">
+		<h1>Successfully logged in!</h1>
+	</div>
+</div>
+<!--<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">                          
+        <ul class="nav navbar-nav">
+             <li><a href="#/home">Home</a></li>
+             <li ng-if="isAuthenticated()"><a href="/#/profile">Profile</a></li>
+         </ul>
+         <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+             <li><a href="#/login">Login</a></li>
+             <li><a href="#/signup">Sign up</a></li>
+         </ul>
+         <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
+             <li><a href="#/logout">Logout</a></li>
+         </ul>
+</div>
