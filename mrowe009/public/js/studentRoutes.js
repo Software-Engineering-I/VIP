@@ -1,29 +1,12 @@
-angular.module('appRoutes', ['ui.router'])
+angular.module('StudentApp', ['ui.router', 'accountController', 'reportControl'])
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider){
 	$urlRouterProvider.otherwise('/');
 	
 	$stateProvider
 	.state('home', {
-		url:'/',
+		url:'/student',
 		templateUrl: "views/pages/home.html"
-	})
-	//signin page
-	.state('signin', {
-		url:'/signin',
-		templateUrl: "views/pages/signin.html",
-		controller: "SignInCtrl"
-	})
-	//sign out page
-	.state('signout', {
-		url:'/signout',
-		templateUrl: "views/pages/signout.html",
-		controller: "SignOutCtrl"
-	})
-	//registration page
-	.state('register', {
-		url:'/register',
-		templateUrl:"views/pages/register.html",
 	})
 	//about page
 	.state('about',{

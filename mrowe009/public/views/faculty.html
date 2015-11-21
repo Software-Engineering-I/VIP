@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>FIU VIP - Students</title>
+	<title>FIU VIP - Faculty</title>
 
 	<base href="/">	
 
@@ -18,7 +18,7 @@
 	<script src="/node_modules/jquery/dist/jquery.js"></script>
 	<script src="node_modules/angular-filter/dist/angular-filter.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="/js/studentRoutes.js"></script>
+	<script src="/js/facultyRoutes.js"></script>
 
 	<!-- Controllers -->
 	<script src="/js/controllers/reportController.js"></script>
@@ -32,7 +32,7 @@
 	<script src="/js/services/userService.js"></script>
 
 </head>
-<body ng-app="StudentApp">
+<body ng-app="FacultyApp">
 
 	<!-- Navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -47,12 +47,14 @@
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student Stuff <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a ui-sref="home"><i class="fa fa-file"></i> More Student Stuff</a></li>
-							<li><a ui-sref="home"><i class="fa fa-file"></i> More Student Stuff</a></li>
+							<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
+							<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
 						</ul>
 					</li>
+					<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
+					<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
 				</ul>
 			</div>
 		</nav>

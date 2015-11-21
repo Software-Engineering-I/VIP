@@ -1,5 +1,3 @@
-
-
 angular.module('accountController', ['satellizer'])
 .config(function($authProvider) {
 
@@ -8,8 +6,9 @@ angular.module('accountController', ['satellizer'])
     });
 })
 
-.controller('SignInCtrl', function($scope, $auth, $state) {
-    $scope.authenticate = function(provider)
+.controller('NavbarCtrl', function($auth, $window) {
+    var vm = this;
+    vm.authenticate = function(provider)
     {
         $auth.authenticate(provider)
             .then(function(data) {
@@ -17,34 +16,28 @@ angular.module('accountController', ['satellizer'])
                 var nToken;
                 switch(data.data.userType) {
                     case 'Student':
-                        nToken = $auth.getToken();
-                        dToken = $auth.getPayload();
-                       // dToken = jwt.decode(nToken, config.TOKEN_SECRET);
-                        console.log(nToken);
-                        console.log(dToken);
-                        console.log(dToken.mail);
-                        $state.go('about', {});
+                        $window.location.href = "http://" + $window.location.host + "/student";
                         break;
-                    case 'PI':
-                        $state.go('programs', {});
+                    case 'Pi':
+                        $window.location.href = "http://" + $window.location.host + "/pi";
                         break;
                     case 'Faculty':
-                        $state.go('report', {});
+                        $window.location.href = "http://" + $window.location.host + "/faculty";
+                        break;
+                    //if no role has been assigned, means he is not in our database meaning he hasnt registered. redirect to registration page
+                    default:
+                        $window.location.href = "http://" + $window.location.host + "/register";
                         break;
                 }
             });
     };
-})
 
-.controller('SignOutCtrl', function($scope, $auth) {
-    if(!$auth.isAuthenticated()) { return; }
-    $auth.logout();
-})
-
-.controller('NavbarCtrl', function($scope, $auth) {
-    $scope.isAuthenticated = function() {
-        return $auth.isAuthenticated();
-    };
+    vm.logout = function()
+    {
+        alert('Logged out');
+        $auth.logout();
+        $window.location.href = "http://" + $window.location.host;
+    }
 })
 
 .controller('ProfileCtrl', function($scope, $auth, Account) {

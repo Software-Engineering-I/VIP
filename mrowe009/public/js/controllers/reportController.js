@@ -1,7 +1,9 @@
 angular.module('reportControl', ['reportService'])
 
 // controller applied to user creation page
-.controller('reportController', function(Report) {
+.controller('reportController', function(Report, $auth) {
+
+    console.log($auth.getPayload());
 
     var vm = this;
     vm.title = "6 month report";

@@ -1,7 +1,7 @@
 var bodyParser    = require('body-parser');    // get body-parser
 var User        = require('../models/user');
 var userregs = require('../models/userRegistration');
-var config = require('../../config/config.js');
+var config          = require('../../config/config.js');
 var request        = require('request');
 var moment         = require('moment');
 var jwt            = require('jwt-simple');
@@ -84,27 +84,26 @@ module.exports = function(app, express) {
                         return res.status(500).send({message: 'This is not an FIU mail'});
                     }
                 }
-        // Step 3b. Create a new user account or return an existing one.
-        var user = new User();
-        user.google = profile.sub;
-        user.email = profile.email;
+                // Step 3b. Create a new user account or return an existing one.
+                var user = new User();
+                user.google = profile.sub;
+                user.email = profile.email;
 
-        console.log(user);
-        userregs.findOne({'email' : profile.email}, function(err, userreg) {
-            passport.userType = userreg.userType;
-            passport.userEmail = userreg.email;
+                userregs.findOne({'email' : profile.email}, function(err, userreg) {
+                    passport.userType = userreg.userType;
+                    passport.userEmail = userreg.email;
 
-            var token = createJWT(user);
-            /*console.log(token);
-            console.log(jwt.decode(token, config.TOKEN_SECRET));
-            console.log(userreg.userType);*/
-            res.send({
-              userType: userreg.userType,
-              token: token
+                    var token = createJWT(user);
+                    /*console.log(token);
+                    console.log(jwt.decode(token, config.TOKEN_SECRET));
+                    console.log(userreg.userType);*/
+                    res.send({
+                      userType: userreg.userType,
+                      token: token
+                    });
+                });
             });
         });
     });
-});
-});
-return apiRouter;
+    return apiRouter;
 };
