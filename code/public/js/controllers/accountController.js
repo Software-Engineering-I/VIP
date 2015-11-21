@@ -1,4 +1,10 @@
-angular.module('accountController', [])
+angular.module('accountController', ['satellizer'])
+.config(function($authProvider) {
+
+    $authProvider.google({
+        clientId: '577160044779-hjsgal811fa0jlmd6jrl9lv0ab17hfgs.apps.googleusercontent.com'
+    });
+})
 
 .controller('SignInCtrl', function($scope, $location, $auth) {
     $scope.authenticate = function(provider)
@@ -6,9 +12,6 @@ angular.module('accountController', [])
         $auth.authenticate(provider);
         $location.path('/signin');
     };
-    /*.catch(function(response){
-        $location.path('#/error');
-    });*/
 })
 
 .controller('SignOutCtrl', function($scope, $auth) {
