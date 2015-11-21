@@ -55,34 +55,52 @@
 					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
-				</ul>
-				<!-- user auth'd -->
-				<ul class="nav navbar-nav" ng-if="isAuthenticated()">
-					<li><a ui-sref="signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
-					<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>
-							<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
-							<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
-							<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
-							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
-								<ul class="dropdown-menu">
-							<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
-							<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
-							<li><a ui-sref="partial_reports"><i class="fa fa-question"></i> Partial Report</a></li>
-						</ul>
-					</li>
-					<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
-					<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
-					<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
-					<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>
-				</ul>
-			</div>
-		</nav>
-		<!--<li><a href="#/login">Login</a></li>-->
-		<!--<li><a href="#/logout">Logout</a></li>-->
+			</ul>
 
-		<!-- ANGULAR DYNAMIC CONTENT -->
-		<div class="container" ui-view></div>
-		<!-- ANGULAR DYNAMIC CONTENT -->  
-	</body>
-	</html>
+			<!-- user auth'd -->
+			<!-- shared functionality -->
+			<ul class="nav navbar-nav" ng-controller="RoleCtrl" ng-if="isAuthenticated()">
+				<li><a ui-sref="signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+				<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>
+				<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
+				<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
+
+				<!-- Student -->
+				<li ng-if="getUserType()==1"><a ui-sref="student"><i class="fa fa-pencil"></i> Student</a></li>
+
+				<!-- Faculty -->
+				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
+
+				<!-- Project Investigator -->
+				<li ng-if="getUserType()==3"><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
+
+				<!-- Staff -->
+				<li ng-if="getUserType()==4"><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+															 role="button"
+															 aria-haspopup="true"
+															 aria-expanded="false"> Report
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
+						<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
+						<li><a ui-sref="partial_reports"><i class="fa fa-question"></i> Partial Report</a></li>
+					</ul>
+				</li>
+				<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
+				<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
+				<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
+				<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>
+			</ul>
+		</div>
+	</nav>
+	<!--<li><a href="#/login">Login</a></li>-->
+	<!--<li><a href="#/logout">Logout</a></li>-->
+
+	<!-- ANGULAR DYNAMIC CONTENT -->
+	<div class="container" ui-view></div>
+	<!-- ANGULAR DYNAMIC CONTENT -->  
+</body>
+</html>

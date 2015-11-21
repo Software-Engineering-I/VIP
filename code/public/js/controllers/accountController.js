@@ -10,7 +10,7 @@ angular.module('accountController', ['satellizer'])
     $scope.authenticate = function(provider)
     {
         $auth.authenticate(provider);
-        $location.path('/signin');
+        //$location.path('/signin');//not sure this is necessary
     };
 })
 
@@ -23,6 +23,26 @@ angular.module('accountController', ['satellizer'])
     $scope.isAuthenticated = function() {
         return $auth.isAuthenticated();
     };
+})
+
+.controller('RoleCtrl', function($scope, $auth){
+	var token = $auth.getPayload();
+	$scope.userId;
+	//console.log(token.type);
+	$scope.getUserType = function()
+	{
+		if(token.type=='Student')
+		{
+			console.log(token.type);
+			$scope.userId = 1;
+			return $scope.userId;
+		}
+		if(token.type=='Faculty')
+		{
+			$scope.userId = 2;
+			return $scope.userId;
+		}
+	};	
 })
 
 .controller('ProfileCtrl', function($scope, $auth, Account) {

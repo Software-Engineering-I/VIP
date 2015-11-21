@@ -8,7 +8,8 @@ var jwt            = require('jwt-simple');
 
 var passport = {
   userType: String,
-  userEmail: String
+  userEmail: String,
+  userPic: String
 };
 
 
@@ -44,7 +45,8 @@ function ensureAuthenticated(req, res, next) {
     iat: moment().unix(),
     exp: moment().add(14, 'days').unix(),
     type: passport.userType,
-    mail: passport.userEmail
+    mail: passport.userEmail,
+	pic: passport.userPic
   };
   return jwt.encode(payload, config.TOKEN_SECRET);
 }
@@ -98,11 +100,12 @@ module.exports = function(app, express) {
                     }
                     passport.userType = userreg.userType;
                     passport.userEmail = userreg.email;
+					passport.userPic = profile.picture.replace('sz=50', 'sz=200');
 
                     var token = createJWT(user);
-                    /*console.log(token);
+                    console.log(token);
                     console.log(jwt.decode(token, config.TOKEN_SECRET));
-                    console.log(userreg.userType);*/
+                    /*console.log(userreg.userType);*/
                     res.send({
                       userType: userreg.userType,
                       token: token
