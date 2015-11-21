@@ -2,7 +2,7 @@ angular.module('appRoutes', ['ui.router'])
 
 .config(function($urlRouterProvider, $stateProvider, $locationProvider){
 	$urlRouterProvider.otherwise('/');
-	
+
 	$stateProvider
 	.state('home', {
 		url:'/',
@@ -121,6 +121,14 @@ angular.module('appRoutes', ['ui.router'])
 		url: '/proposal-report',
 		templateUrl: '/views/pages/report2.html'
 	});
+
+	.state('resume', {
+		url:'/resume',
+		templateUrl: "views/pages/resume.html",
+		controller: 'userEditController',
+		controllerAs:'cUser'
+	})
+
 
 
 
