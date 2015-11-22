@@ -51,8 +51,8 @@
 			<ul class="nav navbar-nav" ng-if="!isAuthenticated()" ng-controller="SignInCtrl">
 				<li><a style="cursor:pointer;" ng-click="authenticate('google')">
 					<i class="fa fa-sign-in"></i> Sign In</a></li> 
+					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>	
 					<li><a ui-sref="registration"><i class="fa fa-pencil-square-o"></i> Register</a></li>
-					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
 			</ul>
@@ -61,12 +61,24 @@
 			<!-- shared functionality -->
 			<ul class="nav navbar-nav" ng-controller="RoleCtrl" ng-if="isAuthenticated()">
 				<li><a ui-sref="signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
-				<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>
+				<!--<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>-->
 				<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
-				<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 
 				<!-- Student -->
-				<li ng-if="getUserType()==1"><a ui-sref="student"><i class="fa fa-pencil"></i> Student</a></li>
+				<!--<li ng-if="getUserType()==1"><a ui-sref="student"><i class="fa fa-pencil"></i> Student</a></li>-->
+				<!--<li ng-if="getUserType()==1"><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>-->
+				<li ng-if="getUserType()==1" class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
+															 role="button"
+															 aria-haspopup="true"
+															 aria-expanded="false">
+															 <i class="fa fa-pencil"></i> Student
+					<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a ui-sref="profile"><i class="fa fa-user"></i> Profile</a></li>
+						<li><a ui-sref="resume"><i class="fa fa-file-text-o"></i> Resume</a></li>
+					</ul>
+				</li>
 
 				<!-- Faculty -->
 				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
@@ -92,7 +104,9 @@
 				<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
 				<li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
 				<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
-				<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>
+				<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>	
+				<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
+	
 			</ul>
 		</div>
 	</nav>

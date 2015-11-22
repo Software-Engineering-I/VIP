@@ -120,17 +120,14 @@ angular.module('appRoutes', ['ui.router'])
 	.state('partial_reports',{
 		url: '/proposal-report',
 		templateUrl: '/views/pages/report2.html'
-	});
+	})
 
 	.state('resume', {
 		url:'/resume',
 		templateUrl: "views/pages/resume.html",
 		controller: 'userEditController',
 		controllerAs:'cUser'
-	})
-
-
-
+	});
 
 		$locationProvider.html5Mode(true);
 	});
