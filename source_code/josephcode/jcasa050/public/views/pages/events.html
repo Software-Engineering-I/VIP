@@ -1,0 +1,71 @@
+
+<!--
+<div>
+    <h2 > VIP Events</h2>
+    <br>
+    <div ng-repeat="e in event.events | orderBy: 'name'">
+
+        
+        <p>{{e.name}}</p>
+        <p>{{e.message}}</p>
+        <p>{{e.month}} {{e.day}} {{e.hour}} {{e.minutes}}</p>
+
+        <br>
+        
+
+
+    </div>
+</div>
+-->
+
+<br>
+<div class='eventscontainer'>
+    <div ng-controller="eventController">
+    <ta ng-repeat="anEvent in event.events | orderBy: 'date'">
+        <div class = 'eventslist'>
+            <li class='next' >
+                <label class='date'>
+                    <span class='weekday'>{{ anEvent.month }}</span>
+                    <span class='day'>{{ anEvent.day }}</span>
+                </label>
+                <a href='#'>
+                    <a ng-click="event.deleteEvent(anEvent._id)" class='ion-ios-arrow-forward'></a>
+                </a>
+                <h3>{{ anEvent.name }}</h3>
+                <p>
+                    <span class='duration'>{{ anEvent.hour }} o'clock</span>
+                    <span class='location'>{{ anEvent.message }}</span>
+                </p>
+            </li>
+        </div>
+    </ta>
+    </div>
+   <!-- <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+
+        <table>
+            <th align="left" >Date</th>
+            <th align="left">Event Name</th>
+            <th align="left">Description</th>
+            <th></th>
+
+
+            <tr ng-repeat="anEvent in value">
+                <td nowrap>{{ anEvent.date}}</td>
+                <td>{{ anEvent.eName }}</td>
+                <td>{{ anEvent.description }}</td>
+
+                <td>
+                    <a ng-click="upEvent.deleteEvent(anEvent._id)" class="button-error pure-button" >Delete</a>
+                </td>
+            </tr>
+        </table>
+    </ta>-->
+</div>
+
+
+
+
+
+
+
+
