@@ -134,7 +134,8 @@ angular.module('appRoutes', ['ui.router'])
 			})
 	.state('partial_reports',{
 		url: '/proposal-report',
-		templateUrl: '/views/pages/report2.html'
+		templateUrl: '/views/pages/report2.html',
+	    	controller: 'projectsController'
 	})
 
 	.state('resume', {
