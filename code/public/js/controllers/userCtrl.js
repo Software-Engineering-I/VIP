@@ -482,7 +482,102 @@ angular.module('userCtrl', ['userService'])
                 });
         };
 
+    })
+    /*Controller to control faculty memeber accepting rejecting students from project
+    * -implemented by Garrett Lemieux */
+    .controller('facultyController', function(User) {
+
+        var vm = this;
+
+        //Test variable array
+        // vm.users = [{firstName:'Lukas'},{firstName:'Tiago'},{firstName:'Andrew'}];
+        vm.facultyProjNum = "one";
+        vm.resu = "This is Tiago's Resume!";
+        vm.hidemeTwo = true;
+        vm.hidemeOne = false;
+        vm.txtcomment = {};
+
+        // grab all students in project at page load
+        // "User" refers to userService factory object
+        User.studInProj(vm.facultyProjNum)
+            .success(function(data) {
+                // bind the users that come back to vm.users
+                vm.users = data;
+            });
+
+        vm.displayAcpt = {};
+        vm.displayRej = {};
+
+        vm.accept = function(id , index){
+
+            vm.displayAcpt[index] = true;
+            vm.displayRej[index]= false;
+
+            User.updateFacAcp(id)
+
+                // if the function succeeds repopulate table with new changes
+                .success(function (data){
+                    alert("Returned data from updateFacAcp");
+                    //vm.users = data;
+                })
+
+        }
+
+        vm.reject = function(id , index){
+
+            vm.displayAcpt[index] = false;
+            vm.displayRej[index]= true;
+
+            User.updateFacRjt(id)
+
+                // if the function succeeds repopulate table with new changes
+                .success(function (data){
+                    alert("Returned data from updateFacRjt");
+                //vm.users = data;
+                })
+
+        }
+
+        vm.resume = function(id){
+            //alert("Resume Button Works!");
+            //Hides the current Students to display resume of specified student
+            vm.hideOne();
+
+            //Need to get resume and display in new window
+            User.get(id)
+                .success(function(data) {
+                    vm.resumeData = data;
+                });
+        }
+
+        vm.subCom = function(id,index){
+            alert(vm.userData.txtcomment[index]);
+
+            //vm.userData = vm.userData[index].txtcomment;
+            //Need to  update the user wit txtcoment
+            User.update(id ,vm.userData)
+                .success(function(data){
+                    alert("returned data");
+                });
+
+            vm.userData.txtcomment = {};
+
+        }
+
+        vm.hideOne = function(){
+            //Hides students in the project and display resume of a student
+            vm.hidemeOne = true;
+            vm.hidemeTwo = false;
+        }
+
+        vm.hideTwo = function(){
+            //Hides resume of student and displays students in the project
+            vm.hidemeTwo = true;
+            vm.hidemeOne = false;
+        }
+
     });
+
 
 //Andrew Mitchell
 

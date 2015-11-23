@@ -64,7 +64,21 @@ angular.module('userService', [])
             return $http.post('/userapi/nodeemail/', userData);
         };
 
+        userFactory.studInProj = function(currentProject){
+            return $http.get('/userapi/facusers/'+ currentProject);
+        };
 
+        userFactory.updateFacAcp = function(id){
+            return $http.put('/userapi/facusers/'+ id);
+        };
+
+        userFactory.updateFacRjt = function(id){
+            return $http.put('/userapi/facusersreject/'+ id);
+        };
+
+        userFactory.getResume = function(id){
+            return $http.get('/userapi/users/' + id);
+        };
 
         // return our entire userFactory object
         return userFactory;

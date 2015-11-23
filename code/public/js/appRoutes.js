@@ -127,7 +127,15 @@ angular.module('appRoutes', ['ui.router'])
 		templateUrl: "views/pages/resume.html",
 		controller: 'userEditController',
 		controllerAs:'cUser'
-	});
+	})
+
+		.state('facultyproject', {
+			url: '/facultyproject',
+			templateUrl: "views/pages/facultyprojects.html",
+			controller: 'facultyController',
+			controllerAs: 'fUser'
+		});
+
 
 		$locationProvider.html5Mode(true);
 	});

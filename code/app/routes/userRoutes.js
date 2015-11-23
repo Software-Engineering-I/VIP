@@ -348,6 +348,75 @@ module.exports = function(app, express) {
 
             });
         })
+
+
+    // on routes that end in /facusers/:user_id
+    // -- implemented by Garrett Lemieux
+    // ---------------------------------------------------
+
+    apiRouter.route('/facusers/:user_id')
+
+        // get all users with currentProject equal to parameter pased
+        .get(function(req, res) {
+            User.find({currentProject:req.params.user_id}, function(err, user) {
+                if (err) res.send(err);
+                if( user == null)
+                {
+                    console.log("Hello from Garrett's null!")
+                    //res.json({message: 'User does not exist.'});
+                    return;
+                }
+
+                // return that user
+                res.json(user);
+            });
+        })
+
+        // update the user with this id
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+
+                if (err) res.send(err);
+
+                user.staffApproval = "accept";
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+
+    // on routes that end in /facusersreject/:user_id
+    // -- implemented by Garrett Lemieux
+    // ---------------------------------------------------
+
+    apiRouter.route('/facusersreject/:user_id')
+
+        // update the user with this id
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+
+                if (err) res.send(err);
+
+                user.staffApproval = "reject";
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
     // on routes that end in /users/:user_id
     // ---------------------------------------------------
 
@@ -380,7 +449,9 @@ module.exports = function(app, express) {
                 if (req.body.name) user.name = req.body.name;
                 if (req.body.username) user.username = req.body.username;
                 if (req.body.password) user.password = req.body.password;
-
+                /* Still implementing - Garrett
+                if (req.body.facComment) user.facComment = req.body.facComment;
+                */
                 // save the user
                 user.save(function(err) {
                     if (err) res.send(err);

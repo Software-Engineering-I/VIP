@@ -20,6 +20,10 @@ var userSchema = new mongoose.Schema({
 	//Manny Fields, Garrett Needs to ensure his field is the same, or rename his.
 	piApproval:	String,
 	staffApproval:	String,
+
+	//Field for faculty comment - implemented by Garrett Lemieux
+	facComment: String,
+
 	/*
 	 THESE FIELDS ARE FORE A USER 'RESUME'
 	 NONE OF THESE FIELDS ARE REQUIRED!
