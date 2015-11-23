@@ -46,6 +46,12 @@ angular.module('appRoutes', ['ui.router'])
 		controller: 'membershipReport',
 		controllerAs: 'mReport'
 	})
+	.state('partial_reports',{
+		url: '/proposal-report',
+		templateUrl: '/views/pages/report2.html',
+	    	controller: 'projectsController'
+        
+	})
 	;
 
 	$locationProvider.html5Mode(true);
