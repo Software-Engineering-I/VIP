@@ -51,7 +51,7 @@ module.exports = function(app, express) {
                 from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
                 to: mailList[i], // list of receivers
                 subject: 'New Notification', // Subject line
-                text: " A new notification received! \n\n" + notifications.message
+                text: " A new notification received! \n\n" + notifications.message + "\nLINK: http://localhost:3000/snotifications"
             };
             // send mail with defined transport object
             transporter.sendMail(mailOptions, function(error, info){
