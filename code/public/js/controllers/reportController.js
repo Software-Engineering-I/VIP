@@ -1,7 +1,17 @@
 angular.module('reportControl', ['reportService'])
 
 // controller applied to user creation page
-.controller('reportController', function(Report) {
+.controller('reportController', function(Report, $auth) {
+
+    //this will print what is inside the token
+    console.log($auth.getPayload());
+
+    //this is how to extract something
+    var token = $auth.getPayload();
+    //this will get just the email
+    console.log(token.mail);
+    //alert(token.mail);
+
 
     var vm = this;
     vm.title = "6 month report";
