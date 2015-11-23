@@ -27,6 +27,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+
+var routes = require('./app/routes/eval_routes')(app, express); //added
+app.use('/api', routes)	//Added
+
  //Force HTTPS on Heroku :: example specific, maybe unnecessary
  if(app.get('env') === 'production'){
  	app.use(function(req, res, next){

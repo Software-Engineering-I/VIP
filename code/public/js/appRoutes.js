@@ -129,7 +129,18 @@ angular.module('appRoutes', ['ui.router'])
     templateUrl: 'views/pages/questionForm.html',
     controller: 'questionController',
     controllerAs: 'qcontrol'
-  });
+  })
+  
+  	.state('eval', {
+    url: '/evaluation',
+    templateUrl: 'views/pages/peerEvaluation.html',
+    controller: 'evalController',
+    controllerAs: 'econtrol'
+  })
+  
+  
+  ;
 
+  
 	$locationProvider.html5Mode(true);
 });
