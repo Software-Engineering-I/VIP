@@ -95,13 +95,13 @@
 				</li>
 
 				<li ng-if="getUserType()==1"><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
-				<li><a ui-sref="projectEvaluation">Evaluation</a></li>
 				<li><a ui-sref="feedback"> Feedback</a></li>
          		<li><a ui-sref="question">Question</a></li>
 
 				<!-- Faculty -->
 				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
 				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
+				<li><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
 
 				<!-- Project Investigator -->
 				<li ng-if="getUserType()==3"><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
@@ -128,6 +128,7 @@
 				<li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
 				<li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>	
 				<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
+				<li><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
 	
 			</ul>
 		</div>
