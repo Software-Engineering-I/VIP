@@ -1,0 +1,102 @@
+<div>
+<br><br>
+<div class="navbar-header">
+     <h1 class ="left">See Evaluations For</h1>
+        <div class = "navbar">
+            <ul>
+                <li><a href="/group1">Architecture</a></li> 
+                <li><a href="/group2">Biology</a></li>
+                <li><a href="/group3">International Affairs</a></li>
+                <li><a href="/group4">Physics</a></li>
+                <li><a href="/group5">Psychology</a></li>
+            </ul>
+        </div>
+</div>
+    
+<div class="navbar-header"> <h1>Psychology</h1> </div>
+<br>
+<br>
+
+<style>
+table, th, td {
+    border: 1px solid white;
+}
+</style>
+
+<body>
+
+<table style="width:30%">
+  <tr>
+    <td bgcolor=#000000 style="width:20%"></td>
+    <td style="width:40%"><p>Not Applicable</p></td>		
+  </tr>
+  <tr>
+    <td bgcolor=#191970></td>
+    <td><p>Evaluation Not Submitted</p></td>		
+  </tr>
+  <tr>
+    <td bgcolor=#B8860B></td>
+    <td><p>Evaluation Submitted</p></td>		
+
+  </tr>
+ 
+</table>
+
+</body>
+<br></br>
+
+
+<style>
+	
+.status_complete{
+    background-color: #B8860B;
+}
+
+.status_incomplete{
+    background-color: #191970;
+}
+
+table, th, td {
+    border: 3px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+}
+
+</style>
+
+<body>
+
+<table style="width:100%" ng-show="controller.users">
+  
+  <tr> 
+    <th><h3>Team</h3></th>  
+    <th><h3>Evaluator</h3></th>
+    <th><h3>Student</h3></th>
+	<th><h3>Evaluation Status</h3></th>
+  </tr>
+    
+  <tr ng-repeat="eval in controller.users |  filter: { field: 'Psychology' }">
+    <td><p>{{eval.team}}</p></td>
+    <td><p>{{eval.f_name}}</p></td>
+	<td><p>{{eval.t_name}}</p></td>	
+    <td ng-class="{status_incomplete: eval.item1=='', status_complete: eval.item1!=''}"></td>	
+  </tr>
+ 
+</table>
+<br>
+<br>
+<div class="navbar-header">
+    <div class = "shell">
+    <h1 class ="left">See All Peer Evaluations For</h1>
+        <div class = "navbar">
+            <ul>
+                 
+			</ul>
+        </div>
+    </div>
+</div>    
+
+</body>
+</div>

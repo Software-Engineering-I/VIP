@@ -1,0 +1,219 @@
+<h1> Faculty Project: Members </h1>
+
+<body class = "facultyproject"></body>
+<div ng-hide="fUser.hidemeOne">
+    <table class="table table-bordered">
+        <tbody>
+        <tr ng-repeat="user in fUser.users">
+            <td style="color:#fff"><b>{{user.f_name}} {{user.l_name}}</b></td>
+            <td>
+                <button ng-click="fUser.accept(user._id , $index)"><b>Accept</b></button>
+                <button ng-click="fUser.reject(user._id, $index)"><b>Reject</b></button>
+
+                <p style="color:#fff" ng-show="fUser.displayAcpt[$index]"><b>Student Accepted</b></p>
+                <p style="color:#fff" ng-show="fUser.displayRej[$index]"><b>Student Rejected</b></p>
+            </td>
+            <td>
+                <button ng-click="fUser.resume(user._id)"><b>Resume</b></button>
+            </td>
+            <td>
+                <form>
+                        <textarea class="form-control" row="1" ng-model="fUser.userData.txtcomment[$index]" placeholder="Reasons for accepting or rejecting student"
+                                  style="width:550px"></textarea>
+                    <button ng-click="fUser.subCom(user._id,$index)" style="margin-top:10px">Submit</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div ng-hide="fUser.hidemeTwo">
+
+    <h4 style= "text-decoration:underline ; color:#fff"><b>Resume</b>: {{fUser.resumeData.f_name}} {{fUser.resumeData.l_name}}</h4>
+
+    <table class="table table-bordered">
+
+        <col width="150">
+
+        <tr>
+            <td><p style="color:#fff"><b>Visa Status:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.visaStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Sex:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.sex}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Major:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.major}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Ethnicity:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.ethnicity}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Race:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.race}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Cell:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.cell}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Year:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.year}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Place of Birth:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.placeOfBirth}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>User Summary:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.userSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>School:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.school}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Completed Credits:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.creditsCompleted}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>GPA:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.gpa}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Degree Type:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.degreeType}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Degree Completion Status:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.degreeCompletionStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Relevant Courses:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.relevantCourses}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Employer:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workCompany}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Job Position:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workPosition}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Hours Worked:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workTime}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Status:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Summary:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Highlights:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.workHighlights}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Skills:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.skills}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Organization:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerOrganization}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Position:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerPosition}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Time:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerTime}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Website:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerWebsite}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Summary:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Highlights:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.volunteerHighlights}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Interests:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.interestList}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Name:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.firstReferenceName}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Email:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.firtReferenceEmail}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Notes:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.firstReferenceNotes}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Name:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.secondReferenceName}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Email:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.secondReferenceEmail}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Notes:</b></p></td>
+            <td><p style="color:#fff">{{fUser.resumeData.secondReferenceNotes}}</p></td>
+        </tr>
+
+    </table>
+
+    <button ng-click="fUser.hideTwo()" class="btn"><b>Exit Resume</b></button>
+
+</div>
