@@ -1,0 +1,11 @@
+{
+  "name": "FIU-VIP-frontend",
+  "main": "server.js",
+  "dependencies": {
+    "angular": "1.4.7",
+    "angular-ui-router": "latest",
+    "bootstrap": "3.3.5",
+    "jquery": "2.1.4",
+    "satellizer": "^0.13.0"
+  }
+}
