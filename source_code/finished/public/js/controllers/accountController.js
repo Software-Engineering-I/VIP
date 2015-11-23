@@ -34,7 +34,7 @@ angular.module('accountController', ['satellizer'])
 		if(token.type=='Student')
 		{
 			console.log(token.type);
-			$scope.userId = 3;
+			$scope.userId = 1;
 			return $scope.userId;
 		}
 		if(token.type=='Faculty')

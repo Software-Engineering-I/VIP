@@ -51,7 +51,7 @@ module.exports = function(app, express) {
                 from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
                 to: mailList[i], // list of receivers
                 subject: 'New Notification', // Subject line
-                text: " A new notification received!"
+                text: " A new notification received! \n\n" + notifications.message
             };
             // send mail with defined transport object
             transporter.sendMail(mailOptions, function(error, info){
@@ -61,19 +61,19 @@ module.exports = function(app, express) {
                 console.log('Message sent: ' + info.response);
             });
             }
-        });
+        })
 
-    /*.get(function(req,res){
-            Notifications.find(function(err,inbox){
-                if(err){
-                    console.log('here1');
-                     res.send(err);
-                }
-                console.log('here2');
-                res.json(inbox);
+        .get(function(req,res){
+                Notifications.find(function(err,inbox){
+                    if(err){
+                        console.log('here1');
+                         res.send(err);
+                    }
+                    console.log('here2');
+                    res.json(inbox);
+                });
             });
-        });
-        */
+        
 
     //apiRouter.route('/stuInbox')
         

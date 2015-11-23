@@ -23,22 +23,22 @@ angular.module('notificationsCtrl', ['notificationsService'])
 
         };
 
+    })
+    
+    .controller('snotificationsController',function(Notifications){
+        var vm = this;
+        vm.tagline = 'new messages!';
+        vm.processing = true;
+//        n.message = 'hello';
+       // console.log('in controller');
+    
+        Notifications.all()
+            .success(function(data){
+                vm.processing = false;
+                vm.notifications = data;
+            });
+        
+        
     });
-//    
-//    .controller('stuInboxController',function(){
-//        var vm = this;
-//        vm.tagline = 'new messages!';
-//        vm.processing = true;
-////        n.message = 'hello';
-//        console.log('in controller');
-//    
-//        /*Notification.all()
-//            .success(function(data){
-//                vm.processing = false;
-//                vm.notifications = data;
-//            });*/
-//        
-//        
-//    });
 
    

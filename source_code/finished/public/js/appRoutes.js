@@ -32,10 +32,17 @@ angular.module('appRoutes', ['ui.router'])
 	})
     //faculty msg
 	.state('notifications', {
-            url: '/notifications',
-            templateUrl: '/views/pages/notifications.html',
-            controller: 'notificationsController',
-            controllerAs: 'notifications'
+        url: '/notifications',
+        templateUrl: '/views/pages/notifications.html',
+        controller: 'notificationsController',
+        controllerAs: 'notifications'
+    })
+    
+    .state('snotifications', {
+        url: '/snotifications',
+        templateUrl: '/views/pages/snotifications.html',
+        controller: 'snotificationsController',
+        controllerAs: 'snotifications'
     })
     
 	//programs page

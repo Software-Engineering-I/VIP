@@ -104,7 +104,8 @@
 
 				<li ng-if="getUserType()==1"><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
                 
-                <li ng-if="getUserType()==2"><a ui-sref="notifications"><i class="fa fa-comment"></i>Msg</a></li>
+                <li ng-if="getUserType()==1"><a ui-sref="snotifications"><i class="fa fa-comment"></i>Notifications</a></li>
+                <li ng-if="getUserType()==2"><a ui-sref="notifications"><i class="fa fa-comment"></i>Notifications</a></li>
 
 				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
 				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>

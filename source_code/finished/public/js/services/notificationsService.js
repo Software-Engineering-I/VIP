@@ -5,9 +5,9 @@ angular.module('notificationsService', [])
 
         var notificationsFactory = {};
 
-//        notificationsFactory.all = function(){
-//            return $http.get('/api/notifications/');
-//        }
+        notificationsFactory.all = function(){
+            return $http.get('/notifications/notifications/');
+        }
     
         notificationsFactory.create = function(notificationsData) {
             return $http.post('/notifications/notifications/', notificationsData);
