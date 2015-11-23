@@ -288,7 +288,16 @@ li .duration, li .location {
 	margin-top: 2px;
 }
 
-
+.full button span {
+background-color: limegreen;
+border-radius: 32px;
+color: black;
+}
+.partially button span {
+background-color: orange;
+border-radius: 32px;
+color: black;
+}
 
 
 

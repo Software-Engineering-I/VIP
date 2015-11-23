@@ -32,38 +32,38 @@ module.exports = function(app, express) {
 //            event.minutes  = mydate.getMinutes();
         
             var ampm        =req.body.ampm;
-            var m = req.body.month;
-            console.log(m);
-            if(m.localeCompare("January") == 0)
-                event.month = 0;
-            else if(m.localeCompare("February") == 0)
-                event.month = 1;
-            else if(m.localeCompare("March") == 0)
-                event.month = 2;
-            else if(m.localeCompare("April") == 0)
-                event.month = 3;
-            else if(m.localeCompare("May") == 0)
-                event.month = 4;
-            else if(m.localeCompare("June") == 0)
-                event.month = 5;
-            else if(m.localeCompare("July") == 0)
-                event.month = 6;
-            else if(m.localeCompare("August") == 0)
-                event.month = 7;
-            else if(m.localeCompare("September") == 0)
-                event.month = 8;
-            else if(m.localeCompare("October") == 0)
-                event.month = 9;
-            else if(m.localeCompare("November") == 0)
-                event.month = 10;
-            else if(m.localeCompare("December") == 0)
-                event.month = 11;
-            else
-                res.json({ message: 'Month error' });
-//            event.month     = req.body.month;
-            event.day     = req.body.day;
-            event.year     = req.body.year;
-        
+//            var m = req.body.month;
+//            console.log(m);
+//            if(m.localeCompare("January") == 0)
+//                event.month = 0;
+//            else if(m.localeCompare("February") == 0)
+//                event.month = 1;
+//            else if(m.localeCompare("March") == 0)
+//                event.month = 2;
+//            else if(m.localeCompare("April") == 0)
+//                event.month = 3;
+//            else if(m.localeCompare("May") == 0)
+//                event.month = 4;
+//            else if(m.localeCompare("June") == 0)
+//                event.month = 5;
+//            else if(m.localeCompare("July") == 0)
+//                event.month = 6;
+//            else if(m.localeCompare("August") == 0)
+//                event.month = 7;
+//            else if(m.localeCompare("September") == 0)
+//                event.month = 8;
+//            else if(m.localeCompare("October") == 0)
+//                event.month = 9;
+//            else if(m.localeCompare("November") == 0)
+//                event.month = 10;
+//            else if(m.localeCompare("December") == 0)
+//                event.month = 11;
+//            else
+//                res.json({ message: 'Month error' });
+////            event.month     = req.body.month;
+//            event.day     = req.body.day;
+//            event.year     = req.body.year;
+//        
             var hour = parseInt(req.body.hour);
             var x = 12;
             var z = hour+x;
@@ -73,11 +73,20 @@ module.exports = function(app, express) {
             else
                 event.hour     = hour;
         
-//            event.hour     = req.body.hour;
+////            event.hour     = req.body.hour;
             event.minutes     = req.body.minutes;
         
-            event.date = new Date(event.year,event.month,event.day,event.hour,event.minutes,0,0);
-        console.log(new Date());
+//            event.date = new Date(event.year,event.month,event.day,event.hour,event.minutes,0,0);
+//        console.log(new Date());
+//        console.log(event.date);
+        console.log('here');
+            var e = new Date(req.body.date);
+        console.log(e);
+            event.year = e.getFullYear();
+        console.log(event.year);
+            event.month = e.getMonth()+1;
+            event.day = e.getDate();
+            event.date = new Date(event.year,(event.month-1),event.day,event.hour,event.minutes,0,0);
         console.log(event.date);
         
             var today = new Date();
@@ -89,7 +98,6 @@ module.exports = function(app, express) {
 //            mailList[mailList.length] = req.body.email;
             event.save(function(err) {
                 if (err) {
-                    console.log('here');
                         return res.send(err);
                 }
 
@@ -127,7 +135,6 @@ module.exports = function(app, express) {
         })
 
         .get(function(req, res) {
-            console.log('here2');
             Event.find(function(err, events) {
                 if (err) res.send(err);
 
@@ -137,7 +144,6 @@ module.exports = function(app, express) {
         })
 
         .delete(function(req, res) {
-            console.log('here');
             Event.remove({
                 _id: req.params.event_id
             }, function(err, event) {
