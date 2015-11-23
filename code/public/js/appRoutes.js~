@@ -123,13 +123,7 @@ angular.module('appRoutes', ['ui.router'])
 		url: '/review',
 		templateUrl: 'views/pages/review.html',
 		controller: 'tabController',
-	})
-  .state('question',{
-    url: '/question',
-    templateUrl: 'views/pages/questionForm.html',
-    controller: 'questionController',
-    controllerAs: 'qcontrol'
-  });
+	});
 
 	$locationProvider.html5Mode(true);
 });

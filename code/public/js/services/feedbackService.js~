@@ -11,7 +11,7 @@ angular.module('feedbackService', [])
 
       feedbackFactory.get = function()
       {
-        return $http.get('/question/questions/fb') ;
+        return $http.get('/question/questions') ;
       };
       return feedbackFactory;
     });
