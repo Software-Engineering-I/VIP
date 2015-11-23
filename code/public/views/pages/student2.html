@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+
+
+<div>
+	<div class="navbar-header"> <h1>Peer Evaluations</h1></div>
+	<div class="navbar-header"><h1>Ashley</h1></div><br>
+	<div ng-repeat="eval in controller.users |  filter: { t_name: 'Ashley', field: 'Biology', team: 'Bee Snap'}">
+		<div ng-if="eval.item1 != ''">	
+			<p><b>Participates in team meetings                                   :</b>&nbsp;{{eval.item1}}</p>
+			<p ng-if="eval.item1_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item1_c}}</p>
+			<p><b>Contributes to the progress of the project                      :</b>&nbsp;{{eval.item2}}</p>
+			<p ng-if="eval.item2_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item2_c}}</p>
+			<p><b>Communicates ideas to the team                                  :</b>&nbsp;{{eval.item3}}</p>
+			<p ng-if="eval.item3_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item3_c}}</p>
+			<p><b>Respectful of the ideas of others / Helps others in the group   :</b>&nbsp;{{eval.item4}}</p>
+			<p ng-if="eval.item4_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item4_c}}</p>
+			<p><b>Provides new ideas to the group                                 :</b>&nbsp;{{eval.item5}}</p>
+			<p ng-if="eval.item5_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item5_c}}</p>
+			<p><b>Facilitates progress of the group                               :</b>&nbsp;{{eval.item6}}</p>
+			<p ng-if="eval.item6_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item6_c}}</p>
+			<p ng-if="eval.item7 != ''"><b>Other Comments (optional)              :</b>&nbsp;{{eval.item7}}</p>
+		</div>
+		<br><br>
+	</div>
+	<div class="navbar-header"><h1>Emily</h1></div><br>
+	<div ng-repeat="eval in controller.users |  filter: { t_name: 'Emily', field: 'Biology', team: 'Bee Snap'}">
+		<div ng-if="eval.item1 != ''">	
+			<p><b>Participates in team meetings                                   :</b>&nbsp;{{eval.item1}}</p>
+			<p ng-if="eval.item1_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item1_c}}</p>
+			<p><b>Contributes to the progress of the project                      :</b>&nbsp;{{eval.item2}}</p>
+			<p ng-if="eval.item2_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item2_c}}</p>
+			<p><b>Communicates ideas to the team                                  :</b>&nbsp;{{eval.item3}}</p>
+			<p ng-if="eval.item3_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item3_c}}</p>
+			<p><b>Respectful of the ideas of others / Helps others in the group   :</b>&nbsp;{{eval.item4}}</p>
+			<p ng-if="eval.item4_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item4_c}}</p>
+			<p><b>Provides new ideas to the group                                 :</b>&nbsp;{{eval.item5}}</p>
+			<p ng-if="eval.item5_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item5_c}}</p>
+			<p><b>Facilitates progress of the group                               :</b>&nbsp;{{eval.item6}}</p>
+			<p ng-if="eval.item6_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item6_c}}</p>
+			<p ng-if="eval.item7 != ''"><b>Other Comments (optional)              :</b>&nbsp;{{eval.item7}}</p>
+		</div>
+		<br><br>
+	</div>
+	<div class="navbar-header"><h1>Madison</h1></div><br>
+	<div ng-repeat="eval in controller.users |  filter: { t_name: 'Madison', field: 'Biology', team: 'Bee Snap'}">
+		<div ng-if="eval.item1 != ''">	
+			<p><b>Participates in team meetings                                   :</b>&nbsp;{{eval.item1}}</p>
+			<p ng-if="eval.item1_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item1_c}}</p>
+			<p><b>Contributes to the progress of the project                      :</b>&nbsp;{{eval.item2}}</p>
+			<p ng-if="eval.item2_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item2_c}}</p>
+			<p><b>Communicates ideas to the team                                  :</b>&nbsp;{{eval.item3}}</p>
+			<p ng-if="eval.item3_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item3_c}}</p>
+			<p><b>Respectful of the ideas of others / Helps others in the group   :</b>&nbsp;{{eval.item4}}</p>
+			<p ng-if="eval.item4_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item4_c}}</p>
+			<p><b>Provides new ideas to the group                                 :</b>&nbsp;{{eval.item5}}</p>
+			<p ng-if="eval.item5_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item5_c}}</p>
+			<p><b>Facilitates progress of the group                               :</b>&nbsp;{{eval.item6}}</p>
+			<p ng-if="eval.item6_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item6_c}}</p>
+			<p ng-if="eval.item7 != ''"><b>Other Comments (optional)              :</b>&nbsp;{{eval.item7}}</p>
+		</div>
+		<br><br>
+	</div>
+	<div class="navbar-header"><h1>Matthew</h1></div><br>
+	<div ng-repeat="eval in controller.users |  filter: { t_name: 'Matthew', field: 'Biology', team: 'Bee Snap'}">
+		<div ng-if="eval.item1 != ''">	
+			<p><b>Participates in team meetings                                   :</b>&nbsp;{{eval.item1}}</p>
+			<p ng-if="eval.item1_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item1_c}}</p>
+			<p><b>Contributes to the progress of the project                      :</b>&nbsp;{{eval.item2}}</p>
+			<p ng-if="eval.item2_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item2_c}}</p>
+			<p><b>Communicates ideas to the team                                  :</b>&nbsp;{{eval.item3}}</p>
+			<p ng-if="eval.item3_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item3_c}}</p>
+			<p><b>Respectful of the ideas of others / Helps others in the group   :</b>&nbsp;{{eval.item4}}</p>
+			<p ng-if="eval.item4_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item4_c}}</p>
+			<p><b>Provides new ideas to the group                                 :</b>&nbsp;{{eval.item5}}</p>
+			<p ng-if="eval.item5_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item5_c}}</p>
+			<p><b>Facilitates progress of the group                               :</b>&nbsp;{{eval.item6}}</p>
+			<p ng-if="eval.item6_c != ''"><b>Comments (optional)                  :</b>&nbsp;{{eval.item6_c}}</p>
+			<p ng-if="eval.item7 != ''"><b>Other Comments (optional)              :</b>&nbsp;{{eval.item7}}</p>
+		</div>
+		<br><br>
+	</div>
+</div>
+</html>

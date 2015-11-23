@@ -1,5 +1,5 @@
 angular.module('MyApp', ['appRoutes', 'satellizer', 'reportControl','reportService', 'accountService',
-	'accountController', 'membershipController', 'projectEvaluationControl', 'projectEvaluationService', 'feedbackControl', 'feedbackService'])
+	'accountController', 'membershipController', 'projectEvaluationControl', 'projectEvaluationService','feedbackControl','feedbackService','reviewController','userService','userControl'])
 .config(function($authProvider) {
 
 	$authProvider.google({

@@ -26,8 +26,11 @@
 	<script src="/js/controllers/membershipController.js"></script>
 	<script src="js/controllers/projectEvaluationController.js"></script>
 	<script src="js/services/projectEvaluationService.js"></script>
+	<script src="js/controllers/reviewController.js"></script>
   <script src="js/controllers/feedbackController.js"></script>
   <script src="js/services/feedbackService.js"></script>
+	<script src="js/controllers/userController.js"></script>
+	<script src="js/services/userService.js"></script>
 
 </head>
 <body ng-app="MyApp">
@@ -46,6 +49,8 @@
 					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
+					<li><a ui-sref="review"><i class="fa fa-question"></i> Review</a></li>
+					<li><a ui-sref="group1"><i class = "fa fa-list"></i>Peer Evaluations Faculty</a></li>
 				</ul>
 				<!-- user auth'd -->
 				<ul class="nav navbar-nav" ng-if="isAuthenticated()">

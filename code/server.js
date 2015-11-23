@@ -43,12 +43,14 @@ app.use(bodyParser.urlencoded({extended:true}));
  var projEvalRoutes = require('./app/routes/projEvalRoutes')(app, express);
  var questionRoutes = require('./app/routes/questionRoutes')(app, express);
  var feedbackRoutes = require('./app/routes/feedbackRoutes')(app, express);
+ var userRoutes = require('./app/routes/userRoutes')(app,express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
  app.use('/projectEvaluation', projEvalRoutes);
  app.use('/question', questionRoutes);
  app.use('/feedback', feedbackRoutes);
+ app.use('/user',userRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
