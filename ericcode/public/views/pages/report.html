@@ -1,0 +1,55 @@
+<div>
+    <h1>{{cReport.title}}</h1>
+    <div class="clear h10"></div>
+    <form name="addReport" ng-submit="cReport.saveReport()">
+        <h3>Implementation, Initial Experiences, and Outcomes</h3>
+        <div class="clear h10"></div>
+        <p>1. Please describe steps taken toward institutionalization of VIP. Institutionalization applies to new processes, policies and structures that will likely continue beyond the funding period.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question1"></textarea>
+
+        <p>2. Please describe any technology challenges you have encountered.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question2"></textarea>
+
+        <p>3. Please describe your strategies for departmental/college approval on how VIP credits can be used to fulfill degree requirements</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question3"></textarea>
+
+        <p>4. Please describe faculty receptiveness to the VIP model and program.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question4"></textarea>
+
+        <p>5. Please describe any changes in your approach to VIP program implementation, especially approaches and/or models that bring a new dimension to the VIP consortium..</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question5"></textarea>
+
+        <p>6. Please describe successes that you have had in your VIP implementation and program activities.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question6"></textarea>
+
+        <p>7. Please list any accepted conference abstracts, conference proceedings, academic or other publications that have resulted from your VIP Program.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question7"></textarea>
+
+        <h3>Evaluation</h3>
+        <div class="clear h10"></div>
+        <p>1. Please describe the name and the status (in development, used, etc.) of data systems used to track VIP.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question8"></textarea>
+
+        <p>2. Please describe the ways in which you monitor activities and performance of VIP on your campus.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question9"></textarea>
+
+        <p>3. Please describe how you are monitoring your VIP program for progress, success, and areas for improvement. Be sure to note whether your site has implemented evaluation tools for VIP (surveys, questionnaires, focus groups, etc.). Please also indicate the contact person for these activities.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question10"></textarea>
+
+        <p>4. Please describe whether/how you have interacted with the evaluation team, and the status of data sharing with the evaluation team. Be sure to indicate any issues or challenges in this process.</p>
+        <textarea class="form-control" rows="6"  ng-model="cReport.formData.question11"></textarea>
+
+        <br>
+        <button type="submit" class="btn btn-success">Submit Form</button>
+    </form>
+</div>
+
+<div class="row show-hide-message" ng-show="cReport.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ cReport.message }}
+        </div>
+
+    </div>
+</div>

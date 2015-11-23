@@ -1,0 +1,267 @@
+﻿<h1> Registration Page </h1>
+
+<!--
+<li>
+  <p>Current Bug - Chrome cannot 'select' college, major, etc with arrow keys!</p>
+</li>
+<form class="tester" ng-submit="cUser.runTest()">
+  <div>
+    <input type="text" ng-model="cUser.userData.f_name" />
+  </div>
+  <div>
+    <button type="submit" class="btn btn-success btn-lg btn-block" >Run Test!</button>
+  </div>
+</form>
+--><body class = "registrationbody"></body>
+<form ng-submit="cUser.saveUser()">
+  <li>
+    <label>First Name:</label>
+  </li>
+  <div>
+    <input class = 'form-control' type="text" ng-model="cUser.userData.f_name" />
+  </div>
+  <li>
+    <label>Middle Name (Optional):</label>
+  </li>
+  <div>
+    <input class = 'form-control' type="text" ng-model="cUser.userData.m_name" />
+  </div>
+  <li>
+    <label>Last Name:</label>
+  </li>
+  <div>
+    <input class = 'form-control' type="text" ng-model="cUser.userData.l_name" />
+  </div>
+  <!--
+  <li>
+    <label>Panther ID:</label>
+  </li>
+  <div>
+    <input type="text" ng-model="cUser.userData.pID" />
+  </div>
+
+  <li>
+    <label>User Name:</label>
+  </li>
+    <div>
+      <input type="text" ng-model="cUser.userData.username" />
+    </div>
+    -->
+  <li>
+    <label>Email:</label>
+  </li>
+  <div>
+    <input class = 'form-control' type="text" ng-model="cUser.userData.email" />
+  </div>
+  <!--
+  <li>
+    <label>Password:</label>
+  </li>
+  <div>
+    <input type="password" ng-model="cUser.userData.password" />
+  </div>
+  <li>
+    <label>Confirm Password:</label>
+  </li>
+  <div>
+    <input type="password" ng-model="cUser.userData.passconf" />
+  </div>
+  -->
+  <li>
+    <label> Cell Phone (Optional):</label>
+  </li>
+  <div>
+    <input class = 'form-control' type="text" ng-model="cUser.userData.cell" />
+  </div>
+  <li>
+    <label>User Type:</label>
+  </li>
+  <div>
+    <select class = 'form-control' ng-model="cUser.userData.userType">
+      <!--<option selected="" value="Default">(Please select a rank)</option> -->
+      <option value="PendingStudent">Student</option>
+      <option value="PendingFaculty">Faculty</option>
+      <option value="PendingStaff">Staff</option>
+      <option value="PendingPI">PI/CoPI</option>
+    </select>
+  </div>
+  <li>
+    <label>Department:</label>
+  </li>
+  <div>
+    <select class = 'form-control' ng-model="cUser.userData.Department">
+      <!--<option selected="" value="Default">(Please select a rank)</option> -->
+      <!-- Architecture and Arts -->
+      <option value="Architecture">Architecture</option>
+      <option value="Interior Architecture">Interior Architecture</option>
+      <option value="Landscape Architecture and Environmental Urban Design">Landscape Architecture and Environmental Urban Design</option>
+      <option value="Art and Art History">Art and Art History</option>
+      <option value="Communication Arts">Communication Arts</option>
+      <option value="Music">Music</option>
+      <option value="Theatre">Theatre</option>
+      <!-- Arts and Sciences -->
+      <option value="Biological Sciences">Biological Sciences</option>
+      <option value="Chemistry and Biochemistry">Chemistry and Biochemistry</option>
+      <option value="Earth and Environment">Earth and Environment</option>
+      <option value="English">English</option>
+      <option value="Mathematics and Statistics">Mathetmatics and Statistics</option>
+      <option value="Philosophy">Philosophy</option>
+      <option value="Physics">Physics</option>
+      <option value="Psychology">Psychology</option>
+      <!-- Business -->
+      <option value="Decision Sciences and Information Systems">Decision Sciences and Information Systems</option>
+      <option value="Finance">Finance</option>
+      <option value="Management and International Business">Management and International Business</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Accounting">Accounting</option>
+      <option value="Real Estate">Real Estate</option>
+      <!-- Hospitality and Tourism Management -->
+      <option value="Hospitality and Tourism Management">Hospitality and Tourism Management</option>
+      <!-- Education -->
+      <option value="Teaching and Learning">Teaching and Learning</option>
+      <option value="Leadership and Professional Studies">Leadership and Professional Studies</option>
+      <!-- Engineering and Computing -->
+      <option value="Construction">Construction</option>
+      <option value="Computing and Information Sciences">Computing and Information Sciences</option>
+      <option value="Biomedical Engineering">Biomedical Engineering</option>
+      <option value="Civil and Environment Engineering">Civil and Environmental Engineering</option>
+      <option value="Electrical and Computer Engineering">Electrical and Computer Engineering</option>
+      <option value="Mechanical and Materials Engineering">Mechanical and Materials Engineering</option>
+      <!-- College of Medicine -->
+      <option value="Cellular Biology and Pharmacology">Cellular Biology and Pharmacology</option>
+      <option value="Human and Molecular Genetics">Human and Molecular Genetics</option>
+      <option value="Immunology">Immunology</option>
+      <option value="Medical and Population Health Sciences Research">Medical and Population Health Sciences Research</option>
+      <!-- Honors College -->
+      <!-- Journalism and mass Communication -->
+      <option value="Advertising and Public Relations">Advertising and Public Relations</option>
+      <option value="Journalism Broadcasting and Digital Media">Journalism, Broadcasting, and Digital Media</option>
+      <!-- Law -->
+      <option value="Law">Law</option>
+      <!-- Nursing and Health Science -->
+      <option value="Nursing">Nursing</option>
+      <option value="Athletic Training">Athletic Training</option>
+      <option value="Communication Sciences and Disorders">Communication Sciences and Disorders</option>
+      <option value="Health Services Administration">Health Services Administration</option>
+      <option value="Occupational Therapy">Occupational Therapy</option>
+      <option value="Physical Therapy">Physical Therapy</option>
+      <!-- Public health and social work -->
+      <option value="Biostatistics">Biostatistics</option>
+      <option value="Dietetics and Nutrition">Dietetics and Nutrition</option>
+      <option value="Environmental and Occupational Health">Environmental and Occupational Health</option>
+      <option value="Epidemiology">Epidemiology</option>
+      <option value="Health Policy and Management">Health Policy and Management</option>
+      <option value="Health Promotion and Disease Prevention">Health Promotion and Disease Prevention</option>
+      <option value="Social Work">Social Work</option>
+      <!-- International and Public Affairs -->
+      <option value="Criminal Justice">Criminal Justice</option>
+      <option value="Economics">Economics</option>
+      <option value="Global and Sociocultural Studies">Global and Sociocultural Studies</option>
+      <option value="History">History</option>
+      <option value="Modern Languages">Modern Languages</option>
+      <option value="Public Administration">Public Administration</option>
+      <option value="Religious Studies">Religious Studies</option>
+    </select>
+  </div>
+  <!--
+  <li>
+    <label>Rank:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Rank">
+      <option selected="" value="Default">(Please select a rank)</option>
+      <option value="fresh">Freshman</option>
+      <option value="sophomore">Sophomore</option>
+      <option value="junior">Junior</option>
+      <option value="senior">Senior</option>
+      <option value="supersenior">Senior+</option>
+      <option value="graduate">Graduate</option>
+      <option value="master">Masters</option>
+      <option value="phd">Ph.D</option>
+      <option value="postdoc">Post-Doc</option>
+    </select>
+  </div>
+  <li>
+    <label> College:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.College">
+      <option selected="" value="Default">(Please select a College)</option>
+      <option value="compsci">College of Computing and Information Sciences</option>
+    </select>
+  </div>
+  <li>
+    <label> Major:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Major">
+      <option selected="" value="Default">(Please select a Major)</option>
+      <option value="compsci">Computer Science</option>
+    </select>
+  </div>
+  <li>
+    <label>Ethnicity:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Ethnicity">
+      <option selected="" value="Default">(Please select an Ethnicity)</option>
+      <option value="african">African</option>
+      <option value="africanAmerican">African American</option>
+      <option value="americanIndian">American Indian</option>
+      <option value="asian">Asian</option>
+      <option value="alaskanNative">Alaskan Native</option>
+      <option value="hispanic">Hispanic</option>
+      <option value="white">White</option>
+      <option value="pacificIslander">Pacific Islander</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  <li>
+    <label>Sex:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.Sex">
+      <option selected="" value="Default">(Please select a sex)</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+    </select>
+  </div>
+  <li>
+    <label>Visa Status:</label>
+  </li>
+  <div>
+    <select ng-model="cUser.userData.visaStatus">
+      <option selected="" value="Default">(Please select a Visa Status)</option>
+      <option value="permRes">Permanent Resident</option>
+      <option value="citizen">Citizen</option>
+      <option value="studentvisa">Student Visa</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  -->
+  <div>
+    <button type="submit" class="btn btn-success btn-block" >Register!</button>
+  </div>
+</form>
+
+<div class="row show-hide-message" ng-show="cUser.message">
+  <div class="col-sm-6 col-sm-offset-2">
+
+    <div class="alert alert-info">
+      {{ cUser.message }}
+    </div>
+
+  </div>
+</div>
+<!--
+<div class="row show-hide-message" ng-show="cUser.message">
+  <div class="col-sm-6 col-sm-offset-2">
+
+    <div class="alert alert-info">
+      {{ cUser.objectId }}
+    </div>
+
+  </div>
+</div>
+
+-->

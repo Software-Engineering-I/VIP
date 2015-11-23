@@ -1,0 +1,42 @@
+
+<h1>Notifications</h1>
+
+<p>{{ notifications.tagline }}</p>
+
+<form class="InputUser" ng-submit="notifications.saveNotifications()">
+
+
+    <div>
+        <br>
+        <label>Enter Message</label>
+        <div>
+            <input type="text" class="form-control" ng-model="notifications.notificationsData.message">
+        </div>
+    </div>
+    <div>
+        <br>
+        <label>Enter Group ID</label>
+        <div>
+            <input type="text" class="form-control" ng-model="notifications.notificationsData.id">
+        </div>
+    </div>
+    
+    
+
+    <div >
+        <br>
+        <button type="submit" class="btn btn-success btn-lg btn-block" >Send Notification</button>
+
+    </div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="notifications.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ notifications.message }}
+        </div>
+
+    </div>
+</div>

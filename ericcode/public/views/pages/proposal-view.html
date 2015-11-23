@@ -1,0 +1,25 @@
+<div>
+    <h2>{{selected.projectData.proj}}</h2>
+</div>
+<br>
+<div>
+    <p>{{selected.projectData.proj_body}}</p>
+</div>
+<br>
+
+<form style="color: black" ng-submit="selected.updateProject()">
+
+   <!--<textarea rows="4" cols="45" ng-model="selected.projectData.comment">-->
+    <textarea rows="4" cols="45" ng-model="selected.projectData.comment">
+</textarea>
+    <br>
+    <button type="submit">Comment</button>
+
+<br>
+<br>
+<div style="color: black" >
+    <button type="submit" value="true" >Accept</button>
+    <button type="submit" value="false" >Reject</button>
+
+</div>
+</form>
