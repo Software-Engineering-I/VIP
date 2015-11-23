@@ -1,0 +1,43 @@
+<h1>Create Event</h1>
+
+
+
+<form class="InputUser" ng-submit="event.saveEvent()">
+
+    <div>
+        <label>Name</label>
+        <div>
+            <input type="text" ng-model="event.eventData.name">
+        </div>
+    </div>
+    <div>
+        <label>Message</label>
+        <div>
+            <input type="text" ng-model="event.eventData.message">
+        </div>
+    </div>
+    <div>
+        <label>Date</label>
+        <div>
+            <input type="text" ng-model="event.eventData.date">
+        </div>
+    </div>
+    
+    
+
+    <div >
+        <button type="submit" class="btn btn-success btn-lg btn-block" >Create Event</button>
+
+    </div>
+
+</form>
+
+<div class="row show-hide-message" ng-show="event.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ event.message }}
+        </div>
+
+    </div>
+</div>

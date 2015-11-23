@@ -1,0 +1,12 @@
+
+	<h1>Notifications</h1>
+
+	<p>{{ snotifications.tagline }}</p>
+
+
+
+
+<br>
+<div ng-repeat="n in snotifications.notifications | orderBy: 'message'">
+    <p>{{n.message}}</p>
+</div>

@@ -1,0 +1,27 @@
+<div class="clear h10">
+	<h1 class="timmy">Proposal Report</h1>
+	<p>{{ report.tagline }}</p>
+
+<div class="class h10">
+	<div class="class h10">
+		<t><h1>
+		<table class=" table table-bordered">
+			<tr> 
+				<td BGCOLOR="#ffffff">#</td>
+				<td BGCOLOR="#ffffff">Proposal Name</td>
+				<td BGCOLOR="#ffffff">Acceptance</td>
+				<td BGCOLOR="#ffffff">Department(s)</td>
+				<td BGCOLOR="#ffffff">Project Leader</td>
+			</tr>
+			<tr ng-repeat="project in projects" ng-init="outerIndex=$index">
+				<td BGCOLOR="#ffffff">{{outerIndex + 1}}</td>
+				<td BGCOLOR="#ffffff">{{project.proj}}</td>
+				<td ng-show = "!project.status" BGCOLOR="#ffffff"><FONT ="#FF0000">DENIED</FONT></td>
+                <td ng-show="project.status" BGCOLOR="#ffffff"><FONT="#00cc00">APPROVED</FONT></td>
+				<td BGCOLOR="#ffffff">{{project.disc}}</td>
+				<td BGCOLOR="#ffffff">{{project.user}}</td>
+			</tr>
+		</table>
+		</t></h1>
+	</div>
+</div>

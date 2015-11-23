@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>FIU VIP</title>
+
+	<base href="/">	
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="assets/css/style.css"> <!-- custom styles -->
+	<!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.css">-->
+
+	<!-- JS -->
+	<script src="assets/libs/angular.js"></script>
+	<script src="assets/libs/angular-route.js"></script> 
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="assets/js/appRoutes.js"></script>
+	<script src="assets/js/app.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller="mainController as main">
+	<div class="logo">
+		<img class ="logo" src="assets/img/logo.png"/>
+	</div>
+
+	<!-- HEADER -->
+	<div class="navbar-header">
+		<div class="shell">
+			<h1 class="left" href="/">Welcome to FIU VIP</h1>
+
+			<div class="navbar">
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+					<li><a href="/programs">Programs</a></li>
+					<li><a href="/report">Report</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="container">
+
+		
+	<!-- form begins -->
+	<form class="Evaluation" ng-submit="eval.SubmitEval()">
+	<center>
+    <div>
+	<br>
+        <label>Student ID (From)</label>
+        <div>
+            <input type="text" ng-model="eval.eval_data.PID_from"><br><br>
+        </div>
+    </div>
+    <div>
+        <label>Student ID (To)</label>
+        <div>
+            <input type="text" ng-model="eval.eval_data.PID_to"><br><br>
+        </div>
+    </div>
+    <div>
+        <label>Project Name</label>
+        <div>
+            <input type="text" ng-model="eval.eval_data.project_name"><br><br>
+        </div>
+    </div>
+    <div>
+
+	<b>Scale</b><br>
+	0 - Not sure |
+	1 - Never |
+	2 - Rarely |
+	3 - Occasionally |
+	4 - Consistently <br>
+	
+	
+	<div>
+	<br><label>Participates in team meetings: </label><br>
+		<div>
+			<input type="radio" name="participation" value="1" ng-model="eval.eval_data.participation" checked> 1
+			<input type="radio" name="participation" value="2" ng-model="eval.eval_data.participation"> 2
+			<input type="radio" name="participation" value="3" ng-model="eval.eval_data.participation"> 3
+			<input type="radio" name="participation" value="4" ng-model="eval.eval_data.participation"> 4
+			<input type="radio" name="participation" value="5" ng-model="eval.eval_data.participation"> 5
+		<div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.participation_comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	<br><label>Contributes to the progress of the project: </label><br>
+		<div>
+			<input type="radio" name="contri_meet" value="1" ng-model="eval.eval_data.contri_meet" checked> 1
+			<input type="radio" name="contri_meet" value="2" ng-model="eval.eval_data.contri_meet"> 2
+			<input type="radio" name="contri_meet" value="3" ng-model="eval.eval_data.contri_meet"> 3
+			<input type="radio" name="contri_meet" value="4" ng-model="eval.eval_data.contri_meet"> 4
+			<input type="radio" name="contri_meet" value="5" ng-model="eval.eval_data.contri_meet"> 5
+		</div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.contri_meet_comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	<div>
+	<br><label>Communicates ideas to the team:</label> <br>
+		<div>
+			<input type="radio" name="commu_ideas" value="1" ng-model="eval.eval_data.commu_ideas" checked> 1
+			<input type="radio" name="commu_ideas" value="2" ng-model="eval.eval_data.commu_ideas"> 2
+			<input type="radio" name="commu_ideas" value="3" ng-model="eval.eval_data.commu_ideas"> 3
+			<input type="radio" name="commu_ideas" value="4" ng-model="eval.eval_data.commu_ideas"> 4
+			<input type="radio" name="commu_ideas" value="5" ng-model="eval.eval_data.commu_ideas"> 5
+		</div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.commu_ideas_comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	<div>
+	<br><label>Respectful of the ideas of others / Helps others in the group: </label><br>
+		<div>
+			<input type="radio" name="resp_ideas" value="1" ng-model="eval.eval_data.resp_ideas" checked> 1
+			<input type="radio" name="resp_ideas" value="2" ng-model="eval.eval_data.resp_ideas"> 2		
+			<input type="radio" name="resp_ideas" value="3" ng-model="eval.eval_data.resp_ideas"> 3
+			<input type="radio" name="resp_ideas" value="4" ng-model="eval.eval_data.resp_ideas"> 4
+			<input type="radio" name="resp_ideas" value="5" ng-model="eval.eval_data.resp_ideas"> 5
+		</div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.resp_ideas_comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	<div>
+	<br><label>Provides new ideas to the group:</label> <br>
+		<div>
+			<input type="radio" name="prov_ideas" value="1" ng-model="eval.eval_data.prov_ideas" checked> 1
+			<input type="radio" name="prov_ideas" value="2" ng-model="eval.eval_data.prov_ideas"> 2
+			<input type="radio" name="prov_ideas" value="3" ng-model="eval.eval_data.prov_ideas"> 3
+			<input type="radio" name="prov_ideas" value="4" ng-model="eval.eval_data.prov_ideas"> 4
+			<input type="radio" name="prov_ideas" value="5" ng-model="eval.eval_data.prov_ideas"> 5
+		</div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.prov_ideas_comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	<div>
+	<br><label>Facilitates progress of groups: </label><br>
+		<div>
+			<input type="radio" name="facilitates" value="1" ng-model="eval.eval_data.facilitates" checked> 1
+			<input type="radio" name="facilitates" value="2" ng-model="eval.eval_data.facilitates"> 2
+			<input type="radio" name="facilitates" value="3" ng-model="eval.eval_data.facilitates"> 3
+			<input type="radio" name="facilitates" value="4" ng-model="eval.eval_data.facilitates"> 4
+			<input type="radio" name="facilitates" value="5" ng-model="eval.eval_data.facilitates"> 5 <br>
+		</div>
+	</div>
+	
+	<div>
+	    <div>
+        <label>Comment (optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="3" ng-model="eval.eval_data.facilitates_comment"></textarea><br><br>
+        </div>
+    </div>
+
+	<hr width="10%"><br>
+	
+    <div>
+        <label>Other Comments(Optional): </label>
+        <div>
+            <textarea name="comment" cols="40" rows="5" ng-model="eval.eval_data.comment"></textarea><br><br>
+        </div>
+    </div>
+	
+	
+	
+		<div >
+            <button type="submit" class="btn btn-success btn-lg btn-block" >Submit Evaluation</button>
+        </div>
+
+<center>
+</form>
+
+<div class="row show-hide-message" ng-show="eval.message">
+    <div class="col-sm-6 col-sm-offset-2">
+
+        <div class="alert alert-info">
+            {{ eval.message }}
+        </div>
+
+    </div>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br><br>
+	<br><br><br><br>
+	<!-- END OF FORM -->
+	
+	
+
+	</div><!-- end of container -->
+</body>
+</html>

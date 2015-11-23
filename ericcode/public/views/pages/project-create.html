@@ -1,0 +1,49 @@
+<div class = "container">
+    <h4 align = "center">Submit New Project</h4>
+    <!--<div class = "bs-less">-->
+        <form ng-submit="saveProj()">
+            <div class = "form-group">
+                <label for="projName">Project Name</label>
+                <input type = "text" class = "form-control" id = "projName" placeholder="Project Name Here"
+                        ng-model="project.proj">
+            </div>
+            <div class = "form-group">
+                <!--TODO: pull from user schema?-->
+                <label for="userName">User</label>
+                <input type = "text" class = "form-control" id = "userName" placeholder="User Name"
+                       ng-model="project.user">
+            </div>
+            <div class = "form-group">
+                <!--TODO: pull from user schema?-->
+                <label for="userEmail">Email</label>
+                <input type = "text" class = "form-control" id = "userEmail" placeholder="User Name"
+                       ng-model="project.email">
+            </div>
+            <div class = "form-group">
+                <label for="studentsRequested">Students Requested</label>
+                <input type = "text" class = "form-control" id = "studentsRequested" placeholder="Number of students requested for this project"
+                       ng-model="project.request">
+            </div>
+            <div class = "form-group">
+                <label for="studentsMax">Maximum Students</label>
+                <input type = "text" class = "form-control" id = "studentsMax" placeholder="User Name"
+                       ng-model="project.max">
+            </div>
+
+            <label>Majors</label>
+                <select class = "form-control" id = "disc"
+                        ng-options="major as major for major in majorList"
+                        ng-model="selection"></select>
+
+
+                <!--NOTE: THIS IS SENDING A JSON OBJECT { 'majors': 'Art' }, in back end handle with req.body.disc.majors-->
+            <button type = "button" ng-click="addMoreMajors()">More</button>
+            <button type = "button" ng-click = "testSave()">test</button>
+            <pre>Selected Majors = {{choice | json}}</pre>
+            <!--<pre>projdisc = {{project | json}}</pre>-->
+            <button type="submit" class = "btn btn-success">Submit</button>
+        </form>
+
+        <uib-alert ng-show="project.message">{{project.message}}</uib-alert>
+    <!--</div>-->
+</div>

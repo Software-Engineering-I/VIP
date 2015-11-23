@@ -1,0 +1,63 @@
+<h1 style="font-size:200%">Peer Evaluation </h1><br><br>
+
+<div class="scale" > 
+  <h2 style="font-size:150%">Scale </h2><br> 
+  <p style="font-size:100%; font-weight:bold">
+    0 - Strongly Disagree <br>
+    1 - Disagree <br>
+    2 - Neither <br>
+    3 - Agree <br>
+    4 - Strongly Agree </p><br><br>
+</div>
+
+<form name="eval" ng-submit="econtrol.addEvaluation(eval.$valid)" novalidate>
+
+<center>
+    <div>
+	<br>
+        <label>Student ID (From)</label>
+        <div>
+            <input type="text" ng-model="req.studentID"><br><br>
+        </div>
+    </div>
+    <div>
+        <label>Student ID (To)</label>
+        <div>
+            <input type="text" ng-model="req.peerID"><br><br>
+        </div>
+    </div>
+    <div>
+        <label>Project Name</label>
+        <div>
+            <input type="text" ng-model="req.projectID"><br><br>
+        </div>
+    </div>
+	</center>
+
+
+
+  <div class="scale-based"ng-repeat="question in fcontrol.questions" ng-if="question.questionType == 'sb'">
+    <p style="font-size:100%; font-weight:bold"> {{ question.question }} <br><br>
+      <input type="radio" value="0" ng-model="question.answer" required> 0 &nbsp &nbsp &nbsp &nbsp
+      <input type="radio" value="1" ng-model="question.answer" required> 1 &nbsp &nbsp &nbsp &nbsp
+      <input type="radio" value="2" ng-model="question.answer" required> 2 &nbsp &nbsp &nbsp &nbsp
+      <input type="radio" value="3" ng-model="question.answer" required> 3 &nbsp &nbsp &nbsp &nbsp
+      <input type="radio" value="4" ng-model="question.answer" required> 4 </p><br><br>
+  </div>
+
+  <h2 style="font-size:150%"> True/False </h2><br> 
+  <div class="true-false" ng-repeat="question in fcontrol.questions" ng-if="question.questionType == 'tf'">
+    <p style="font-size:100%; font-weight:bold"> {{ question.question }} <br><br>
+    <input type="radio" value="true" ng-model="question.answer" required> True &nbsp &nbsp &nbsp &nbsp
+    <input type="radio" value="false" ng-model="question.answer" required> False </p><br><br>
+  </div>
+
+  <h2 style="font-size:150%"> Short Answer </h2><br>
+  <div class="short-answer" ng-repeat="question in fcontrol.questions" ng-if="question.questionType == 'sa'">
+    <p style="font-size:100%; font-weight:bold"> {{ question.question }} </p><br><br>
+    <textarea class="form-control" rows="10" cols="100" ng-model="question.answer" required></textarea><br><br><br>
+  </div>
+
+  <button type="submit" class="btn btn-success" ng-disabled="eval.$invalid"> Submit</button-->
+</form>
+

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <title>FIU VIP</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+
+    <!-- JS/Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.js"></script>
+
+    <!--custom js-->
+    <script src="app/services/projectServices.js"></script>
+    <script src="app/controllers/MainController.js"></script>
+    <script src="app/controllers/projectsController.js"></script>
+    <script src="app/controllers/AboutController.js"></script>
+    <script src="app/appRoutes.js"></script>
+    <script src="app/app.js"></script>
+
+
+</head>
+<body ng-app="sampleApp" ng-controller="MainController">
+<div class="container">
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">FIU - VIP</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/about">About</a></li>
+            <li><a href="/projects">Project</a></li>
+        </ul>
+    </nav>
+
+    <!-- ANGULAR DYNAMIC CONTENT -->
+    <div ng-view></div>
+
+
+</div>
+<!-- angular template/content injection-->
+
+<!--<main>
+    &lt;!&ndash;<div class="jumbotron text-center">
+        <h1>Message below</h1>
+
+        <p>{{ main.message }}</p>
+    </div>&ndash;&gt;
+
+</main>-->
+</body>
+
+</html>

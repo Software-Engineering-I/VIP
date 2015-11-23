@@ -1,0 +1,5 @@
+angular.module('reviewService', [])
+
+    .factory('Review', function($http) {
+
+    });
