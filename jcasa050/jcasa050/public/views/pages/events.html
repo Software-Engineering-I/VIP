@@ -1,0 +1,14 @@
+<div>
+    <h2 > VIP Events</h2>
+    <br>
+    <div ng-repeat="e in event.events | orderBy: 'name'">
+
+        
+        <p>{{e.name}}</p>
+        <p>{{e.message}}</p>
+        <p>{{e.date}}</p>
+        <br>
+
+
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<ul>
+    <h1 class="timmy"> Upcoming Events</h1>
+    <ta ng-repeat="(key, value) in upEvent.events | groupBy: 'date'">
+
+        <table>
+            <label class="timmy">{{ key }}</label>
+            <th align="left" >Date</th>
+            <th align="left">Event Name</th>
+            <th align="left">Description</th>
+            <th></th>
+
+
+            <tr ng-repeat="anEvent in value">
+                <td nowrap>{{ anEvent.date}}</td>
+                <td>{{ anEvent.eName }}</td>
+                <td>{{ anEvent.description }}</td>
+
+                <td>
+                    <a ng-click="upEvent.deleteEvent(anEvent._id)" class="button-error pure-button" >Delete</a>
+                </td>
+            </tr>
+        </table>
+    </ta>
+</ul>

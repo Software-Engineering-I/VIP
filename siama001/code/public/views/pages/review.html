@@ -1,0 +1,114 @@
+<head>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <meta charset=utf-8 />
+<style>
+  ul#tabs {
+   list-style-type: none;
+   margin: 30px 0 0 0;
+   padding: 0 0 0.3em 0;
+ }
+ 
+ ul#tabs li {
+   display: inline;
+ }
+ 
+ ul#tabs li a {
+   opacity: .7;
+   color: #42454a;
+   background-color: #dedbde;
+   border: 1px solid #c9c3ba;
+   border-bottom: none;
+   padding: 0.3em;
+   text-decoration: none;
+ }
+ 
+ ul#tabs li a:hover {
+   background-color: #f1f0ee;
+ }
+ 
+ ul#tabs li a.selected {
+   color: #000;
+   background-color: #f1f0ee;
+   font-weight: bold;
+   padding: 0.7em 0.3em 0.38em 0.3em;
+ }
+
+</style>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/app.js"></script>
+</head>
+
+<body ng-controller="reviewController">
+  <center><h1>Faculty Submissions Review Interface</h1></center>
+  <ul id="tabs">
+    <li><a ng-click="showHome()" href="#home">Home</a></li>
+    <li><a ng-click="showPeer()" href="#peer">Peer Evaluations</a></li>
+    <li><a ng-click="showProject()" href="#project">Project Evaluations</a></li>
+  </ul>
+
+  <div ng-hide="hideHome" class="tabContent" id="home">
+    <h2>Home</h2>
+    <div>
+      <p> Statistics about evalutaion submissions are shown here</p>
+      <p> There are currently {{peerReviews.length}} submitted peer evaluations.</p>
+      <p> There are currently {{projectReviews.length}} submitted project evaluations</p>
+    </div>
+  </div>
+
+  <div ng-hide="hidePeer" class="tabContent" id="peer">
+    <h2>Submitted Peer Evaluations</h2>
+    <form class="form-horizontal">
+
+      <span class="search input-prepend" ng-class="{'input-append':search}">
+      <span class="add-on"><i class="icon-search"></i></span>
+      <input type="text" class="span2" placeholder="Search" ng-model="search">
+      <button type="submit" class="btn btn-inverse" ng-click="search=''" ng-show="search" value="+ add"><i class="icon-remove icon-white"></i></button>
+      </span>
+    </form>
+    <table class="table table-striped">
+      <th>Review Number
+ 	<button type="sort" class="btn-link btn-sm" ng-click="" ng-show="sortedByNumAsc">&#9660;</button>
+      	<button type="sort" class="btn-link btn-sm" ng-click="" ng-show="sortedByNumDesc">&#9660;</button>
+</th>
+      <th>Student</th>
+      <th>Project</th>
+      <th>View</th>
+      <tr ng-repeat="review in peerReviews | filter : search" ng-class="{'muted':isTemp($index)}">
+        <td>{{$index+1}}</td>
+        <td>{{review.name}}</td>
+        <td>{{review.projNum}}</td>
+        <td>
+          <button class="btn btn-info btn-md" ng-click="">View</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div ng-hide="hideProject" class="tabContent" id="project">
+    <h2>Project</h2>
+       <form class="form-horizontal">
+
+      <span class="search input-prepend" ng-class="{'input-append':search}">
+      <span class="add-on"><i class="icon-search"></i></span>
+      <input type="text" class="span2" placeholder="Search" ng-model="search">
+      <button type="submit" class="btn btn-inverse" ng-click="search=''" ng-show="search" value="+ add"><i class="icon-remove icon-white"></i></button>
+      </span>
+    </form>
+     <table class="table table-striped">
+      <th>Review Number</th>
+      <th>Student</th>
+      <th>Project</th>
+      <th>View</th>
+      <tr ng-repeat="review in projectReviews | filter : search" ng-class="{'muted':isTemp($index)}">
+        <td>{{$index+1}}</td>
+        <td>{{review.name}}</td>
+        <td>{{review.projNum}}</td>
+        <td>
+          <button class="btn btn-info btn-md" ng-click="">View</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
