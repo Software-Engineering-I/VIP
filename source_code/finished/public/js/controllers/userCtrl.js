@@ -92,6 +92,9 @@ angular.module('userCtrl', ['userService'])
             var vm = this;
             vm.type = 'verify';
 
+        //HARD CODED PI EMAIL.
+            var piEmail = "sadjadi@cs.fiu.edu";
+
             vm.verifyEmail = function() {
                 vm.processing = true;
                 vm.message = '';
@@ -128,11 +131,12 @@ angular.module('userCtrl', ['userService'])
                                 userEmail = vm.userData.email;
                                 if (vm.userData.userType == "PendingFaculty") {
 
-                                    vm.userData.email = "amitc029@fiu.edu";
+                                    //Sadjadi Email - is fine.
+                                    vm.userData.email = piEmail;
                                     vm.userData.subject = "FIU VIP : A New User is Attempting to Register";
                                     vm.userData.text = "The user " + vm.userData.f_name + " " + vm.userData.l_name + " is attempting to register as a" +
                                         " Faculty Member. Use this link to verify the user or delete the user if they are not a proper user type." +
-                                        "\n\n localhost:3000/piverification/" + vm.userData._id + "";
+                                        "\n\n vip-dev.cis.fiu.edu/piverification/" + vm.userData._id + "";
 
                                     User.nodeEmail(vm.userData)
                                         .success(function(data) {
@@ -155,11 +159,11 @@ angular.module('userCtrl', ['userService'])
                                 if (vm.userData.userType == "PendingPI") {
 
 
-                                    vm.userData.email = "amitc029@fiu.edu";
+                                    vm.userData.email = piEmail;
                                     vm.userData.subject = "FIU VIP : A New User is Attempting to Register";
                                     vm.userData.text = "The user " + vm.userData.f_name + " " + vm.userData.l_name + " is attempting to register as a" +
                                         "PI/CoPI. Use this link to verify the user or delete the user if they are not a proper user type." +
-                                        "\n\n localhost:3000/piverification/" + vm.userData._id + "";
+                                        "\n\n vip-dev.cis.fiu.edu/piverification/" + vm.userData._id + "";
 
                                     User.nodeEmail(vm.userData)
                                         .success(function(data) {
@@ -180,11 +184,11 @@ angular.module('userCtrl', ['userService'])
                                 }
                                 if (vm.userData.userType == "PendingStaff") {
                                     //Hard coded PI email
-                                    vm.userData.email = "amitc029@fiu.edu";
+                                    vm.userData.email = piEmail;
                                     vm.userData.subject = "FIU VIP : A New User is Attempting to Register";
                                     vm.userData.text = "The user " + vm.userData.f_name + " " + vm.userData.l_name + " is attempting to register as a" +
                                         " Staff Member. Use this link to verify the user or delete the user if they are not a proper user type." +
-                                        "\n\n localhost:3000/piverification/" + vm.userData._id + "";
+                                        "\n\n vip-dev.cis.fiu.edu/piverification/" + vm.userData._id + "";
 
                                     User.nodeEmail(vm.userData)
                                         .success(function(data) {
@@ -408,7 +412,7 @@ angular.module('userCtrl', ['userService'])
                     vm.userData._id = vm.objectId;
                     vm.message = data.message;
                     alert(vm.message)
-                    vm.userData.text = "Welcome to FIU's VIP Project, follow this link to verify this email address!\n\nlocalhost:3000/verification/" + vm.objectId + "";
+                    vm.userData.text = "Welcome to FIU's VIP Project, follow this link to verify this email address!\n\n vip-dev.cis.fiu.edu/verification/" + vm.objectId + "";
                     vm.userData.subject = "Welcome to FIU VIP Project!";
                     User.nodeEmail(vm.userData);
                     vm.userData = {};

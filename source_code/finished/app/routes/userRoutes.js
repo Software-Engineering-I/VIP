@@ -158,7 +158,7 @@ module.exports = function(app, express) {
                 if (err) {
                     // duplicate entry
                     if (err.code == 11000)
-                        return res.json({ success: false, message: 'A user with that username already exists. Wtf'});
+                        return res.json({ success: false, message: 'A user with that username already exists.'});
                     else
                         return res.send(err);
 
