@@ -350,15 +350,15 @@ module.exports = function(app, express) {
         })
 
 
-    // on routes that end in /facusers/:user_id
+    // on routes that end in /facprojects/:projectName
     // -- implemented by Garrett Lemieux
     // ---------------------------------------------------
 
-    apiRouter.route('/facusers/:user_id')
+    apiRouter.route('/facprojects/:projectName')
 
-        // get all users with currentProject equal to parameter pased
+        // get all users in project x
         .get(function(req, res) {
-            User.find({currentProject:req.params.user_id}, function(err, user) {
+            User.find({project:req.params.projectName}, function(err, user) {
                 if (err) res.send(err);
                 if( user == null)
                 {
@@ -372,7 +372,11 @@ module.exports = function(app, express) {
             });
         })
 
-        // update the user with this id
+        // on routes that end in /facuseraccept/:user_id
+        // -- implemented by Garrett Lemieux
+        // ---------------------------------------------------
+    apiRouter.route('/facusersaccept/:user_id')
+        //update the user with this id
         .put(function(req, res) {
             User.findById(req.params.user_id, function(err, user) {
 
@@ -446,12 +450,17 @@ module.exports = function(app, express) {
                 if (err) res.send(err);
 
                 // set the new user information if it exists in the request
-                if (req.body.name) user.name = req.body.name;
-                if (req.body.username) user.username = req.body.username;
-                if (req.body.password) user.password = req.body.password;
+                //if (req.body.name) user.name = req.body.name;
+                //if (req.body.username) user.username = req.body.username;
+               // if (req.body.password) user.password = req.body.password;
                 /* Still implementing - Garrett
                 if (req.body.facComment) user.facComment = req.body.facComment;
                 */
+
+                console.log(req.body.indexthing);
+
+                user.facComment = req.body.comment;
+
                 // save the user
                 user.save(function(err) {
                     if (err) res.send(err);

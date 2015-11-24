@@ -13,7 +13,7 @@ var userSchema = new mongoose.Schema({
 	email:      {type: String, required: true, index: {unique:true}},
 	project:    String,
 	userType:	String,		//PendingStudent, Student, PendingFaculty,PendingFacultyForPI, Faculty, PendingPI/CoPI,PendingPi/CoPIForPI, PI/CoPI, Staff, PendingStaff, PendingStaffForPI
-	currentProject: String,
+	//currentProject: String,
 	picture:	String,			//Google Picture.
 	Department:	String,
 	google:		 String,

@@ -21,7 +21,7 @@ angular.module('userService', [])
 
         // update a user
         userFactory.update = function(id, userData) {
-            return $http.put('/api/users/' + id, userData);
+            return $http.put('/userapi/users/' + id, userData);
         };
 
         // change a users project
@@ -64,12 +64,12 @@ angular.module('userService', [])
             return $http.post('/userapi/nodeemail/', userData);
         };
 
-        userFactory.studInProj = function(currentProject){
-            return $http.get('/userapi/facusers/'+ currentProject);
+        userFactory.studInProj = function(projectName){
+            return $http.get('/userapi/facprojects/'+ projectName);
         };
 
         userFactory.updateFacAcp = function(id){
-            return $http.put('/userapi/facusers/'+ id);
+            return $http.put('/userapi/facusersaccept/'+ id);
         };
 
         userFactory.updateFacRjt = function(id){

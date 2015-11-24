@@ -551,13 +551,14 @@ angular.module('userCtrl', ['userService'])
         }
 
         vm.subCom = function(id,index){
-            alert(vm.userData.txtcomment[index]);
 
-            //vm.userData = vm.userData[index].txtcomment;
-            //Need to  update the user wit txtcoment
-            User.update(id ,vm.userData)
+            var something = index;
+
+            vm.userData.comment = vm.userData.txtcomment[index];
+
+            User.update(id , vm.userData)
                 .success(function(data){
-                    alert("returned data");
+                    alert("returned data for comment!");
                 });
 
             vm.userData.txtcomment = {};
