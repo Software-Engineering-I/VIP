@@ -70,7 +70,7 @@ app.use(function(req, res, next) {
  app.use('/user',userRoutes);
  app.use('/notifications',notificationsRoutes);
  app.use('/events',eventRoutes);
- app.use('/subscribers', subscriptionRoutes);
+ app.use('/subapi', subscriptionRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));

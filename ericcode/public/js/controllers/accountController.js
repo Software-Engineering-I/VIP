@@ -57,22 +57,71 @@ angular.module('accountController', ['satellizer', 'subscriptionService'])
     $scope.getProfile();
 });*/
 
-.controller('ProfileCtrl', function($scope, $auth) {
+.controller('ProfileCtrl', function($scope, $auth, Subscriptions) {
     
+	var vm = this;
+
 	var token = $auth.getPayload();
 	//token.pic contains picture, working properly
 	console.log(token.pic);
 	$scope.picture = token.pic;
-	$scope.mail = token.mail;
+	// $scope.mail = token.mail;
+	var strmail = JSON.stringify(token.mail);
+	vm.mail = token.mail;
+	// vm.subData.email = vm.mail;
+	console.log(token.mail);
+	// console.log(vm.subData.email);
+
+	vm.subData = {
+		email: token.mail
+	};
 	
-	$scope.subscribe = function() {
-		if($scope.checked)
+	console.log("------------------------------------------------"); 
+	//console.log(strmail);
+	console.log("------------------------------------------------");
+
+	
+
+        // variable to hide/show elements of the view
+        // differentiates between create or edit pages
+    vm.type = 'create';
+
+    //check if in database
+    vm.checked = false;
+
+	
+	// $scope.subscribe = function() {
+	vm.subscribe = function() {
+
+
+		// Subscriptions.create(vm.subData)
+		// 	.success(function(data) {
+  //                   vm.processing = false;
+  //                   vm.eventData = {};
+  //                   vm.message = data.message;
+  //               });
+
+
+		if(vm.checked)
+		// if(vm.subData.email)
 		{
-			Subscribers.create(token.mail);
+			//Subscriptions.create(token.mail);
+			//Subscriptions.create("12345");
+			// vm.subData.email = token.mail;
+			// vm.checked.email = "here";
+			// console.log("vm.subData.email");
+			console.log(vm.subData.email);
+			// console.log("vm.subData.email");
+			Subscriptions.create(vm.subData)
+			.success(function(data) {
+                    vm.processing = false;
+                    vm.message = data.message;
+                });
 			alert('You subscribed');
 		} else
 		{
-			findOne
+			// delete from database
+			// findOne
 			alert('You unsubscribed');
 		}
 	};

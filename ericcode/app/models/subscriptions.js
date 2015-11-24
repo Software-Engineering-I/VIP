@@ -4,8 +4,10 @@ var Schema   = mongoose.Schema;
 
 // user schema
 var SubscriptionSchema = new Schema({
-	email: 	{type: String, required: true}
+	//email: 	{type: String, required: true}
+	email: 		String
 });
 
 //return the model
-module.exports = mongoose.model('Subscribers', SubscriptionSchema);
+module.exports = mongoose.model('Subscriptions', SubscriptionSchema);
+//module.exports = mongoose.model('Subscribers', SubscriptionSchema);
