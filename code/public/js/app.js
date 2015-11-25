@@ -18,7 +18,6 @@ angular.module('MyApp', [
 	'feedbackService',
 	'reviewController',
 	'userService',
-	'userControl',
 	'questionControl',
 	'questionService',
 	'evalControl'
