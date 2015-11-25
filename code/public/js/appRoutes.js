@@ -97,26 +97,27 @@ angular.module('appRoutes', ['ui.router'])
 		controller: 'viewController',
 		controllerAs: 'selected'
 	})
-			.state('registration', {
-				url:'/registration',
-				templateUrl: "views/pages/registration.html",
-				controller: 'userCreateController',
-				controllerAs:'cUser'
-			})
+	.state('registration', {
+		url:'/registration',
+		templateUrl: "views/pages/registration.html",
+		controller: 'userCreateController',
+		controllerAs:'cUser'
+	})
 
-			.state('piverification', {
-				url:'/piverification/:user_id',
-				templateUrl: "views/pages/piVerification.html",
-				controller: 'verificationController',
-				controllerAs: 'vUser'
-			})
+	.state('piverification', {
+		url:'/piverification/:user_id',
+		templateUrl: "views/pages/piVerification.html",
+		controller: 'verificationController',
+		controllerAs: 'vUser'
+	})
 
-			.state('verification',{
-				url:'/verification/:user_id',
-				templateUrl: "views/pages/emailVerification.html",
-				controller: 'verificationController',
-				controllerAs: 'vUser'
-			})
+	.state('verification',{
+		url:'/verification/:user_id',
+		templateUrl: "views/pages/emailVerification.html",
+		controller: 'verificationController',
+		controllerAs: 'vUser'
+	})
+	
 	.state('partial_reports',{
 		url: '/proposal-report',
 		templateUrl: '/views/pages/report2.html'
@@ -129,104 +130,47 @@ angular.module('appRoutes', ['ui.router'])
 		controllerAs:'cUser'
 	})
 
-		.state('facultyproject', {
-			url: '/facultyproject',
-			templateUrl: "views/pages/facultyprojects.html",
-			controller: 'facultyController',
-			controllerAs: 'fUser'
-		})
-		.state('projectEvaluation', {
+	.state('facultyproject', {
+		url: '/facultyproject',
+		templateUrl: "views/pages/facultyprojects.html",
+		controller: 'facultyController',
+		controllerAs: 'fUser'
+	})
+	
+    .state('projectEvaluation', {
 		url: '/projectEvaluation',
 		templateUrl: 'views/pages/projectEvaluation.html',
 		controller: 'projectEvaluationController',
 		controllerAs: 'evaluation'
 	})
-  .state('feedback', {
-    url: '/feedback',
-    templateUrl: 'views/pages/feedbackForm.html',
-    controller: 'feedbackController',
-    controllerAs: 'fcontrol'
-  })
-	.state('group1',{
-		url: '/group1',
-		templateUrl: 'views/pages/group1.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group2',{
-		url: '/group2',
-		templateUrl: 'views/pages/group2.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group3',{
-		url: '/group3',
-		templateUrl: 'views/pages/group3.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group4',{
-		url: '/group4',
-		templateUrl: 'views/pages/group4.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group5',{
-		url: '/group5',
-		templateUrl: 'views/pages/group5.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student1',{
-		url: '/student1',
-		templateUrl:'views/pages/student1.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student2',{
-		url: '/student2',
-		templateUrl:'views/pages/student2.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student3',{
-		url: '/student3',
-		templateUrl:'views/pages/student3.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student4',{
-		url: '/student4',
-		templateUrl:'views/pages/student4.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student5',{
-		url: '/student5',
-		templateUrl:'views/pages/student5.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
+    
+	.state('feedback', {
+    	url: '/feedback',
+    	templateUrl: 'views/pages/feedbackForm.html',
+    	controller: 'feedbackController',
+    	controllerAs: 'fcontrol'
+   	})
+	
 	
 	.state('review',{
 		url: '/review',
 		templateUrl: 'views/pages/review.html',
 		controller: 'tabController',
 	})
-  .state('question',{
-    url: '/question',
-    templateUrl: 'views/pages/questionForm.html',
-    controller: 'questionController',
-    controllerAs: 'qcontrol'
-  })
+  	
+	.state('question',{
+    	url: '/question',
+    	templateUrl: 'views/pages/questionForm.html',
+    	controller: 'questionController',
+    	controllerAs: 'qcontrol'
+  	})
   
   	.state('eval', {
-    url: '/evaluation',
-    templateUrl: 'views/pages/peerEvaluation.html',
-    controller: 'evalController',
-    controllerAs: 'econtrol'
-  })
-  
+    	url: '/evaluation',
+    	templateUrl: 'views/pages/peerEvaluation.html',
+    	controller: 'evalController',
+    	controllerAs: 'econtrol'
+  	})
   
   ;
 
