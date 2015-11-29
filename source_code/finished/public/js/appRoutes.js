@@ -163,66 +163,7 @@ angular.module('appRoutes', ['ui.router'])
     controller: 'feedbackController',
     controllerAs: 'fcontrol'
   })
-	.state('group1',{
-		url: '/group1',
-		templateUrl: 'views/pages/group1.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group2',{
-		url: '/group2',
-		templateUrl: 'views/pages/group2.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group3',{
-		url: '/group3',
-		templateUrl: 'views/pages/group3.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group4',{
-		url: '/group4',
-		templateUrl: 'views/pages/group4.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('group5',{
-		url: '/group5',
-		templateUrl: 'views/pages/group5.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student1',{
-		url: '/student1',
-		templateUrl:'views/pages/student1.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student2',{
-		url: '/student2',
-		templateUrl:'views/pages/student2.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student3',{
-		url: '/student3',
-		templateUrl:'views/pages/student3.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student4',{
-		url: '/student4',
-		templateUrl:'views/pages/student4.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
-	.state('student5',{
-		url: '/student5',
-		templateUrl:'views/pages/student5.html',
-		controller: 'userController',
-		controllerAs: 'controller'
-	})
+	
 	
 	.state('review',{
 		url: '/review',
