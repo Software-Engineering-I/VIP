@@ -77,15 +77,51 @@ module.exports = function(app, express) {
     });
     /*
      * Search through database for a specific user's pending projects
-     * ROUTE: projects/:user_name/pending/
+     * ROUTE: /projects/projects/:email/pending
+     * ONLY RETURNS PROJECT NAME
+     *   projects.name
      * */
-
-    apiRoutes.get(url + '/:user/pending', function (req, res) {
-        //step through every project (proj), in project db and print it.
-        project.find({user: req.params.user}, function (err, proj) {
+    apiRoutes.get(url + '/:email/pending', function (req, res) {
+        project.find({
+            email: req.params.email,
+            status: false
+        }, 'proj',function (err, projects) {
             if (err)
                 res.send(err);
-            res.json(proj);
+            res.json(projects);
+        });
+    });
+
+    /*
+     * Search through database for a specific user's approved projects
+     *
+     * ROUTE: /projects/projects/:email/approved
+     *
+     * ONLY RETURNS PROJECT NAME
+     *   projects.name
+     * */
+    apiRoutes.get(url + '/:email/approved', function (req, res) {
+        project.find({
+            email: req.params.email,
+            status: true
+        }, 'proj', function (err, projects) {
+            if (err)
+                res.send(err);
+            res.json(projects);
+        });
+    });
+
+    /*
+     * Search through database for a specific user's projects (both pending and approved)
+     * ROUTE: /projects/projects/:email/all
+     * ONLY RETURNS PROJECT NAME
+     *   projects.name
+     * */
+    apiRoutes.get(url + '/:email/all', function (req, res){
+        project.find({email: req.params.email},'proj', function(err, projects){
+            if(err)
+                res.send(err);
+            res.json(projects);
         });
     });
     /*
@@ -156,5 +192,7 @@ module.exports = function(app, express) {
             res.json({message: 'successfully deleted!'});
         });
     });
+
+
     return apiRoutes;
 };
