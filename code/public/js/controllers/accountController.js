@@ -42,6 +42,16 @@ angular.module('accountController', ['satellizer'])
 			$scope.userId = 2;
 			return $scope.userId;
 		}
+		if(token.type=='PI/CoPI')
+		{
+			$scope.userId = 3;
+			return $scope.userId;
+		}
+		if(token.type=='Staff')
+		{
+			$scope.userId = 4;
+			return $scope.userId;
+		}
 	};	
 })
 
