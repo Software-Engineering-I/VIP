@@ -8,17 +8,18 @@ angular.module('subscriptionService', [])
 
         // create a user
         subscriptionFactory.create = function(subData) {
-	    console.log(subData);
             return $http.post('/subapi/subscribers/', subData);
-	   // return $http.post('/api/subscriptions/', email);
-	};
+	    };
 
-	// delete a user
-        subscriptionFactory.delete = function(id) {
-            return $http.delete('/subapi/subscribers/' + id);
+        subscriptionFactory.get = function(email){
+            return $http.get('/subapi/findsub/' + email);
         };
 
-        // return our entire reportFactory object
+        subscriptionFactory.delete = function(email){
+            console.log('hello from delete service');
+            return $http.delete('/subapi/deletesub/' + email);
+        };
+
         return subscriptionFactory;
 
     });
