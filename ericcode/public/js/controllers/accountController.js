@@ -80,40 +80,45 @@ angular.module('accountController', ['satellizer', 'subscriptionService'])
     vm.type = 'create';
 
     vm.message = '';
+    // checks if user is already subscribed
 	Subscriptions.get(vm.subData)
 	.success(function(data) {
                 vm.message = data.message;
 
 				if(vm.message === 'Email does not exist.')
 				{
+					// subscriber checkbox is not checked if user is not subscribed
 					vm.checked = false;
 				}
 				else
 				{
+					// subscriber checkbox is checked if user is already subscribed
 					vm.checked = true;
 				}
             });
 
+		// function subscribes user if checked or unsubscribes user if unchecked
 		vm.subscribe = function() {
+			if(vm.checked)
+			{
+				// console.log(vm.subData.email);
 
-		if(vm.checked)
-		{
-			console.log(vm.subData.email);
-			Subscriptions.create(vm.subData)
-			.success(function(data) {
-                    vm.message = data.message;
-                });
-			alert('You subscribed');
-		} else
-		{
-			// delete from database
-			Subscriptions.delete(vm.subData)
-			.success(function(data) {
-                    vm.message = data.message;
-                });
-			alert('You unsubscribed');
-		}
-	};
+				// add user email to database
+				Subscriptions.create(vm.subData)
+				.success(function(data) {
+	                    vm.message = data.message;
+	                });
+				alert('You subscribed');
+			} else
+			{
+				// delete user email from database
+				Subscriptions.delete(vm.subData)
+				.success(function(data) {
+	                    vm.message = data.message;
+	                });
+				alert('You unsubscribed');
+			}
+		};
 
 });
 
