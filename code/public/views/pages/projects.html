@@ -1,0 +1,146 @@
+<div class="container">
+    <h4 align="center">Projects</h4>
+    <!--<div class = "bs-less">-->
+        <div class = "container-fluid">
+            <div id="sidebar" class="col-md-2">
+                <div class = "btn-group-vertical" role="group" aria-label="...">
+                    <a class="btn btn-danger" ui-sref="projectCreate">Create</a>
+                </div>
+            </div>
+            <div id="main-content" class="col-md-10">
+                <!--<div class = "alert alert-info">
+                    <p>Type: {{sortType}}</p>
+                    <p>SortRev: {{sortReverse}}</p>
+                    <p>Query: {{searchBar}}</p>
+                </div>-->
+                <!--<uib-alert>
+                    <p>Type: {{sortType}}</p>
+                    <p>SortRev: {{sortReverse}}</p>
+                    <p>Query: {{searchBar}}</p>
+                </uib-alert>-->
+
+<!--                <table class = "table table-bordered table-striped" align="center" cellpadding="5" ng-show="projects">
+                    <thread>
+                        <tr>
+                            <td>
+                                <a href="#" ng-click="sortType = 'proj'">
+                                    <strong><font color="white">Project Name</font></strong>
+                                    <span ng-show="sortType == 'proj'"></span>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" ng-click="sortType = 'user'">
+                                    <strong><font color="white">Owner</font></strong>
+                                    <span ng-show="sortType == 'user'"></span>
+                                </a>
+                            </td>
+                            &lt;!&ndash;<th>id</th>
+                            <th>Project Name</th>
+                            <th>Owner</th>
+                            <th>Email</th>
+                            <th>Discipline</th>
+                            <th>Students Requested</th>
+                            <th>Student Max</th>
+                            <th>Approval Status</th>&ndash;&gt;
+                        </tr>
+
+                    </thread>
+                    <tbody>
+                        <tr ng-repeat="project in projects | orderBy:sortType:sortReverse">
+                        &lt;!&ndash;<td><a ng-href="/projects/{{project._id}}">{{project._id}}</a></td>&ndash;&gt;
+                           &lt;!&ndash; <td><a href="/projects/{{project._id}}" ng-click="isCollapsed = !isCollapsed">{{project.proj}}</a></td>&ndash;&gt;
+                            <td>{{project.proj}}</td>
+                            <td>{{project.user}}</td>
+                            <td>{{project.details}}</td>
+                            <td>
+                                &lt;!&ndash;TODO: add edit path&ndash;&gt;
+
+                                <button class="btn btn-success" href="/projects/edit/{{project._id}}">Edit</button>
+
+                                &lt;!&ndash;TODO: add Project.deleteProject(project._id) to API and services&ndash;&gt;
+                                <button class = "btn btn-success" href="#" ng-click="project.details =!project.details">details</button>
+                               <a href="#" class="btn btn-danger" ng-click="deleteProj(project._id)">Delete</a>
+                            </td>
+                            &lt;!&ndash;<td>{{project.email}}</td>
+                            <td>{{project.disc}}</td>
+                            <td>{{project.request}}</td>
+                            <td>{{project.max}}</td>
+                            <td>{{project.status}}</td>&ndash;&gt;
+                        </tr>
+                    </tbody>
+                </table>-->
+                <!--TODO: clean up new-project form-->
+                <uib-accordion close-others="true">
+                    <uib-accordion-group heading="{{project.proj}}" ng-repeat="project in projects">
+                        <uib-alert type="warning" ng-show="!project.status">This project is not approved yet!</uib-alert>
+                        <uib-alert type="success" ng-show="project.status">Congratulations, Approved!</uib-alert>
+
+                        <pre>projdisc = {{project | json}}</pre>
+                        <div class = row><font color = black>ID: {{project._id}} </font></div>
+                        <div class = row><font color = black>Students Requested: {{project.request}}</font></div>
+                        <div class = row><font color = black>Student Max: {{project.max}}</font></div>
+                        <div class = row><font color = black>Disciplines: <pre>{{project.disc | json}}</pre></font></div>
+                        <a class="btn btn-success" ui-sref="edit({project_id : project._id})">Edit</a>
+                        <button class="btn btn-danger pull-right" ng-click="deleteProj(project._id)">Delete</button>
+                        <!--                        <a href="#" class="btn btn-danger" ng-click="deleteProj(project._id)">Delete</a>-->
+                    </uib-accordion-group>
+
+                    <!--TODO: Submission form not working in accordion, REMOVE
+                            Maybe inject in a pane above screen?
+                    -->
+                    <uib-accordion-group heading = "Create a new project!">
+                        <!--<form ng-submit="saveProj()">
+                            <div class = "form-group">
+                                <label for="projName">Project Name</label>
+                                <input type = "text" class = "form-control" id = "projName" placeholder="Project Name Here"
+                                       ng-model="project.proj">
+                            </div>
+                            <div class = "form-group">
+                                &lt;!&ndash;TODO: pull from user schema?&ndash;&gt;
+                                <label for="userName">User</label>
+                                <input type = "text" class = "form-control" id = "userName" placeholder="User Name"
+                                       ng-model="project.user">
+                            </div>
+                            <div class = "form-group">
+                                &lt;!&ndash;TODO: pull from user schema?&ndash;&gt;
+                                <label for="userEmail">Email</label>
+                                <input type = "text" class = "form-control" id = "userEmail" placeholder="User Name"
+                                       ng-model="project.email">
+                            </div>
+                            <div class = "form-group">
+                                <label for="studentsRequested">Students Requested</label>
+                                <input type = "text" class = "form-control" id = "studentsRequested" placeholder="Number of students requested for this project"
+                                       ng-model="project.request">
+                            </div>
+                            <div class="row">
+                                <div class = "form-group">
+                                    &lt;!&ndash;<label for="studentsMax">Maximum Students</label>&ndash;&gt;
+                                    <div class = "col-sm-2"><font color = "black">Max Students</font></div>
+                                    <div class = "col-sm-4 col-sm-offset-5"><input type = "text" id = "studentsMax" placeholder="User Name"
+                                                                ng-model="project.max"></div>
+
+                                </div>
+                            </div>
+
+
+                            <label>Majors</label>
+
+                            <div class="form-group" ng-repeat="choice in selection">
+                                <select class = "form-control" id = "disc"
+                                        ng-options="major as major for major in majorList"
+                                        ng-model="choice.major"></select>
+                            </div>
+                            &lt;!&ndash;TODO: accordion not dynamically expanding in size. Pushing elements in the bottom off the table&ndash;&gt;
+                            &lt;!&ndash;NOTE: THIS IS SENDING A JSON OBJECT { 'majors': 'Art' }, in back end handle with req.body.disc.majors&ndash;&gt;
+                            <button type = "button" ng-click="addMoreMajors()">More</button>
+                            <button type = "button" ng-click = "testSave()">test</button>
+                            <pre>selection = {{selection | json}}</pre>
+                            <pre>projdisc = {{project | json}}</pre>
+                            <a type="submit" class = "btn btn-success" href="/projects">Submit</a>
+                        </form>-->
+                    </uib-accordion-group>
+                </uib-accordion>
+            </div>
+        </div>
+    <!--</div>-->
+</div>

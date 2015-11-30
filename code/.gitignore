@@ -7,7 +7,7 @@
 node_modules/
 
 ## Directory-based project format:
-VIP/.idea/
+.idea/
 
 ## File-based project format:
 *.ipr

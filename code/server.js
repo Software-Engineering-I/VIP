@@ -27,6 +27,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+// configure our app to handle CORS requests
+app.use(function(req, res, next) {
+	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+	res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+	next();
+});
+
  //Force HTTPS on Heroku :: example specific, maybe unnecessary
  if(app.get('env') === 'production'){
  	app.use(function(req, res, next){
@@ -40,9 +48,26 @@ app.use(bodyParser.urlencoded({extended:true}));
  var reportRoutes = require('./app/routes/reportRoutes')(app, express);
  var apiRoutes = require('./app/routes/apiRoutes')(app, express);
  var authRoutes = require('./app/routes/authRoutes')(app, express);
+ var projectRoutes = require('./app/routes/projectsRoutes')(app, express);
+ var proposalRoutes = require('./app/routes/proposalRoutes')(app, express);
+ var userRoutes = require('./app/routes/userRoutes')(app, express);
+ var projEvalRoutes = require('./app/routes/projEvalRoutes')(app, express);
+ var questionRoutes = require('./app/routes/questionRoutes')(app, express);
+ var feedbackRoutes = require('./app/routes/feedbackRoutes')(app, express);
+ var notificationsRoutes = require('./app/routes/notificationsRoutes')(app, express);
+ var eventRoutes = require('./app/routes/eventRoutes')(app, express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
+ app.use('/projects', projectRoutes);
+ app.use('/proposals', proposalRoutes);
+ app.use('/userapi', userRoutes);
+ app.use('/projectEvaluation', projEvalRoutes);
+ app.use('/question', questionRoutes);
+ app.use('/feedback', feedbackRoutes);
+ app.use('/user',userRoutes);
+ app.use('/notifications',notificationsRoutes);
+ app.use('/events',eventRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
