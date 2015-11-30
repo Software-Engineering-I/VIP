@@ -53,7 +53,9 @@ angular.module('appRoutes', ['ui.router'])
 	//user profile
 	.state('profile',{
 		url: '/profile',
-		templateUrl: "views/pages/profile.html"
+		templateUrl: "views/pages/profile.html",
+		controller: 'ProfileCtrl',
+		controllerAs: 'sub'
 	})
 	//6 month reporting
 	.state('report',{
