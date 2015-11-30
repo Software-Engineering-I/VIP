@@ -1,25 +1,26 @@
-<div>
+<div align="center">
     <h2>Submitted Proposals</h2>
 </div>
+<br><br>
 <div class="myTable">
-    <table style="width:80%" align="center" >
+    <table width="70%" align="center"  >
         <thead class="whiteFont">
         <tr>
             <th>Project</th>
             <th>Faculty Member</th>
             <th>Action</th>
-            <th>Status</th>`
+            <th>Status</th>
         </tr>
         </thead>
-        <tbody>
-        <tr  ng-repeat="project in feedback.projects">
+        <tbody class="whiteFont">
+        <tr  ng-repeat="project in projects">
             <td>{{project.proj}}</td>
             <td>{{project.user}}</td>
-            <td><a ui-sref="proposal-feedback/{project_id : project_id}"><button type="button" >View</button>
-                </a></td>
+            <td><a ui-sref="viewProject({project_id : project._id})"><button type="button" >View</button>
+            </a></td>
             </td>
-            <td ng-if="project.status">Accepted</td>
-            <td ng-if="!project.status">Not Accepted</td>
+            <td ng-if="project.status" bgcolor="green">Accepted</td>
+            <td ng-if="!project.status" bgcolor="red" >Not Accepted</td>
         </tr>
         </tbody>
     </table>

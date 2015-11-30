@@ -53,6 +53,20 @@ module.exports = function(app, express) {
         res.json({message: "GET: " + url});
     });*/
 
+    /*
+     Get ALL projects
+     Used for proposal-feedback list display
+     */
+    apiRoutes.get(url, function (req, res) {
+        console.log('in get function');
+        project.find({}, function(err, proj){
+            if(err) res.send(err);
+
+            //return all projects
+            res.json(proj);
+        });
+    });
+
 
     /*
     * Search through database for (ALL - need to change for specific user's) pending projects
@@ -151,6 +165,8 @@ module.exports = function(app, express) {
             if(err) res.send(err);
             /*TODO: add items to edit rest of the body information*/
             if(req.body.proj) proj.proj = req.body.proj;
+            if(req.body.proj_body) proj.proj_body = req.body.proj_body;
+            if(req.body.comment) proj.comment = req.body.comment;
             if(req.body.status) proj.status = req.body.status;
             if(req.body.disc) proj.disc = req.body.disc;
             if(req.body.request) proj.request = req.body.request;

@@ -9,6 +9,12 @@ angular.module('projectServices', []).factory('Projects', ['$http', function($ht
         return $http.get('/projects/projects/pending')
     };
 
+    /*get all projects*/
+    projectFactory.all = function(){
+        return $http.get('/projects/projects')
+    };
+
+
     /*Create a new project*/
     projectFactory.create = function(projData){
         console.log("service rec: ", projData);

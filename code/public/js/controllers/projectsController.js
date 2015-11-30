@@ -336,6 +336,24 @@ angular.module('projectsController', ['projectServices'])
                     $location.path('/projects')
                 });
         };
+
+
+        /*
+         used for updating status and/or comment and returns to proposal-feedback page
+         Written by Lucas
+         */
+        $scope.saveUpdateView = function(){
+            $scope.message = '';
+
+            Projects.update($stateParams.project_id, $scope.project)
+                .success(function(data){
+                    $scope.project = {};
+                    $scope.message = data.message;
+                    $location.path('/proposal-feedback')
+                });
+        };
+
+
         /*DEPRECATED - NOT USED ANYMORE*/
         /*$scope.addMoreMajors = function(){
          $scope.project.disc.push({major: null});

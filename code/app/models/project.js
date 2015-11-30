@@ -7,6 +7,8 @@ var shortid     = require('shortid');
 
 var Project = new schema({
     proj: {type: String, required: true},
+    proj_body: {type:String, required: false}, //added for Lucas part
+    comment: {type: String, required: false}, //added for Lucas part
     user: {type: String, required: true},
     email: {type: String, required: true},
     /*TODO: change type to [String] (array of strings)*/

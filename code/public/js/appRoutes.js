@@ -100,17 +100,17 @@ angular.module('appRoutes', ['ui.router'])
 		templateUrl:'/views/pages/project-edit.html',
 		controller: 'projectsEditController'
 	})
-	.state('proposal-feedback', {
-		url: '/proposal-feedback',
-		templateUrl: '/views/pages/proposal-feedback.html',
-		controller: 'feedbackController',
-		controllerAs: 'feedback'
-	})
-	.state('proposal-feedback/project_id',{
-		url: '/proposal-feedback/:project_id',
-		templateUrl: '/views/pages/proposal-view.html',
-		controller: 'viewController',
-		controllerAs: 'selected'
+		.state('proposal-feedback', {
+			url: '/proposal-feedback',
+			templateUrl: '/views/pages/proposal-feedback.html',
+			controller: 'projectsController', //changed from feedbackController
+			controllerAs: 'feedback'
+		})
+		.state('viewProject',{
+			url: '/proposal-feedback/:project_id',
+			templateUrl: '/views/pages/proposal-view.html',
+			controller: 'projectsEditController'//, //changed from viewController
+			//controllerAs: 'selected'
 	})
 			.state('registration', {
 				url:'/registration',
