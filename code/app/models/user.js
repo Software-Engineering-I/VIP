@@ -13,7 +13,6 @@ var userSchema = new mongoose.Schema({
 	email:      {type: String, required: true, index: {unique:true}},
 	project:    String,
 	userType:	String,		//PendingStudent, Student, PendingFaculty,PendingFacultyForPI, Faculty, PendingPI/CoPI,PendingPi/CoPIForPI, PI/CoPI, Staff, PendingStaff, PendingStaffForPI
-	currentProject: String,
 	picture:	String,			//Google Picture.
 	Department:	String,
 	google:		 String,
@@ -23,6 +22,7 @@ var userSchema = new mongoose.Schema({
 
 	//Field for faculty comment - implemented by Garrett Lemieux
 	facComment: String,
+	piComment: String,
 
 	/*
 	 THESE FIELDS ARE FORE A USER 'RESUME'

@@ -1,4 +1,4 @@
-<h1> Faculty Project: Members </h1>
+<h1> Faculty's Project: Members </h1>
 
 <body class = "facultyproject"></body>
 <div ng-hide="fUser.hidemeOne">
@@ -20,6 +20,10 @@
                 <form>
                         <textarea class="form-control" row="1" ng-model="fUser.userData.txtcomment[$index]" placeholder="Reasons for accepting or rejecting student"
                                   style="width:550px"></textarea>
+                </form>
+            </td>
+            <td>
+                <form>
                     <button ng-click="fUser.subCom(user._id,$index)" style="margin-top:10px">Submit</button>
                 </form>
             </td>
