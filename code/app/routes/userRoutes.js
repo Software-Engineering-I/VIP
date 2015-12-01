@@ -214,6 +214,31 @@ module.exports = function(app, express) {
              */
         })
 
+    //GET USER FROM THE EMAIL
+    apiRouter.route('/userinfo/:email')
+        .get(function(req, res) {
+            //console.log("Hi")
+
+            User.findOne({'email' : new RegExp(req.params.email, 'i')}, function(err, user){
+                if(err) res.send(err);
+                if( user == null)
+                {
+                    //console.log("Hello from null!")
+                    res.json({message: 'User does not exist.'});
+                    return;
+                }
+
+                res.json(user);
+
+            });
+
+            /*
+             User.findOne({'email': 'mohamed'}, function(err, user){
+             console.log('into mongoose findone');
+             });
+             */
+        })
+
     //On routes that end in /verification/:user_id
     apiRouter.route('/verification/:user_id')
         .put(function(req, res) {
