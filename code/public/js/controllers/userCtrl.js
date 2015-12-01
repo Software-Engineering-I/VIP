@@ -40,22 +40,22 @@ angular.module('userCtrl', ['userService'])
 
                 });
         };
-        vm.updateProject = function(id,project) {
+        // vm.updateProject = function(id,project) {
+        //     console.log("being executed here")
+        //     // call change project from User Service and give it id and optionally a project
+        //     User.changeProject(id,project)
 
-            // call change project from User Service and give it id and optionally a project
-            User.changeProject(id,project)
+        //         // if the function succeeds repopulate table with new changes
+        //         .success(function (data){
 
-                // if the function succeeds repopulate table with new changes
-                .success(function (data){
-
-                    // call function to repopulate table
-                    User.all()
-                        .success(function (data) {
-                            vm.processing = false;
-                            vm.users = data;
-                        });
-                })
-        };
+        //             // call function to repopulate table
+        //             User.all()
+        //                 .success(function (data) {
+        //                     vm.processing = false;
+        //                     vm.users = data;
+        //                 });
+        //         })
+        // };
 
         //// function to check if student has been approve to project by PI/Staff
         //vm.checkApprovalStatus = function(id){
