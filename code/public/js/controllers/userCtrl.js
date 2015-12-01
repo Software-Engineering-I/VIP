@@ -580,6 +580,36 @@ angular.module('userCtrl', ['userService'])
             vm.hidemeOne = false;
         }
 
+    })
+
+    .controller('resumeController', function( User,$auth) {
+
+        var vm = this;
+
+        vm.token = $auth.getPayload();
+
+        userEmail = vm.token.mail;
+        // function to save the user
+        vm.saveResume = function() {
+            vm.processing = true;
+            vm.message = '';
+
+
+            //alert(userEmail)
+            // call the userService function to update
+            User.putResume(userEmail, vm.userData)
+                .success(function(data) {
+                    vm.processing = false;
+
+                    // clear the form
+                    //vm.userData = {};
+
+                    // bind the message from our API to vm.message
+                    vm.message = data.message;
+                    alert(vm.message)
+                });
+        };
+
     });
 
 

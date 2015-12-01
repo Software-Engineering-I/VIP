@@ -53,7 +53,9 @@ angular.module('appRoutes', ['ui.router'])
 	//user profile
 	.state('profile',{
 		url: '/profile',
-		templateUrl: "views/pages/profile.html"
+		templateUrl: "views/pages/profile.html",
+		controller: 'ProfileCtrl',
+		controllerAs: 'sub'
 	})
 	//6 month reporting
 	.state('report',{
@@ -138,12 +140,12 @@ angular.module('appRoutes', ['ui.router'])
 	    	controller: 'projectsController'
 	})
 
-	.state('resume', {
-		url:'/resume',
-		templateUrl: "views/pages/resume.html",
-		controller: 'userEditController',
-		controllerAs:'cUser'
-	})
+			.state('resume', {
+				url:'/resume',
+				templateUrl: "views/pages/resume.html",
+				controller: 'resumeController',
+				controllerAs:'cUser'
+			})
 
 		.state('facultyproject', {
 			url: '/facultyproject',

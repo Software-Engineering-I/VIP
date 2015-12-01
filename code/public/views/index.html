@@ -56,6 +56,7 @@
 	<script src="/js/services/evalService.js"></script> 
     <script src="/js/services/notificationsService.js"></script>
     <script src="/js/services/eventService.js"></script>
+    <script src="/js/services/subscriptionService.js"></script>
 
 
 </head>
@@ -109,19 +110,14 @@
 
 				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
 				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
-				<li><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
+				<li ng-if="getUserType()==2"><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
 
 				<!-- Project Investigator -->
 				<li ng-if="getUserType()==3"><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
 				<li ng-if="getUserType()==3"><a ui-sref="review"><i class="fa fa-list"></i> Review Evaluations</a></li>
                 <li ng-if="getUserType()==3"><a ui-sref="createevent"><i class="fa fa-calendar"></i> Create Event</a></li>
                 <li ng-if="getUserType()==3"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
-
-				<!-- Staff -->
-				<li ng-if="getUserType()==4"><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
-				<li ng-if="getUserType()==4"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
-
-				<li class="dropdown">
+                <li ng-if="getUserType()==3" class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 															 role="button"
 															 aria-haspopup="true"
@@ -133,7 +129,10 @@
 						<li><a ui-sref="partial_reports"><i class="fa fa-question"></i> Proposal Report</a></li>
 					</ul>
 				</li>
-                
+
+				<!-- Staff -->
+				<li ng-if="getUserType()==4"><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
+				<li ng-if="getUserType()==4"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>                
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 															 role="button"
@@ -146,7 +145,6 @@
                             <li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
                             <li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>	
                             <li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
-                            <li><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
                             <li><a ui-sref="feedback"> Feedback</a></li>
                             <li><a ui-sref="question">Question</a></li>
 					</ul>

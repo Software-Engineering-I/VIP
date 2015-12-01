@@ -474,6 +474,71 @@ module.exports = function(app, express) {
                 res.json({ message: 'Successfully deleted' });
             });
         });
+    //Routes for Uploading Resume
+    apiRouter.route('/resume/:email')
+        .put(function(req, res) {
+            //console.log("Hi")
+            console.log(req.params.email)
+
+            User.findOne({'email' : new RegExp(req.params.email, 'i')}, function(err, user){
+                if(err) res.send(err);
+                if( user == null)
+                {
+                    //console.log("Hello from null!")
+                    res.json({message: 'User does not exist.'});
+                    return;
+                }
+
+                user.rank       = req.body.rank;    // set the users Rank within the program
+                user.major      = req.body.major;   // sets the users Major
+                user.college    = req.body.college;  //sets the users College
+                user.ethnicity  = req.body.ethnicity;   // sets the users ethnicity
+                user.race       = req.body.race;
+                user.sex        = req.body.sex;   // sets the users sex
+                user.visaStatus = req.body.visaStatus;  // sets the users visa status
+                user.year           = req.body.year;
+                user.placeOfBirth           = req.body.placeOfBirth;
+                user.userSummary           = req.body.userSummary;
+                user.school           = req.body.school;
+                user.cell             = req.body.cell;
+                user.creditsCompleted           = req.body.creditsCompleted;
+                user.gpa           = req.body.gpa;
+                user.degreeType           = req.body.degreeType;
+                user.degreeCompletionStatus           = req.body.degreeCompletionStatus;
+                user.relevantCourses           = req.body.relevantCourses;
+                user.workCompany           = req.body.workCompany;
+                user.workPosition           = req.body.workPosition;
+                user.workTime           = req.body.workTime;
+                user.workStatus           = req.body.workStatus;
+                user.workSummary           = req.body.workSummary;
+                user.workHighlights           = req.body.workHighlights;
+                user.skills           = req.body.skills;
+                user.volunteerOrganization           = req.body.volunteerOrganization;
+                user.volunteerPosition           = req.body.volunteerPosition;
+                user.volunteerTime           = req.body.volunteerTime;
+                user.volunteerWebsite           = req.body.volunteerWebsite;
+                user.volunteerSummary           = req.body.volunteerSummary;
+                user.volunteerHighlights           = req.body.volunteerHighlights;
+                user.interestList           = req.body.interestList;
+                user.firstReferenceName           = req.body.firstReferenceName;
+                user.firstReferenceEmail           = req.body.firstReferenceEmail;
+                user.firstReferenceNotes           = req.body.firstReferenceNotes;
+                user.secondReferenceName           = req.body.secondReferenceName;
+                user.secondReferenceEmail           = req.body.secondReferenceEmail;
+                user.secondReferenceNotes           = req.body.secondReferenceNotes;
+
+                user.save(function(err) {
+                    if (err) {
+                        return res.send(err);
+
+                    }
+                    console.log(user.userType);
+                    res.json({message: "Resume submitted."});
+
+                });
+
+            });
+        });
 
     // api endpoint to get user information
     apiRouter.get('/me', function(req, res) {

@@ -80,6 +80,11 @@ angular.module('userService', [])
             return $http.get('/userapi/users/' + id);
         };
 
+        userFactory.putResume = function(email,userData){
+            return $http.put('/userapi/resume/' + email,userData);
+        };
+
+
         // return our entire userFactory object
         return userFactory;
 
