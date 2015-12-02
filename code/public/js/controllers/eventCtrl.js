@@ -31,27 +31,44 @@ angular.module('eventCtrl', ['eventService'])
         };
     })
 
-    .controller('eventCreateController', function(Event) {
+    .controller('eventCreateController', function($scope, $auth, Event) {
 
         var vm = this;
+    
+        var token = $auth.getPayload();
+    
+        vm.mail = token.mail;
 
-        // variable to hide/show elements of the view
-        // differentiates between create or edit pages
         vm.type = 'create';
 
-        // function to create a user
+        // function to create an event
         vm.saveEvent = function() {
-            vm.processing = true;
+            console.log('hereasdf');
+            console.log(vm.eventData.date);
+            console.log(vm.eventData.datetime);
             vm.message = '';
-
-            // use the create function in the userService
-            Event.create(vm.eventData)
-                .success(function(data) {
-                    vm.processing = false;
-                    vm.eventData = {};
-                    vm.message = data.message;
-                });
-
+            if (typeof vm.eventData.date == 'undefined'){
+                vm.message = 'Please select a date on the calendar';
+            }else{
+                if (typeof vm.eventData.datetime == 'undefined'){
+                    var d = new Date();
+                    d.setHours( 0 );
+                    d.setMinutes( 0 );
+                    vm.eventData.datetime = d;
+                }
+                vm.processing = true;
+//                vm.message = '';
+                console.log(vm.eventData.date);
+                console.log(vm.eventData.datetime);
+                
+                // use the create function in the userService
+                Event.create(vm.eventData)
+                    .success(function(data) {
+                        vm.processing = false;
+                        vm.eventData = {};
+                        vm.message = data.message;
+                    });
+            }
         };
 
     })
@@ -59,6 +76,42 @@ angular.module('eventCtrl', ['eventService'])
 
 
     
+
+    .controller('TimepickerDemoCtrl', function ($scope) {
+    
+      $scope.$watch('mytime', function(v){
+          $scope.event.eventData.datetime = v;
+        });
+    
+      $scope.mytime = new Date(2015,12,2,0,0,0,0);
+
+      $scope.hstep = 1;
+      $scope.mstep = 15;
+
+      $scope.options = {
+        hstep: [1, 2, 3],
+        mstep: [1, 5, 10, 15, 25, 30]
+      };
+
+      $scope.ismeridian = true;
+      $scope.toggleMode = function() {
+        $scope.ismeridian = ! $scope.ismeridian;
+      };
+    
+      $scope.clear = function () {
+        $scope.mytime = null;
+      };
+       $scope.clear();
+
+      $scope.update = function() {
+        var d = new Date();
+        d.setHours( 0 );
+        d.setMinutes( 0 );
+        $scope.mytime = d;
+      };
+    $scope.update();
+
+    })
 
 
 
@@ -69,18 +122,8 @@ angular.module('eventCtrl', ['eventService'])
       $scope.event.eventData.date = v;
     });
     
-//    $scope.$watch('event.eventData.date', function(v){
-//      $scope.dt = v;
-//    });
-    
-//    $scope.update(){
-//        $scope.event.eventData.date = $scope.dt;
-//    }
-    
     $scope.today = function() {
     $scope.dt = new Date();
-//    $scope.update();
-//    $scope.event.eventData.date = new Date();
   };
   $scope.today();
     
@@ -89,7 +132,7 @@ angular.module('eventCtrl', ['eventService'])
   $scope.clear = function () {
     $scope.dt = null;
   };
-//    $scope.clear();
+    $scope.clear();
 
   // Disable weekend selection
   $scope.disabled = function(date, mode) {
@@ -100,7 +143,6 @@ angular.module('eventCtrl', ['eventService'])
     $scope.minDate = $scope.minDate ? null : new Date();
   };
   $scope.toggleMin();
-//  $scope.maxDate = new Date(2020, 5, 22);
 
   $scope.open = function($event) {
     $scope.status.opened = true;
@@ -130,11 +172,9 @@ angular.module('eventCtrl', ['eventService'])
     [
       {
         date: tomorrow,
-//        status: 'full'
       },
       {
         date: afterTomorrow,
-//        status: 'partially'
       }
     ];
 
