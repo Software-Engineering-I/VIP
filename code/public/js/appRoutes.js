@@ -68,8 +68,8 @@ angular.module('appRoutes', ['ui.router'])
 	.state('membershipReport',{
 		url: '/membership_report',
 		templateUrl: "views/pages/membershipReport.html",
-		controller: 'membershipReport',
-		controllerAs: 'mReport'
+		controller: 'memberController',
+		controllerAs: 'member'
 	})
 	// groups page
 	.state('groups', {

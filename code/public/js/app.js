@@ -4,6 +4,7 @@ angular.module('MyApp', [
 	'reportControl', 
 	'accountController', 
 	'membershipController',
+	'membershipService',
 	'userCtrl',
 	'userService',
 	'satellizer',
