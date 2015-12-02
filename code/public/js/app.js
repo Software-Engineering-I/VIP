@@ -28,5 +28,6 @@ angular.module('MyApp', [
     'notificationsService',
     'eventCtrl',
     'eventService',
-    'subscriptionService'
+    'subscriptionService',
+    'mailService'
 ]);

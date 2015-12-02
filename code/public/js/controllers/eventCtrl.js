@@ -1,5 +1,5 @@
 
-angular.module('eventCtrl', ['eventService'])
+angular.module('eventCtrl', ['eventService', 'mailService'])
 
     .controller('eventController', function(Event) {
 
@@ -31,7 +31,7 @@ angular.module('eventCtrl', ['eventService'])
         };
     })
 
-    .controller('eventCreateController', function($scope, $auth, Event) {
+    .controller('eventCreateController', function($scope, $auth, Event, Mail) {
 
         var vm = this;
     
@@ -67,6 +67,15 @@ angular.module('eventCtrl', ['eventService'])
                         vm.processing = false;
                         vm.eventData = {};
                         vm.message = data.message;
+                        vm.emailData = {};
+                        vm.emailData.sender = 'Masoud Sadjadi <vipadmin@fiu.edu';
+                        vm.emailData.recipient = ['eguer048@fiu.edu', 'jcasa050@fiu.edu'];
+                        vm.emailData.subject = 'New event';
+                        vm.emailData.message = 'Testing!';
+                        Mail.sendEmail(vm.emailData)
+                            .success(function(data) {
+                                console.log("Successful send!");
+                            })
                     });
             }
         };
