@@ -114,7 +114,7 @@ module.exports = function(app, express) {
             user.race       = null;
             user.sex        = null;   // sets the users sex
             user.visaStatus = null;  // sets the users visa status
-            user.project    = null;
+            user.project    = 'Unassigned';
             user.displayName = null;
             user.currentProject = null;
             user.picture    = null;
@@ -182,9 +182,36 @@ module.exports = function(app, express) {
                 if (err) res.send(err);
 
                 // return the users
-                res.json({message: users.userType});
+                res.json(users);
             });
+        })
+            // remove the user from the project
+        .put(function(req, res){
+
+            User.findById(req.body.userId, function(err, user){
+                    if(err) res.send(err);
+
+                    if(!req.body.project){
+
+                        user.project = "Unassigned"
+                    }
+                    else{
+                        user.project= req.body.project;
+                    }
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            })
         });
+
+
+
 
 
 
@@ -379,24 +406,60 @@ module.exports = function(app, express) {
     // -- implemented by Garrett Lemieux
     // ---------------------------------------------------
 
-    apiRouter.route('/facusers/:user_id')
-
-        // get all users with currentProject equal to parameter pased
+    apiRouter.route('/facprojects/:projectName')
+        // get all users in project x
         .get(function(req, res) {
-            User.find({currentProject:req.params.user_id}, function(err, user) {
+            User.find({project:req.params.projectName}, function(err, user) {
                 if (err) res.send(err);
                 if( user == null)
                 {
+                    //res.json({message: 'User does not exist.'});
+                    return;
+                }
+                // return the user
+                res.json(user);
+            });
+        })
+
+
+    apiRouter.route('/userPeers/:projectName/:email')
+        // get all users in project x excluding person with email provided
+        .get(function(req, res) {
+            User.find({project:req.params.projectName ,email:{$ne:req.params.email}},function(err, user) {
+                if (err) res.send(err);
+                if( user == null) {
                     console.log("Hello from Garrett's null!")
                     //res.json({message: 'User does not exist.'});
                     return;
                 }
-
+                console.log(user)
                 // return that user
                 res.json(user);
             });
         })
 
+
+    apiRouter.route('/studentProject/:email')
+        // get all users in project x
+        .get(function(req, res) {
+            User.findOne({email:req.params.email},function(err, user) {
+                if (err) res.send(err);
+                if( user == null) {
+                    console.log("Hello from Garrett's null!")
+                    //res.json({message: 'User does not exist.'});
+                    return;
+                }
+                console.log("hey")
+                // return that user
+                res.json(user.project);
+            });
+        })
+
+    // on routes that end in /facusersaccept/:user_id
+    // -- implemented by Garrett Lemieux
+    // ---------------------------------------------------
+
+    apiRouter.route('/facusersaccept/:user_id')
         // update the user with this id
         .put(function(req, res) {
             User.findById(req.params.user_id, function(err, user) {
@@ -464,19 +527,24 @@ module.exports = function(app, express) {
             });
         })
 
-        // update the user with this id
+        // update the facComment in user
         .put(function(req, res) {
             User.findById(req.params.user_id, function(err, user) {
 
                 if (err) res.send(err);
 
                 // set the new user information if it exists in the request
-                if (req.body.name) user.name = req.body.name;
-                if (req.body.username) user.username = req.body.username;
-                if (req.body.password) user.password = req.body.password;
+                //if (req.body.name) user.name = req.body.name;
+                //if (req.body.username) user.username = req.body.username;
+                //if (req.body.password) user.password = req.body.password;
                 /* Still implementing - Garrett
-                if (req.body.facComment) user.facComment = req.body.facComment;
-                */
+                 if (req.body.facComment) user.facComment = req.body.facComment;
+                 */
+
+                //console.log(req.body.indexthing);
+
+                user.facComment = req.body.comment;
+
                 // save the user
                 user.save(function(err) {
                     if (err) res.send(err);

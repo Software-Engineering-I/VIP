@@ -15,19 +15,19 @@ angular.module('userService', [])
 
         // get all users
         userFactory.all = function() {
-            return $http.get('/api/users/');
+            return $http.get('/userapi/users/');
         };
 
 
         // update a user
         userFactory.update = function(id, userData) {
-            return $http.put('/api/users/' + id, userData);
+            return $http.put('/userapi/users/' + id, userData);
         };
 
         // change a users project
         userFactory.changeProject = function(id, project){
             var data = {"userId": id,"project": project};
-            return $http.put('/api/users/',data);
+            return $http.put('/userapi/users/',data);
         };
 
         // delete a user
@@ -64,12 +64,20 @@ angular.module('userService', [])
             return $http.post('/userapi/nodeemail/', userData);
         };
 
-        userFactory.studInProj = function(currentProject){
-            return $http.get('/userapi/facusers/'+ currentProject);
+        userFactory.studInProj = function(projectName){
+            return $http.get('/userapi/facprojects/'+ projectName);
+        };
+
+        userFactory.studProjName = function(email){
+            return $http.get('/userapi/studentProject/' + email);
+        };
+
+        userFactory.userPeers = function(projectName,email){
+            return $http.get('/userapi/userPeers/'+ projectName +'/'+ email);
         };
 
         userFactory.updateFacAcp = function(id){
-            return $http.put('/userapi/facusers/'+ id);
+            return $http.put('/userapi/facusersaccept/'+ id);
         };
 
         userFactory.updateFacRjt = function(id){

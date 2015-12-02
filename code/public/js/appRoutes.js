@@ -37,14 +37,14 @@ angular.module('appRoutes', ['ui.router'])
         controller: 'notificationsController',
         controllerAs: 'notifications'
     })
-    
+
     .state('snotifications', {
         url: '/snotifications',
         templateUrl: '/views/pages/snotifications.html',
         controller: 'snotificationsController',
         controllerAs: 'snotifications'
     })
-    
+
 	//programs page
 	.state('programs',{
 		url:'/programs',
@@ -68,8 +68,8 @@ angular.module('appRoutes', ['ui.router'])
 	.state('membershipReport',{
 		url: '/membership_report',
 		templateUrl: "views/pages/membershipReport.html",
-		controller: 'membershipReport',
-		controllerAs: 'mReport'
+		controller: 'memberController',
+		controllerAs: 'member'
 	})
 	// groups page
 	.state('groups', {
@@ -165,8 +165,8 @@ angular.module('appRoutes', ['ui.router'])
     controller: 'feedbackController',
     controllerAs: 'fcontrol'
   })
-	
-	
+
+
 	.state('review',{
 		url: '/review',
 		templateUrl: 'views/pages/review.html',
@@ -178,19 +178,31 @@ angular.module('appRoutes', ['ui.router'])
     controller: 'questionController',
     controllerAs: 'qcontrol'
   })
-  
+
   	.state('eval', {
     url: '/evaluation',
     templateUrl: 'views/pages/peerEvaluation.html',
     controller: 'evalController',
     controllerAs: 'econtrol'
   })
-    
+
     .state('events', {
         url: '/events',
         templateUrl:'/views/pages/events.html',
         controller: 'eventController',
         controllerAs: 'event'
+    })
+		.state('tutorials', {
+        url: '/tutorials',
+        templateUrl:'/views/pages/tutorials.html',
+        controller: '',
+        controllerAs: ''
+    })
+		.state('references', {
+        url: '/references',
+        templateUrl:'/views/pages/references.html',
+        controller: '',
+        controllerAs: ''
     })
 
     .state('createevent', {
@@ -199,8 +211,8 @@ angular.module('appRoutes', ['ui.router'])
         controller: 'eventCreateController',
         controllerAs: 'event'
     });
-  
-  
+
+
   ;
 
 

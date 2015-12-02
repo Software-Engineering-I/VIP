@@ -1,27 +1,40 @@
-<div class="jumbotron text-center">
-	<h1>Membership Report</h1>
-	<p>{{ report.tagline }}</p>
+<div>
+    <h1> VIP Groups</h1>
+	
+	<!-- Search and Filter fucntion -->
+    <form>
+      <font color="white">Search: </font><input ng-model="person">
+	  
+      <select ng-model="sortorder">
+        <option value="">-- sort order --</option>
+        <option value="l_name">Ascending</option>
+        <option value="-l_name">Descending</option>
+      </select>
+    </form>
+    
+	<font color="white">
+    There are <strong>{{(member.members|filter:person).length}}</strong> contact(s)<span ng-show="person.length"> matching &quot;{{person}}&quot;</span> in database.	
+        
+		<!-- Table with the data -->
+		<table width="100%" border="1">
+            <th align="left">First Name</th>
+			<th align="left">Last Name</th>
+            <th align="left">Rank</th>
+			<th align="left">Project</th>
+			<th align="left">Team</th>
 
-	<div class="textbox">
-		<div class="transparent-box">
-			<t><h1>
-				<table border="1" style="width:100%">
-					<tr> 
-						<td>First Name</td>
-						<td>Last Name </td>
-						<td>Rank</td>
-						<td>Project</td>
-						<td>Team</td>
-					</tr>
-					<tr>
-						<td>{{report.f_name}}</td>
-						<td>{{report.l_name}}</td>
-						<td>{{report.rank}}</td>
-						<td>{{report.project}}</td>
-						<td>{{report.team}}</td>
-					</tr>
-				</table>
-			</t></h1>
-		</div>
-	</div>
+            <tr ng-repeat="person in member.members | filter: person | orderBy: sortorder">
+                <td>{{ person.f_name }}</td>
+				<td>{{ person.l_name }}</td>
+                <td>{{ person.rank }}</td>
+				<td>{{ person.project }}</td>
+				<td>{{ person.team }}</td>
+            </tr>
+		
+        </table>
+
+		There should be membership data above this message!
+		
+	</font>
+	
 </div>

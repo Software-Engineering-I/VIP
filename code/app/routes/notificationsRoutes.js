@@ -1,17 +1,17 @@
 var nodemailer = require('nodemailer'); 
 
 var Notifications      = require('../models/notifications');
-//var stuInbox           = require('../models/stuInbox');
 var config     = require('../../config/config');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
-     var mailList = ["aniet009@fiu.edu"];
     
     apiRouter.route('/notifications')
 
         // create a msg (accessed at POST http://localhost:3000/api/notifications)
         .post(function(req, res) {
+        
+            var mailList = [req.body.email];
 
             // create a new instance of the notifications model
             var notifications = new Notifications();
@@ -19,8 +19,6 @@ module.exports = function(app, express) {
             // set the notifications information (comes from the request)
             notifications.id = req.param('id');
             notifications.message = req.param('message');
-//            notifications.id = 'asada321';
-//            notifications.message = 'asfasf';
 
             // save the notifications and check for errors
             notifications.save(function(err) {
@@ -66,10 +64,8 @@ module.exports = function(app, express) {
         .get(function(req,res){
                 Notifications.find(function(err,inbox){
                     if(err){
-                        console.log('here1');
                          res.send(err);
                     }
-                    console.log('here2');
                     res.json(inbox);
                 });
             });

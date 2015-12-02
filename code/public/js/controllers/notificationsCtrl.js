@@ -20,24 +20,39 @@ angular.module('notificationsCtrl', ['notificationsService'])
                     vm.notificationsData = {};
                     vm.message = data.message;
                 });
-
         };
-
     })
     
-    .controller('snotificationsController',function(Notifications){
+    .controller('snotificationsController',function($scope,$auth,Notifications){
         var vm = this;
         vm.tagline = 'new messages!';
         vm.processing = true;
-//        n.message = 'hello';
-       // console.log('in controller');
+        
+        var token = $auth.getPayload();
+        vm.mail = token.mail;
+    
+        Notifications.studProjName(vm.mail)
+            .success(function(data){
+                vm.project = data;
+            });  
+    
+        vm.check = function(data)
+        {
+                console.log('here');
+            if(data==vm.project)
+            {
+                    return 1;
+            }
+            else{
+                return 0;
+            }
+        };
     
         Notifications.all()
             .success(function(data){
                 vm.processing = false;
                 vm.notifications = data;
-            });
-        
+            });     
         
     });
 

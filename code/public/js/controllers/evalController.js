@@ -1,38 +1,38 @@
 angular.module('evalControl', ['evalService'])
 
-    .controller('evalController', function(Evaluation) 
+    .controller('evalController', function(Evaluation)
     {
-	    var vm = this ;	
-		  vm.questions ;
-      vm.sb = [] ;
-      vm.tf = [] ;
-      vm.sa = [] ;
-    
-		  vm.tagline = 'Its working!';
+        var vm = this ;
+        vm.questions ;
+        vm.sb = [] ;
+        vm.tf = [] ;
+        vm.sa = [] ;
 
-      Evaluation.get()
-        .success(function(data)
-        {
-          vm.questions = data ;
-          
-        }) ; 
+        vm.tagline = 'Its working!';
 
-		  vm.addEvaluation = function() 
-		  {
-			  vm.processing = true ;
-
-			  Evaluation.update(vm.questions)
-				  .success(function(data)
-				  {
-					  vm.processing = false ;
-					  Evaluation.get()
-              .success(function(data)
-              {
+        Evaluation.get()
+            .success(function(data)
+            {
                 vm.questions = data ;
-          
-              }) ; 
-					  alert(data.message) ;
-				  }) ;
-		  };
-					
+
+            }) ;
+
+        vm.addEvaluation = function()
+        {
+            vm.processing = true ;
+
+            Evaluation.update(vm.questions)
+                .success(function(data)
+                {
+                    vm.processing = false ;
+                    Evaluation.get()
+                        .success(function(data)
+                        {
+                            vm.questions = data ;
+
+                        }) ;
+                    alert(data.message) ;
+                }) ;
+        };
+
     });

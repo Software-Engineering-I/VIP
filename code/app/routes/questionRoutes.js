@@ -15,7 +15,6 @@ module.exports = function(app, express)
       question.question = req.body.question ;
       question.formType = req.body.ft ;
       question.questionType = req.body.qt ;
-      question.makeOptional = req.body.mo ;
 
       question.save(function(err) {
 				if (err) {

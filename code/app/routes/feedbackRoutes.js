@@ -10,16 +10,15 @@ module.exports = function(app, express)
 
     .post(function(req, res) 
 		{
-			var feedback = new Feedback() ;
+			var f = new Feedback() ;
       var obj = req.body ;
       
       for (var i in obj)
       {
-        feedback.answers.push({ question: obj[i].question, answer: obj[i].answer }) ;
-        console.log(obj[i]) ;
+        f.feedback.push({ question: obj[i].question, answer: obj[i].answer }) ;
       }
 
-			feedback.save(function(err) {
+			f.save(function(err) {
 				if (err) {
 					return res.send(err) ;
 				}

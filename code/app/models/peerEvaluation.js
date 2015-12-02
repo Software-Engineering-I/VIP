@@ -4,10 +4,10 @@ var Schema   = mongoose.Schema;
 
 // user schema
 var peerEvalSchema = new Schema({
-    peerID: 	    {type: String, required: true},
-    studentID: 	    {type: String, required: true},
-    projectID: 	    {type: String, required: true},
-	evaluationID: 	    {type: String, required: true},
+    peerID: 	    {type: String},
+    studentID: 	    {type: String},
+    projectID: 	    {type: String},
+	evaluationID: 	    {type: String},
 	answers: []
 });
 

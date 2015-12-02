@@ -1,8 +1,8 @@
-angular.module('reviewController', [])
+angular.module('reviewController', ['reviewServices'])
 
-.controller('tabController',function($scope,$auth,$window){
-  $scope.peerReviews = [{name:'Paul', projNum:'project2'},{name:'John',projNum:'Project5'},{name:'Lucie',projNum:'Project1'}];
-  $scope.projectReviews = [];
+.controller('tabController',function($scope,$auth,$window,Review){
+  $scope.peerReviews = [{studentID:'Paul', projectID:'project2'},{studentID:'John',projectID:'Project5'},{studentID:'Lucie',projectID:'Project1'}];
+  $scope.projectReviews = [{studentID:'Jogn', projectID:'project2'},{studentID:'Jimmy',projectID:'Project5'},{studentID:'Sara',projectID:'Project1'}];
   
   $scope.hideHome = false;
   $scope.hidePeer = true;
@@ -12,6 +12,15 @@ angular.module('reviewController', [])
   $scope.sortedByNumDesc = false;
   $scope.sortedByStudentAsc = false;
   $scope.sortedByStudentDesc = false;
+
+  Review.allPeer()
+    .success(function(data){
+       $scope.peerReviews = data;
+  });
+  Review.allProject()
+    .success(function(data){
+       $scope.projectReviews = data;
+  });
 
   $scope.showHome = function() {
     $scope.hideHome = false;

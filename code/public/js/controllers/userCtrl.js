@@ -487,26 +487,33 @@ angular.module('userCtrl', ['userService'])
         };
 
     })
-    /*Controller to control faculty memeber accepting rejecting students from project
-    * -implemented by Garrett Lemieux */
-    .controller('facultyController', function(User) {
+
+    /*Controller to control faculty member accepting rejecting students from project
+     * -implemented by Garrett Lemieux */
+    .controller('facultyController', function(User , $auth , Projects) {
 
         var vm = this;
 
-        //Test variable array
-        // vm.users = [{firstName:'Lukas'},{firstName:'Tiago'},{firstName:'Andrew'}];
-        vm.facultyProjNum = "one";
-        vm.resu = "This is Tiago's Resume!";
         vm.hidemeTwo = true;
         vm.hidemeOne = false;
         vm.txtcomment = {};
 
-        // grab all students in project at page load
-        // "User" refers to userService factory object
-        User.studInProj(vm.facultyProjNum)
+        //Grab logged in user data
+        vm.token = $auth.getPayload();
+        //Store email of logged in user
+        vm.email = vm.token.mail;
+
+        //Retrieves the project name of faculty member and retrieves all students in project
+        User.studProjName(vm.email)
             .success(function(data) {
                 // bind the users that come back to vm.users
-                vm.users = data;
+                vm.facultyProjNum = data;
+
+                User.userPeers(vm.facultyProjNum,vm.email)
+                    .success(function(data) {
+                        // bind all user's peers to vm.users
+                        vm.users = data;
+                    });
             });
 
         vm.displayAcpt = {};
@@ -537,13 +544,12 @@ angular.module('userCtrl', ['userService'])
                 // if the function succeeds repopulate table with new changes
                 .success(function (data){
                     alert("Returned data from updateFacRjt");
-                //vm.users = data;
+                    //vm.users = data;
                 })
 
         }
 
         vm.resume = function(id){
-            //alert("Resume Button Works!");
             //Hides the current Students to display resume of specified student
             vm.hideOne();
 
@@ -555,17 +561,15 @@ angular.module('userCtrl', ['userService'])
         }
 
         vm.subCom = function(id,index){
-            alert(vm.userData.txtcomment[index]);
+            vm.userData.comment = vm.userData.txtcomment[index];
 
-            //vm.userData = vm.userData[index].txtcomment;
             //Need to  update the user wit txtcoment
             User.update(id ,vm.userData)
                 .success(function(data){
-                    alert("returned data");
+                    alert("Comment Updated!");
                 });
 
             vm.userData.txtcomment = {};
-
         }
 
         vm.hideOne = function(){

@@ -4,8 +4,8 @@ var Schema   = mongoose.Schema;
 
 // user schema
 var EvaluationSchema = new Schema({
-    studentName: 	    {type: String, required: true},
-    studentEmail: 	    {type: String, required: true},
+    project:     	    {type: String, required: true},
+    student: 	        {type: String, required: true},
     subjectTitle: 	    {type: String, required: true},
     feedbackMessage: 	{type: String, required: true}
 });

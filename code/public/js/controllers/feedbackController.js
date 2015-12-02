@@ -4,13 +4,8 @@ angular.module('feedbackControl', ['feedbackService'])
     {
 	    var vm = this ;	
 		  vm.questions ;
-      vm.sb = [] ;
-      vm.tf = [] ;
-      vm.sa = [] ;
-    
-		  vm.tagline = 'Its working!';
 
-      Feedback.get()
+      Feedback.getQuestions()
         .success(function(data)
         {
           vm.questions = data ;
@@ -21,11 +16,11 @@ angular.module('feedbackControl', ['feedbackService'])
 		  {
 			  vm.processing = true ;
 
-			  Feedback.update(vm.questions)
+			  Feedback.createFeedback(vm.questions)
 				  .success(function(data)
 				  {
 					  vm.processing = false ;
-					  Feedback.get()
+					  Feedback.getQuestions()
               .success(function(data)
               {
                 vm.questions = data ;

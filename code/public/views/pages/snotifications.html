@@ -1,12 +1,15 @@
 
+
+
+
 	<h1>Notifications</h1>
 
 	<p>{{ snotifications.tagline }}</p>
 
-
-
-
 <br>
-<div ng-repeat="n in snotifications.notifications | orderBy: 'message'">
-    <p>{{n.message}}</p>
+<p>project: {{ snotifications.project }}</p>
+<br>
+<div ng-repeat="n in snotifications.notifications">
+    
+    <p ng-if="snotifications.check(n.id)==1">{{n.message}}</p>
 </div>
