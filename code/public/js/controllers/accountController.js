@@ -130,10 +130,8 @@ angular.module('accountController', ['satellizer','userService'])
         }
     };
 
-<<<<<<< HEAD
-	});
-=======
-})
+
+});
 
 // controller to get all the subscribers
 .controller('subscriptionListController', function(Subscriptions) {
@@ -151,4 +149,4 @@ angular.module('accountController', ['satellizer','userService'])
                 vm.subs = data;
             });
 });
->>>>>>> 8d61e7989cdd035daa9fed3a24a8278f3fa4d99d
+
