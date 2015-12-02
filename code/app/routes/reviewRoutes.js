@@ -5,10 +5,10 @@ module.exports = function(app,express){
 
 	apiRouter.route('/peerEval/all')
 		.get(function(req,res){
-			peerEval.find({}, function(err,peval){
+			peerEval.find({}, function(err,data){
 				if(err)
 					res.send(err);
-				res.json(peval);
+				res.json(data);
 			});
 		});
 };
