@@ -449,7 +449,7 @@ module.exports = function(app, express) {
                     //res.json({message: 'User does not exist.'});
                     return;
                 }
-                console.log("Hey")
+                console.log("hey")
                 // return that user
                 res.json(user.project);
             });
