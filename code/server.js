@@ -57,6 +57,7 @@ app.use(function(req, res, next) {
  var notificationsRoutes = require('./app/routes/notificationsRoutes')(app, express);
  var eventRoutes = require('./app/routes/eventRoutes')(app, express);
  var subscriptionRoutes = require('./app/routes/subscriptionRoutes')(app, express);
+ var peerEvaluations = require('./app/routes/eval_routes')(app, express); //added
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
@@ -70,6 +71,7 @@ app.use(function(req, res, next) {
  app.use('/notifications',notificationsRoutes);
  app.use('/events',eventRoutes);
  app.use('/subapi', subscriptionRoutes);
+ app.use('/evaluation', peerEvaluations);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));

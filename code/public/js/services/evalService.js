@@ -2,16 +2,16 @@ angular.module('evalService', [])
 
     .factory('Evaluation', function($http)
     {
-      var evalFactory = {};
+        var evaluationFactory = {};
 
-      evalFactory.update = function(formData) 
-	    {
-        return $http.post('/eval/evals', formData);
-      };
+        evaluationFactory.update = function(formData)
+        {
+            return $http.post('/evaluation/evaluations', formData);     //Going to check this route for post!
+        };
 
-      evalFactory.get = function()
-      {
-        return $http.get('/api/questions') ;
-      };
-      return evalFactory;
+        evaluationFactory.get = function()
+        {
+            return $http.get('/question/questions/pe') ;
+        };
+        return evaluationFactory;
     });
