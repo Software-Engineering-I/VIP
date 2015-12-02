@@ -103,8 +103,8 @@
       <th>View</th>
       <tr ng-repeat="review in projectReviews | filter : search" ng-class="{'muted':isTemp($index)}">
         <td>{{$index+1}}</td>
-        <td>{{review.studentID}}</td>
-        <td>{{review.projectID}}</td>
+        <td>{{review.student}}</td>
+        <td>{{review.project}}</td>
         <td>
           <button class="btn btn-info btn-md" ng-click="">View</button>
         </td>

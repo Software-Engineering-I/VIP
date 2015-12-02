@@ -59,6 +59,7 @@ app.use(function(req, res, next) {
  var subscriptionRoutes = require('./app/routes/subscriptionRoutes')(app, express);
  var peerEvaluations = require('./app/routes/eval_routes')(app, express); //added
  var membershipRoutes = require('./app/routes/membershipRoutes')(app, express);
+ var reviewRoutes = require('./app/routes/reviewRoutes')(app,express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
@@ -74,6 +75,7 @@ app.use(function(req, res, next) {
  app.use('/subapi', subscriptionRoutes);
  app.use('/evaluation', peerEvaluations);
  app.use('/membershipReport', membershipRoutes);
+ app.use('/eval',reviewRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
