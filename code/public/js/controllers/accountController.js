@@ -131,7 +131,7 @@ angular.module('accountController', ['satellizer','userService'])
     };
 
 
-});
+})
 
 // controller to get all the subscribers
 .controller('subscriptionListController', function(Subscriptions) {
