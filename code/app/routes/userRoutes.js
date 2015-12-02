@@ -114,7 +114,7 @@ module.exports = function(app, express) {
             user.race       = null;
             user.sex        = null;   // sets the users sex
             user.visaStatus = null;  // sets the users visa status
-            user.project    = null;
+            user.project    = Unassigned;
             user.displayName = null;
             user.currentProject = null;
             user.picture    = null;
@@ -182,9 +182,36 @@ module.exports = function(app, express) {
                 if (err) res.send(err);
 
                 // return the users
-                res.json({message: users.userType});
+                res.json(users);
             });
+        })
+            // remove the user from the project
+        .put(function(req, res){
+
+            User.findById(req.body.userId, function(err, user){
+                    if(err) res.send(err);
+
+                    if(!req.body.project){
+
+                        user.project = "Unassigned"
+                    }
+                    else{
+                        user.project= req.body.project;
+                    }
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            })
         });
+
+
+
 
 
 

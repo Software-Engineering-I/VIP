@@ -15,7 +15,7 @@ angular.module('userService', [])
 
         // get all users
         userFactory.all = function() {
-            return $http.get('/api/users/');
+            return $http.get('/userapi/users/');
         };
 
 
@@ -27,7 +27,7 @@ angular.module('userService', [])
         // change a users project
         userFactory.changeProject = function(id, project){
             var data = {"userId": id,"project": project};
-            return $http.put('/api/users/',data);
+            return $http.put('/userapi/users/',data);
         };
 
         // delete a user
