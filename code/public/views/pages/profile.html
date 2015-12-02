@@ -1,12 +1,23 @@
 <div class="text-center" ng-controller="ProfileCtrl">
- <h1>Profile</h1>
-	<div>
-		<img src="{{picture}}"></img>
-		<p class="lead">{{sub.mail}}</p>
-	   	<div class="checkbox">
-    		<label>
-      			<input type="checkbox" ng-model="sub.checked" ng-click="sub.subscribe()"> Subscribe to FIU-VIP
-    		</label>
-  		</div>
+		<h1>{{sub.fName}} {{sub.lName}}'s Profile</h1>
+		<div>
+			<img src="{{sub.picture}}"></img>
+			<p class="lead">{{sub.mail}}</p>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="sub.checked" ng-click="sub.subscribe()"> Subscribe to FIU-VIP
+				</label>
+			</div>
+			<a class="btn" ng-click="sub.toggleEditMode()">{{sub.editmode ? 'Save Edit' : 'Edit Profile'}}
+				</a>
+			<p><b>User:</b> {{sub.utype}}</p>
+			<p><b>Gender:</b> {{sub.sex}}</p>
+			<p><b>Year:</b> {{sub.year}}</p>
+			<p ng-attr-contenteditable="{{sub.editmode}}"><b>Phone:</b> {{sub.phone}}</p>
+			 <p><b>Department:</b> {{sub.depart}}</p>
+			 <p><b>Major:</b> {{sub.sex}}</p>
+			 <p><b>Project:</b> {{sub.project}}</p>
+			 <p ng-attr-contenteditable="{{sub.editmode}}"><b>Skills:</b> {{sub.skills}}</p>
+			 <p ng-attr-contenteditable="{{sub.editmode}}"><b>About me:</b> {{sub.sum}}</p>
 	</div>
 </div>

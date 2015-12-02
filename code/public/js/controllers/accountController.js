@@ -1,4 +1,5 @@
-angular.module('accountController', ['satellizer'])
+angular.module('accountController', ['satellizer','userService'])
+
 .config(function($authProvider) {
 
     $authProvider.google({
@@ -55,17 +56,33 @@ angular.module('accountController', ['satellizer'])
 	};	
 })
 
-.controller('ProfileCtrl', function($scope, $auth, Subscriptions) {
+.controller('ProfileCtrl',function($auth, Subscriptions, User) {
     
     var vm = this;
 
     var token = $auth.getPayload();
 
     //token.pic contains picture, working properly
-    $scope.picture = token.pic;
-
-    // $scope.mail = token.mail;
+    vm.picture = token.pic;
     vm.mail = token.mail;
+	vm.utype = token.type;
+	vm.editmode = false;
+	User.userFromEmail(token.mail).success(function(data){
+		vm.fName = data.f_name;
+		vm.lName = data.l_name;
+		vm.sex = data.sex;
+		vm.year =( data.year != null) ? data.year : "N/A" ;
+		vm.phone = (data.cell !=  null) ? data.cell : "N/A";
+		vm.depart = data.Department;
+		vm.maj = (data.major != null) ? data.major : "Please fill out Resume";
+		vm.project = (data.project != null) ? data.project : "N/A";
+		vm.skills =(data.skills != null) ?  data.skills : "Please fill out Resume";
+		vm.sum = data.userSummary;
+	});
+
+	vm.toggleEditMode = function(){
+		vm.editmode = !vm.editmode;
+	}
 
 
     vm.subData = {
@@ -113,4 +130,4 @@ angular.module('accountController', ['satellizer'])
         }
     };
 
-});
+	});

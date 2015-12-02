@@ -85,7 +85,7 @@ angular.module('userService', [])
         };
 
         userFactory.userFromEmail = function(email){
-            return $http.put('/userapi/userinfo/' + email);
+            return $http.get('/userapi/userinfo/' + email);
         };
 
 
