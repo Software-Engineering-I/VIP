@@ -31,7 +31,7 @@
   <h2 style="font-size:150%"> Short Answer </h2><br>
   <div class="short-answer" ng-repeat="question in fcontrol.questions" ng-if="question.questionType == 'sa'">
     <p style="font-size:100%; font-weight:bold"> {{ question.question }} </p><br><br>
-    <textarea class="form-control" rows="10" cols="100" ng-model="question.answer" required></textarea><br><br><br>
+    <textarea class="form-control" style="width: 600px; height:100px" ng-model="question.answer" required></textarea><br><br><br>
   </div>
 
   <button type="submit" class="btn btn-success" ng-disabled="feedback.$invalid"> Submit</button-->

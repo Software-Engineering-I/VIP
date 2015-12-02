@@ -1,10 +1,10 @@
 <div>
-<h5 style="font-size:200%"> Question Submission </h5>
+<h1 style="font-size:200%"> Question Submission </h1>
 
 <form name="question" ng-submit="qcontrol.addQuestion(question.$valid)" novalidate>
-  <h4>
+  <h2 style="font-size:100%; font-weight:bold">
   <p> Question </p>
-  <textarea class="form-control" rows="10" cols="100" ng-model="qcontrol.formData.question" required ></textarea><br><br><br><br>
+  <input class="form-control" ng-model="qcontrol.formData.question" required ></input><br><br><br><br>
 
   Form Type <br>
   <input name="ftype" type="radio" value="pe" ng-model="qcontrol.formData.ft" required> Peer Evaluation &nbsp &nbsp &nbsp &nbsp
@@ -13,7 +13,7 @@
   Question Type <br>
   <input name="qtype" type="radio" value="sb" ng-model="qcontrol.formData.qt" required> Scale &nbsp &nbsp &nbsp &nbsp
   <input name="qtype" type="radio" value="tf" ng-model="qcontrol.formData.qt" required> True/False &nbsp &nbsp &nbsp &nbsp
-  <input name="qtype" type="radio" value="sa" ng-model="qcontrol.formData.qt" required> Short Answer <br><br><br>
+  <input name="qtype" type="radio" value="sa" ng-model="qcontrol.formData.qt" required> Short Answer </h2><br><br><br>
 
   <button type="submit" class="btn btn-success" ng-disabled="question.$invalid"> Submit</button>
 </div>

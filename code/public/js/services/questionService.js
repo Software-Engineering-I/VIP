@@ -4,7 +4,7 @@ angular.module('questionService', [])
     {
       var questionFactory = {};
 
-      questionFactory.get = function(formData) 
+      questionFactory.create = function(formData) 
 	    {
         return $http.post('/question/questions', formData);
       };
