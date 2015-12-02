@@ -20,6 +20,10 @@ angular.module('subscriptionService', [])
             return $http.delete('/subapi/deletesub/' + email);
         };
 
+        subscriptionFactory.all = function() {
+            return $http.get('/subapi/subscriptionList/');
+        };
+
         return subscriptionFactory;
 
     });

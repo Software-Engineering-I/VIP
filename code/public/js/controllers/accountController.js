@@ -113,4 +113,21 @@ angular.module('accountController', ['satellizer'])
         }
     };
 
+})
+
+// controller to get all the subscribers
+.controller('subscriptionListController', function(Subscriptions) {
+
+        var vm = this;
+
+         vm.processing = true;
+
+        // function to get all the subscribers
+        Subscriptions.all()
+            .success(function (data) {
+
+                vm.processing = false;
+
+                vm.subs = data;
+            });
 });
