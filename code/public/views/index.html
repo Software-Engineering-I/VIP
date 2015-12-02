@@ -57,6 +57,7 @@
     <script src="/js/services/notificationsService.js"></script>
     <script src="/js/services/eventService.js"></script>
     <script src="/js/services/subscriptionService.js"></script>
+    <script src="/js/services/reviewService.js"></script>
 
 
 </head>
@@ -77,7 +78,6 @@
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
 					<li><a ui-sref="eval"><i class="fa fa-question"></i>Submit Evaluation</a></li>
-					<li><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
 			</ul>
 
 			<!-- user auth'd -->
@@ -112,11 +112,13 @@
 				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
 				<li ng-if="getUserType()==2"><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
 				<li ng-if="getUserType()==2"><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
+				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
 
 				<!-- Project Investigator -->
 				<li ng-if="getUserType()==3"><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
 				<li ng-if="getUserType()==3"><a ui-sref="review"><i class="fa fa-list"></i> Review Evaluations</a></li>
                 <li ng-if="getUserType()==3"><a ui-sref="createevent"><i class="fa fa-calendar"></i> Create Event</a></li>
+                <li ng-if="getUserType()==3"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
 <!--
                 <li ng-if="getUserType()==3"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
                 <li ng-if="getUserType()==2"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>

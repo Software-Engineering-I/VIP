@@ -3,7 +3,7 @@ var peerEval = require('../models/PeerEvaluation');
 module.exports = function(app,express){
 	var apiRouter = express.Router();
 
-	apiRouter.route('/peerEval')
+	apiRouter.route('/peerEval/all')
 		.get(function(req,res){
 			peerEval.find({}, function(err,peval){
 				if(err)
