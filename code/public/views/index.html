@@ -3,7 +3,7 @@
 	<meta charset="UTF-8">
 	<title>FIU VIP</title>
 
-	<base href="/">	
+	<base href="/">
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
@@ -53,7 +53,7 @@
 	<script src="js/services/feedbackService.js"></script>
 	<script src="js/services/questionService.js"></script>
 	<script src="js/services/userService.js"></script>
-	<script src="/js/services/evalService.js"></script> 
+	<script src="/js/services/evalService.js"></script>
     <script src="/js/services/notificationsService.js"></script>
     <script src="/js/services/eventService.js"></script>
     <script src="/js/services/subscriptionService.js"></script>
@@ -69,12 +69,21 @@
 		<div class="container-fluid" ng-controller="NavbarCtrl">
 			<div class="navbar-header">
 				<a class="navbar-brand" ui-sref="home">FIU VIP</a>
+				<ul class="dropdown-menu">
+												<li><a ui-sref="tutorials"><i class="fa fa-question"></i> Tutorials</a></li>
+													<li><a ui-sref="references"><i class="fa fa-question"></i> References</a></li>
+				</ul>
+
 			</div>
+
+
+
+
 			<!-- user not auth'd -->
 			<ul class="nav navbar-nav" ng-if="!isAuthenticated()" ng-controller="SignInCtrl">
 				<li><a style="cursor:pointer;" ng-click="authenticate('google')">
-					<i class="fa fa-sign-in"></i> Sign In</a></li> 
-					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>	
+					<i class="fa fa-sign-in"></i> Sign In</a></li>
+					<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
 					<li><a ui-sref="registration"><i class="fa fa-pencil-square-o"></i> Register</a></li>
 					<li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
 					<li><a ui-sref="about"><i class="fa fa-question"></i> About</a></li>
@@ -105,7 +114,7 @@
 				</li>
 
                 <li><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
-                
+
                 <li ng-if="getUserType()==1"><a ui-sref="snotifications"><i class="fa fa-comment"></i>Notifications</a></li>
                 <li ng-if="getUserType()==2"><a ui-sref="notifications"><i class="fa fa-comment"></i>Notifications</a></li>
 
@@ -142,7 +151,7 @@
 
 				<!-- Staff -->
 				<li ng-if="getUserType()==4"><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
-				<li ng-if="getUserType()==4"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>                
+				<li ng-if="getUserType()==4"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 															 role="button"
@@ -153,18 +162,18 @@
                         	<li><a ui-sref="create"><i class="fa fa-question"></i> Create</a></li>
                             <li><a ui-sref="groups"><i class="fa fa-question"></i> Groups</a></li>
                             <li><a ui-sref="projects"><i class="fa fa-question"></i> Projects</a></li>
-                            <li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>	
+                            <li><a ui-sref="proposal-feedback"><i class="fa fa-question"></i> Proposals</a></li>
                             <li><a ui-sref="programs"><i class="fa fa-calendar"></i> Programs</a></li>
                             <li><a ui-sref="feedback"> Feedback</a></li>
 					</ul>
 				</li>
-                
-                
-                
-                
-                
-                
-	
+
+
+
+
+
+
+
 			</ul>
 		</div>
 	</nav>
@@ -173,6 +182,6 @@
 
 	<!-- ANGULAR DYNAMIC CONTENT -->
 	<div class="container" ui-view></div>
-	<!-- ANGULAR DYNAMIC CONTENT -->  
+	<!-- ANGULAR DYNAMIC CONTENT -->
 </body>
 </html>
