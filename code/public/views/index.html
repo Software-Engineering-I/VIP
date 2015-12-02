@@ -98,6 +98,12 @@
 			<!-- user auth'd -->
 			<!-- shared functionality -->
 			<ul class="nav navbar-nav" ng-controller="RoleCtrl" ng-if="isAuthenticated()">
+
+				<li><a style="cursor:pointer;" ng-click="pi=true; faculty=false; student=false">Pi/CoPI</a></li>
+				<li><a style="cursor:pointer;" ng-click="pi=false; faculty=true; student=false">Faculty</a></li>
+				<li><a style="cursor:pointer;" ng-click="pi=false; faculty=false; student=true">Student</a></li>
+				
+
 				<li><a ui-sref="signout"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 				<!--<li><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>-->
 				<li><a ui-sref="home"><i class="fa fa-home"></i> Home</a></li>
@@ -105,7 +111,7 @@
 				<!-- Student -->
 				<!--<li ng-if="getUserType()==1"><a ui-sref="student"><i class="fa fa-pencil"></i> Student</a></li>-->
 				<!--<li ng-if="getUserType()==1"><a ui-sref="profile"><i class="fa fa-file-text-o"></i> Profile</a></li>-->
-				<li ng-if="getUserType()==1" class="dropdown">
+				<li ng-show='student' class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 															 role="button"
 															 aria-haspopup="true"
@@ -120,43 +126,36 @@
 
                 <li><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
 
-                <li ng-if="getUserType()==1"><a ui-sref="snotifications"><i class="fa fa-comment"></i>Notifications</a></li>
-                <li ng-if="getUserType()==2"><a ui-sref="notifications"><i class="fa fa-comment"></i>Notifications</a></li>
+                <!--
+				student = 1
+				pi/copi = 3
+				faculty = 2
+				staff = 4
+            	-->
+                <li ng-show='student'><a ui-sref="snotifications"><i class="fa fa-comment"></i>Notifications</a></li>
 
-				<li ng-if="getUserType()==2"><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
-				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
-				<li ng-if="getUserType()==2"><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
-				<li ng-if="getUserType()==2"><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
-				<li ng-if="getUserType()==2"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
+				<li ng-show='faculty'><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
+				<li ng-show='faculty'><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
+				<li ng-show='faculty'><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
+				<li ng-show='faculty'><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
 
 				<!-- Project Investigator -->
-				<li ng-if="getUserType()==3"><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
-				<li ng-if="getUserType()==3"><a ui-sref="review"><i class="fa fa-list"></i> Review Evaluations</a></li>
-                <li ng-if="getUserType()==3"><a ui-sref="createevent"><i class="fa fa-calendar"></i> Create Event</a></li>
-                <li ng-if="getUserType()==3"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
-<!--
-                <li ng-if="getUserType()==3"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
-                <li ng-if="getUserType()==2"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
-                <li ng-if="getUserType()==1"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
-                <li ng-if="getUserType()==4"><a ui-sref="events"><i class="fa fa-calendar"></i> Events</a></li>
--->
-                <li ng-if="getUserType()==3" class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
-															 role="button"
-															 aria-haspopup="true"
-															 aria-expanded="false"> Report
+				<li ng-show='pi'><a ui-sref="pi"><i class="fa fa-eye"></i> PI</a></li>
+				<li ng-show='pi'><a ui-sref="review"><i class="fa fa-list"></i> Review Evaluations</a></li>
+                <li ng-show='pi'><a ui-sref="createevent"><i class="fa fa-calendar"></i> Create Event</a></li>
+
+                <li ng-show='pi' class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"role="button"aria-haspopup="true"aria-expanded="false"> Report
 					<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a ui-sref="report"><i class="fa fa-file"></i> 6 month Report</a></li>
 						<li><a ui-sref="membershipReport"><i class="fa fa-file"></i> Membership Report</a></li>
 						<li><a ui-sref="partial_reports"><i class="fa fa-question"></i> Proposal Report</a></li>
-            <li><a ui-sref="question"><i class="fa fa-question"></i>Question</a></li>
+            			<li><a ui-sref="question"><i class="fa fa-question"></i>Question</a></li>
 					</ul>
 				</li>
 
 				<!-- Staff -->
-				<li ng-if="getUserType()==4"><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
-				<li ng-if="getUserType()==4"><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
+				<li ng-show='faculty'><a ui-sref="staff"><i class="fa fa-eye"></i> Staff</a></li>
                 <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"
 															 role="button"
