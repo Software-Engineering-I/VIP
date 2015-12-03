@@ -50,6 +50,17 @@ module.exports = function(app, express) {
                 res.json({message: sub.email});
 
             });
+        });
+
+        apiRouter.route('/subscriptionList')
+        // get all the sub (accessed at GET http://localhost:3000/subapi/subscriptionList)
+        .get(function(req, res) {
+            Subscriptions.find(function(err, sub) {
+                if (err) res.send(err);
+
+                // return the users
+                res.json(sub);
+            });
         })
 
         return apiRouter;

@@ -33,32 +33,32 @@ module.exports = function(app, express) {
              
             });   
     
-     var transporter = nodemailer.createTransport({
-                host:'a2plcpnl0330.prod.iad2.secureserver.net',
-                port:465,
-                secure:true,
-                auth: {
-                    user: 'nodemail@amcustomprints.com',
-                    pass: 'spaceCC120'
-                }
-            });
-        
-            var i;
-            for (i = 0; i < mailList.length; i++){
-            var mailOptions = {
-                from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
-                to: mailList[i], // list of receivers
-                subject: 'New Notification', // Subject line
-                text: " A new notification received! \n\n" + notifications.message + "\nLINK: http://localhost:3000/snotifications"
-            };
-            // send mail with defined transport object
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    return console.log(error);
-                }
-                console.log('Message sent: ' + info.response);
-            });
-            }
+//     var transporter = nodemailer.createTransport({
+//                host:'a2plcpnl0330.prod.iad2.secureserver.net',
+//                port:465,
+//                secure:true,
+//                auth: {
+//                    user: 'nodemail@amcustomprints.com',
+//                    pass: 'spaceCC120'
+//                }
+//            });
+//        
+//            var i;
+//            for (i = 0; i < mailList.length; i++){
+//            var mailOptions = {
+//                from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
+//                to: mailList[i], // list of receivers
+//                subject: 'New Notification', // Subject line
+//                text: " A new notification received! \n\n" + notifications.message + "\nLINK: http://localhost:3000/snotifications"
+//            };
+//            // send mail with defined transport object
+//            transporter.sendMail(mailOptions, function(error, info){
+//                if(error){
+//                    return console.log(error);
+//                }
+//                console.log('Message sent: ' + info.response);
+//            });
+//            }
         })
 
         .get(function(req,res){

@@ -181,7 +181,6 @@ module.exports = function(app, express) {
             User.find({}, function(err, users) {
                 if (err) res.send(err);
 
-                // return the users
                 res.json(users);
             });
         })
@@ -432,7 +431,6 @@ module.exports = function(app, express) {
                     //res.json({message: 'User does not exist.'});
                     return;
                 }
-                console.log(user)
                 // return that user
                 res.json(user);
             });
@@ -449,7 +447,6 @@ module.exports = function(app, express) {
                     //res.json({message: 'User does not exist.'});
                     return;
                 }
-                console.log("hey")
                 // return that user
                 res.json(user.project);
             });
@@ -505,10 +502,101 @@ module.exports = function(app, express) {
             });
         })
 
-    // on routes that end in /users/:user_id
+
+    apiRouter.route('/facComment/:user_id')
+        // update the facComment in user
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+
+                if (err) res.send(err);
+
+                user.facComment = req.body.comment;
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+
+    // on routes that end in /piusersaccept/:user_id
+    // -- implemented by Garrett Lemieux
     // ---------------------------------------------------
 
+    apiRouter.route('/piusersaccept/:user_id')
+        // update the user with this id
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
 
+                if (err) res.send(err);
+
+                user.piApproval = "accept";
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+
+    // on routes that end in /piusersreject/:user_id
+    // -- implemented by Garrett Lemieux
+    // ---------------------------------------------------
+
+    apiRouter.route('/piusersreject/:user_id')
+
+        // update the user with this id
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+
+                if (err) res.send(err);
+
+                user.piApproval = "reject";
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+
+    apiRouter.route('/piComment/:user_id')
+        // update the facComment in user
+        .put(function(req, res) {
+            User.findById(req.params.user_id, function(err, user) {
+
+                if (err) res.send(err);
+
+                user.piComment = req.body.comment;
+
+                // save the user
+                user.save(function(err) {
+                    if (err) res.send(err);
+
+                    // return a message
+                    res.json({ message: 'User updated!' });
+                });
+
+            });
+        })
+
+    // on routes that end in /users/:user_id
+    // ---------------------------------------------------
     apiRouter.route('/users/:user_id')
 
         // get the user with that id
@@ -527,34 +615,6 @@ module.exports = function(app, express) {
             });
         })
 
-        // update the facComment in user
-        .put(function(req, res) {
-            User.findById(req.params.user_id, function(err, user) {
-
-                if (err) res.send(err);
-
-                // set the new user information if it exists in the request
-                //if (req.body.name) user.name = req.body.name;
-                //if (req.body.username) user.username = req.body.username;
-                //if (req.body.password) user.password = req.body.password;
-                /* Still implementing - Garrett
-                 if (req.body.facComment) user.facComment = req.body.facComment;
-                 */
-
-                //console.log(req.body.indexthing);
-
-                user.facComment = req.body.comment;
-
-                // save the user
-                user.save(function(err) {
-                    if (err) res.send(err);
-
-                    // return a message
-                    res.json({ message: 'User updated!' });
-                });
-
-            });
-        })
 
         // delete the user with this id
         .delete(function(req, res) {

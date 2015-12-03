@@ -153,6 +153,14 @@ angular.module('appRoutes', ['ui.router'])
 			controller: 'facultyController',
 			controllerAs: 'fUser'
 		})
+
+		.state('piAcceptance', {
+			url: '/piAcceptance',
+			templateUrl: "views/pages/piAcceptance.html",
+			controller: 'piController',
+			controllerAs: 'piUser'
+		})
+
 		.state('projectEvaluation', {
 		url: '/projectEvaluation',
 		templateUrl: 'views/pages/projectEvaluation.html',

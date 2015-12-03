@@ -84,6 +84,24 @@ angular.module('userService', [])
             return $http.put('/userapi/facusersreject/'+ id);
         };
 
+        // update a faculty comment
+        userFactory.updateFacComment = function(id, userData) {
+            return $http.put('/userapi/facComment/' + id, userData);
+        };
+
+        userFactory.updatePiAcp = function(id){
+            return $http.put('/userapi/piusersaccept/'+ id);
+        };
+
+        userFactory.updatePiRjt = function(id){
+            return $http.put('/userapi/piusersreject/'+ id);
+        };
+
+        // update a pi comment
+        userFactory.updatePiComment = function(id, userData) {
+            return $http.put('/userapi/piComment/' + id, userData);
+        };
+
         userFactory.getResume = function(id){
             return $http.get('/userapi/users/' + id);
         };
@@ -93,7 +111,7 @@ angular.module('userService', [])
         };
 
         userFactory.userFromEmail = function(email){
-            return $http.put('/userapi/userinfo/' + email);
+            return $http.get('/userapi/userinfo/' + email);
         };
 
 
