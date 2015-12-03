@@ -115,7 +115,7 @@ angular.module('userService', [])
         };
 
         userFactory.updateProfile = function(email, userData){
-            return $http.get('/userapi/userProfile/' + email, userData)
+            return $http.put('/userapi/userProfile/' + email, userData)
         };
 
 
