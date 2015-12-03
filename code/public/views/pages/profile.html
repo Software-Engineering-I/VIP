@@ -1,5 +1,5 @@
 <div class="text-center" ng-controller="ProfileCtrl">
-		<h1>{{sub.fName}} {{sub.lName}}'s Profile</h1>
+		<h1>{{sub.uData.f_name}} {{sub.uData.l_name}}'s Profile</h1>
 		<div>
 			<img src="{{sub.picture}}"></img>
 			<p class="lead">{{sub.mail}}</p>
@@ -10,14 +10,13 @@
 			</div>
 			<a class="btn" ng-click="sub.toggleEditMode()">{{sub.editmode ? 'Save Edit' : 'Edit Profile'}}
 				</a>
-			<p><b>User:</b> {{sub.utype}}</p>
-			<p><b>Gender:</b> {{sub.sex}}</p>
-			<p><b>Year:</b> {{sub.year}}</p>
-			<p ng-attr-contenteditable="{{sub.editmode}}"><b>Phone:</b> {{sub.phone}}</p>
-			 <p><b>Department:</b> {{sub.depart}}</p>
-			 <p><b>Major:</b> {{sub.sex}}</p>
-			 <p><b>Project:</b> {{sub.project}}</p>
-			 <p ng-attr-contenteditable="{{sub.editmode}}"><b>Skills:</b> {{sub.skills}}</p>
-			 <p ng-attr-contenteditable="{{sub.editmode}}"><b>About me:</b> {{sub.sum}}</p>
+				<div>User:<p> {{sub.uData.userType}}</p></div>
+			 <div>Gender:<p>{{sub.uData.sex}}</p></div>
+			 <div>Phone:<p id="cell" ng-attr-contenteditable="{{sub.editmode}}">{{sub.uData.cell}}</p></div>
+			 <div>Department: <p>{{sub.uData.Department}}</p> </div>
+			 <div>Major: <p>{{sub.uData.major}}</p> </div>
+			 <div>Project:<p>{{sub.uData.project}}</p> </div>
+			 <div>Skills: <p id="skills" ng-attr-contenteditable="{{sub.editmode}}">{{sub.uData.skills}}</p></div>
+			 <div>About Me: <p id="usum" ng-attr-contenteditable="{{sub.editmode}}">{{sub.uData.userSummary}}</p></div>
 	</div>
 </div>
