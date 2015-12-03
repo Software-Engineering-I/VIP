@@ -23,12 +23,10 @@ module.exports = function(app, express) {
         console.log(subject);
             
             var transporter = nodemailer.createTransport({
-                host:'a2plcpnl0330.prod.iad2.secureserver.net',
-                port:465,
-                secure:true,
+                service:'Gmail',
                 auth: {
-                    user: 'nodemail@amcustomprints.com',
-                    pass: 'spaceCC120'
+                    user: 'fiuvipmailer@gmail.com',
+                    pass: 'vipadmin123'
                 }
             });
         
