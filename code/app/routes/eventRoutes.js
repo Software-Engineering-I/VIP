@@ -88,14 +88,15 @@ module.exports = function(app, express) {
             });
         })
 
-        .delete(function(req, res) {
-            Event.remove({
-                _id: req.params.event_id
-            }, function(err, event) {
-                if (err) res.send(err);
-                res.json({ message: 'Successfully deleted' });
-            });
+    apiRouter.delete('/events/:id', function(req, res){
+            console.log('delete in first evenRoutes entered ');
+        Event.remove({_id: req.params.id}, function(err, event){
+            if(err)
+                res.send(err);
+            res.json({message: 'successfully deleted!'});
         });
+    });    
+    
     
     
     
