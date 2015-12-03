@@ -691,6 +691,50 @@ module.exports = function(app, express) {
             });
         });
 
+    //Route to Update the Profile fields (Resume fields) from the profile
+
+    apiRouter.route('/userProfile/:email')
+
+        .put(function(req, res) {
+
+            User.findOne({'email' : new RegExp(req.params.email, 'i')}, function(err, user){
+                if(err) res.send(err);
+                if( user == null)
+                {
+                    //console.log("Hello from null!")
+                    res.json({message: 'User does not exist.'});
+                    return;
+                }
+
+                if(req.body.cell == undefined){
+                }else {
+                    user.cell = req.body.cell;
+                }
+
+                if(req.body.skills == undefined){
+                }else {
+                    user.skills           = req.body.skills;
+                }
+
+                if(req.body.userSummary == undefined){
+                }else {
+                    user.userSummary      = req.body.userSummary;
+                }
+
+
+                user.save(function(err) {
+                    if (err) {
+                        return res.send(err);
+
+                    }
+                    //console.log(user.userType);
+                    res.json({message: "Profile updated!"});
+
+                });
+
+            });
+        });
+
     // api endpoint to get user information
     apiRouter.get('/me', function(req, res) {
         res.send(req.decoded);

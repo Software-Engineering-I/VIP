@@ -114,6 +114,10 @@ angular.module('userService', [])
             return $http.get('/userapi/userinfo/' + email);
         };
 
+        userFactory.updateProfile = function(email, userData){
+            return $http.get('/userapi/userProfile/' + email, userData)
+        };
+
 
         // return our entire userFactory object
         return userFactory;
