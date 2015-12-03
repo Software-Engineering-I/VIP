@@ -1,0 +1,228 @@
+<h1 style="text-decoration:underline"> PI Acceptance/Rejection of Students into Projects </h1>
+
+<div ng-hide="piUser.hidemeOne">
+
+    <div ng-repeat="(projects,membership) in piUser.users | orderBy: 'project'| groupBy: 'project'" class="bs-less">
+
+        <table class="table table-bordered">
+
+            <h3>Project: {{ projects }}</h3>
+
+            <tr ng-repeat="person in membership">
+                <td style="white-space: nowrap ; color:#fff "><b>{{ person.f_name + " " + person.l_name}}</b></td>
+                <td>
+                    <button ng-click="piUser.accept(person._id , $index)"><b>Accept</b></button>
+                    <button ng-click="piUser.reject(person._id, $index)"><b>Reject</b></button>
+
+                    <p style="color:#fff" ng-show="piUser.displayAcpt[$index]"><b>Student Accepted</b></p>
+                    <p style="color:#fff" ng-show="piUser.displayRej[$index]"><b>Student Rejected</b></p>
+                </td>
+                <td>
+                    <button ng-click="piUser.resume(person._id)"><b>Resume</b></button>
+                </td>
+                <td>
+                    <form>
+                        <textarea class="form-control" row="1" ng-model="piUser.userData.txtcomment[$index]" placeholder="Reasons for accepting or rejecting student"
+                                  style="width:550px"></textarea>
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <button ng-click="piUser.subCom(person._id,$index)" style="margin-top:10px">Submit</button>
+                    </form>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div ng-hide="piUser.hidemeTwo">
+
+    <h4 style= "text-decoration:underline ; color:#fff"><b>Resume</b>: {{piUser.resumeData.f_name}} {{piUser.resumeData.l_name}}</h4>
+
+    <table class="table table-bordered">
+
+        <col width="150">
+
+        <tr>
+            <td><p style="color:#fff"><b>Visa Status:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.visaStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Sex:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.sex}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Major:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.major}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Ethnicity:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.ethnicity}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Race:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.race}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Cell:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.cell}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Year:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.year}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Place of Birth:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.placeOfBirth}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>User Summary:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.userSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>School:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.school}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Completed Credits:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.creditsCompleted}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>GPA:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.gpa}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Degree Type:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.degreeType}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Degree Completion Status:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.degreeCompletionStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Relevant Courses:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.relevantCourses}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Employer:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workCompany}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Job Position:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workPosition}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Hours Worked:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workTime}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Status:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workStatus}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Summary:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Work Highlights:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.workHighlights}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Skills:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.skills}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Organization:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerOrganization}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Position:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerPosition}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Time:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerTime}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Website:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerWebsite}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Summary:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerSummary}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Volunteer Highlights:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.volunteerHighlights}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Interests:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.interestList}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Name:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.firstReferenceName}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Email:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.firtReferenceEmail}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Notes:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.firstReferenceNotes}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Name:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.secondReferenceName}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Email:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.secondReferenceEmail}}</p></td>
+        </tr>
+
+        <tr>
+            <td><p style="color:#fff"><b>Reference Notes:</b></p></td>
+            <td><p style="color:#fff">{{piUser.resumeData.secondReferenceNotes}}</p></td>
+        </tr>
+
+    </table>
+
+    <button ng-click="piUser.hideTwo()" class="btn"><b>Exit Resume</b></button>
+
+</div>

@@ -528,8 +528,7 @@ angular.module('userCtrl', ['userService'])
 
                 // if the function succeeds repopulate table with new changes
                 .success(function (data){
-                    alert("Returned data from updateFacAcp");
-                    //vm.users = data;
+                    alert("Student Accepted by Faculty/Staff Member");
                 })
 
         }
@@ -543,8 +542,7 @@ angular.module('userCtrl', ['userService'])
 
                 // if the function succeeds repopulate table with new changes
                 .success(function (data){
-                    alert("Returned data from updateFacRjt");
-                    //vm.users = data;
+                    alert("Student Rejected by Faculty/Staff Member");
                 })
 
         }
@@ -553,8 +551,7 @@ angular.module('userCtrl', ['userService'])
             //Hides the current Students to display resume of specified student
             vm.hideOne();
 
-            //Need to get resume and display in new window
-            User.get(id)
+            User.getResume(id)
                 .success(function(data) {
                     vm.resumeData = data;
                 });
@@ -564,9 +561,9 @@ angular.module('userCtrl', ['userService'])
             vm.userData.comment = vm.userData.txtcomment[index];
 
             //Need to  update the user wit txtcoment
-            User.update(id ,vm.userData)
+            User.updateFacComment(id ,vm.userData)
                 .success(function(data){
-                    alert("Comment Updated!");
+                    alert("Faculty/Staff Comment Updated!");
                 });
 
             vm.userData.txtcomment = {};
@@ -580,6 +577,84 @@ angular.module('userCtrl', ['userService'])
 
         vm.hideTwo = function(){
             //Hides resume of student and displays students in the project
+            vm.hidemeTwo = true;
+            vm.hidemeOne = false;
+        }
+
+    })
+
+
+    /*Controller to control pi member accepting rejecting students from project
+     * -implemented by Garrett Lemieux */
+    .controller('piController', function(User) {
+
+        var vm = this;
+
+        vm.hidemeTwo = true;
+        vm.hidemeOne = false;
+        vm.txtcomment = {};
+        vm.displayAcpt = {};
+        vm.displayRej = {};
+
+        //Grab All users to display each user for specified project
+        User.all()
+            .success(function (data) {
+                // bind the users that come back to vm.users
+                vm.users = data;
+            });
+
+        vm.accept = function(id , index){
+
+            User.updatePiAcp(id)
+                //Tells pi database has been updated
+                .success(function (data){
+                    alert("User Accepted by Pi")
+                })
+
+        }
+
+        vm.reject = function(id , index){
+
+            User.updatePiRjt(id)
+                //Tells pi database has been updated
+                .success(function (data){
+                    alert("User Rejected by Pi")
+                })
+
+        }
+
+        vm.resume = function(id){
+            //Hides all students and projects to display resume of specified student
+            vm.hideOne();
+
+            //Need to get resume and display in new window
+            User.getResume(id)
+                .success(function(data) {
+                    vm.resumeData = data;
+                });
+        }
+
+        vm.subCom = function(id,index){
+
+            vm.userData.comment = vm.userData.txtcomment[index];
+
+            //Need to  update the user wit txtcoment
+            User.updatePiComment(id ,vm.userData)
+                .success(function(data){
+                    alert("Pi Comment Updated!");
+                });
+
+            vm.userData.txtcomment = {};
+        }
+
+        vm.hideOne = function(){
+            //Hides students in all projects and display resume of a student
+            vm.hidemeOne = true;
+            vm.hidemeTwo = false;
+        }
+
+        vm.hideTwo = function(){
+            //Hides resume of student and displays students in all projects
             vm.hidemeTwo = true;
             vm.hidemeOne = false;
         }
