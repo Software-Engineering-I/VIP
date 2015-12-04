@@ -13,9 +13,9 @@ angular.module('notificationsService', [])
             return $http.post('/notifications/notifications/', notificationsData);
         }
         
-        notificationsFactory.studProjName = function(email){
-            return $http.get('/userapi/studentProject/' + email);
-        };
+//        notificationsFactory.studProjName = function(email){
+//            return $http.get('/userapi/studentProject/' + email);
+//        };
 
         return notificationsFactory;
 
