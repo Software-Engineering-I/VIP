@@ -24,35 +24,6 @@ module.exports = function(app, express) {
                 res.json({ message: 'Evaluation Sent to ' + eval.student });
             });
 
-            //// create reusable transporter object using SMTP transport
-            //var transporter = nodemailer.createTransport({
-            //    host:'a2plcpnl0330.prod.iad2.secureserver.net',
-            //    port:465,
-            //    secure:true,
-            //    auth: {
-            //        user: 'nodemail@amcustomprints.com',
-            //        pass: 'spaceCC120'
-            //    }
-            //});
-            //
-            //// setup e-mail data with unicode symbols
-            //var mailOptions = {
-            //    from: 'Professor <nodemail@amcustomprints.com>', // sender address
-            //    to: req.body.studentEmail, // list of receivers
-            //    subject: eval.subjectTitle, // Subject line
-            //    text: "Dear " + req.body.studentName + ",\n\nYou have received " +
-            //    "the following feedback on your project evaluation:\n\n" +
-            //    req.body.feedbackMessage // plaintext body
-            //};
-            //
-            //// send mail with defined transport object
-            //transporter.sendMail(mailOptions, function(error, info){
-            //    if(error){
-            //        return console.log(error);
-            //    }
-            //    console.log('Message sent: ' + info.response);
-            //});
-
         });
     return apiRouter;
 };
