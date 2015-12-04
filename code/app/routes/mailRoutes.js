@@ -16,11 +16,10 @@ module.exports = function(app, express) {
             var message = req.body.message;
             var subject = req.body.subject;
         
-        console.log('inside the post');
-        console.log(recipient);
-        console.log(sender);
-        console.log(message);
-        console.log(subject);
+//        console.log(recipient);
+//        console.log(sender);
+//        console.log(message);
+//        console.log(subject);
             
             var transporter = nodemailer.createTransport({
                 service:'Gmail',
