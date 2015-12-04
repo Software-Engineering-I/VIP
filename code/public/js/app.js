@@ -16,6 +16,7 @@ angular.module('MyApp', [
 	'projectService',
 	'projectEvaluationControl',
 	'projectEvaluationService',
+	'evalDisplayControl',
 	'feedbackControl',
 	'feedbackService',
 	'reviewController',

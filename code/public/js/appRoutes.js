@@ -205,6 +205,14 @@ angular.module('appRoutes', ['ui.router'])
         controllerAs: ''
     })
 
+	.state('evaluationsDisplay', {
+        url: '/evaluationsDisplay',
+        templateUrl: '/views/pages/evaluationsDisplay.html',
+        controller: 'evaluationsDisplayController',
+        controllerAs: 'user'
+    })
+	
+	
     .state('createevent', {
         url: '/events/create',
         templateUrl: '/views/pages/createevent.html',

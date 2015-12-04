@@ -42,6 +42,7 @@
 	<script src="/js/controllers/evalController.js"></script>
     <script src="/js/controllers/notificationsCtrl.js"></script>
     <script src="/js/controllers/eventCtrl.js"></script>
+	<script src="/js/controllers/evaluationsDisplayController.js"></script>
 
 	<!-- Services -->
 	<script src="/js/services/reportService.js"></script>
@@ -60,6 +61,7 @@
     <script src="/js/services/reviewService.js"></script>
 	<script src="/js/services/membershipService.js"></script>
     <script src="/js/services/mailService.js"></script>
+
 
 </head>
 <body ng-app="MyApp">
@@ -136,6 +138,7 @@
                 <li ng-show='faculty'><a ui-sref="notifications"><i class="fa fa-comment"></i>Notifications</a></li>
 				<li ng-show='faculty'><a ui-sref="faculty"><i class="fa fa-graduation-cap"></i> Faculty</a></li>
 				<li ng-show='faculty'><a ui-sref="review"><i class="fa fa-list"></i>Review Evaluations</a></li>
+				<li ng-show='faculty'><a ui-sref="evaluationsDisplay"><i class="fa fa-list"></i>See All Peer Evaluations</a></li>
 				<li ng-show='faculty'><a ui-sref="facultyproject"><i class="fa fa-file-text-o"></i>Faculty Projects</a></li>
 				<li ng-show='faculty'><a ui-sref="projectEvaluation"><i class="fa fa-question"></i> Evaluation</a></li>
 

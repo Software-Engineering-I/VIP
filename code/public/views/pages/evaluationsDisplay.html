@@ -1,0 +1,163 @@
+<div>
+<head>
+	<script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js'></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+	   <script type="text/javascript" src="https://cdn.jsdelivr.net/ngstorage/0.3.6/ngStorage.min.js"></script>
+
+	
+
+<style>
+table {
+    background-color: #F5F5F5; 
+	color: black;
+} 
+	
+form {
+                width:500px;
+                
+}
+.search {
+                padding:8px 15px;
+                background:rgba(50, 50, 50, 0.2);
+                border:0px solid #dbdbdb;
+}
+.button {
+                position:relative;
+                padding:6px 15px;
+                left:-8px;
+                border:2px solid #207cca;
+                background-color:#207cca;
+                color:#fafafa;
+}
+.button:hover  {
+                background-color:#fafafa;
+                color:#207cca;
+}
+</style>
+	
+	
+</head>
+
+
+    <br><br>
+	<h1 align="center">Peer Evaluations</h1>
+	<h3>Select a Project:</h3>
+    <select class ='form-control' ng-model="repeatSelect" ng-change="accessProjects()">
+	  <option>View All Projects</option>	
+      <option ng-repeat="(projects, membership) in user.users | orderBy: 'project'| groupBy: 'project'">{{projects}}</option>
+	</select>
+	<br>
+	<form>
+        <input type="text" placeholder="Search..." required ng-model="searchBox">
+        <input type="button" value="Search">
+	</form>	
+    <br><br>
+    
+	<div ng-if="repeatSelect">
+		<div ng-if="repeatSelect != 'View All Projects'" ng-hide="table">  
+			 <table class="table table-striped">
+			 <thead>
+				<tr>
+					<th>Project</th>
+					<th>Department</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Evaluations</th>
+				</tr>
+			 </thead> 
+				 <tr  ng-repeat = "eval in user.users |  filter: {project: repeatSelect}:true | filter: searchBox">
+					<td> {{eval.project}}</td>
+					<td> {{eval.Department}}</td>
+					<td> {{eval.f_name}}</td>
+					<td> {{eval.l_name}}</td>
+					<td><button type="button" class="btn btn-success" ng-click="user.accessEvaluation(eval.f_name); display()">View</button></td>
+				  </tr> 
+			 </table>
+		</div>   
+	    <div ng-if="repeatSelect == 'View All Projects'" ng-hide="table">  
+	 	<div ng-repeat = "(projects, membership) in user.users | orderBy: 'project'| groupBy: 'project'">
+			<table class="table table-striped">
+     		<thead>
+        		<tr>
+					<th>Project</th>
+					<th>Department</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Evaluations</th>
+        		</tr>
+     		</thead> 
+          		<tr ng-repeat = "eval in user.users |  filter: {project: projects}:true | filter: searchBox">
+            		<td> {{projects}}</td>
+					<td> {{eval.Department}}</td>
+            		<td> {{eval.f_name}}</td>
+            		<td> {{eval.l_name}}</td>
+            		<td><button type="button" class="btn btn-success" ng-click="user.accessEvaluation(eval.f_name); display()">View</button></td>
+          		</tr> 
+    		</table>
+		 	<br><br>
+		</div>
+	  </div>
+	
+
+		
+<div ng-hide="evaluation">
+	<h3 align="center">{{user.header}} {{user.master}}</h3>
+	<div ng-repeat = "q in questions | filter: searchBox" >
+	 <div ng-repeat = "stu in studentList" > 
+       <div ng-if="stu.name == user.master">
+         <div ng-repeat ="s in stu.evaluations | filter: searchBox"> 
+             <br>
+			 <p ng-if="!s.ans1" align="center"><b>{{q.cc}}</b></p>
+			 <p ng-if="s.ans1" align="center">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+			 <p ng-if="s.ans1" align="center"><em><b>{{q.q1}}               					 : </b>{{s.ans1}}   </em></p>
+			 <p ng-if="s.ans2" align="center"><em><b>{{q.q2}}									 : </b>{{s.ans2}}   </em></p>
+			 <p ng-if="s.ans3" align="center"><em><b>{{q.q3}}						             : </b>{{s.ans3}}   </em></p>
+			 <p ng-if="s.ans4" align="center"><em><b>{{q.q4}}         							 : </b>{{s.ans4}}   </em></p>
+			 <p ng-if="s.ans5" align="center"><em><b>{{q.q5}}       							 : </b>{{s.ans5}}   </em></p>
+		     <p ng-if="s.comment" align="center"><em><b>{{q.q6}}                                 : </b>{{s.comment}}</em></p>
+           
+         </div>
+       </div>
+     </div>
+	</div>  
+	<!--<div ng-repeat = "stu in studentList" > 
+       <div ng-if="stu.name == user.master">
+         <div ng-repeat ="s in stu.evaluations"> 
+             <br>
+            <table width="100%">
+               <tr>
+             <td ng-if="s.ans1"><b>Participates in team meetings</b></td>
+             <td>{{s.ans1}}</td>
+             </tr>
+             <tr>
+             <td ng-if="s.ans2"><b>Contributes to the progress of the project</b></td>
+             <td>{{s.ans2}}</td>
+             </tr>
+             <tr>
+             <td ng-if="s.ans3"><b>Communicates ideas to the team</b></td>
+             <td>{{s.ans3}}</td>
+             </tr>
+             <tr>
+             <td ng-if="s.ans4"><b>Respectful of the ideas of others</b></td>
+             <td>{{s.ans4}}</td>
+             </tr>
+             <tr>
+             <td ng-if="s.ans5"><b>Facilitates the progress of the group</b></td>
+             <td>{{s.ans5}}</td>
+             </tr>
+             <tr>
+             <td ng-if="s.comment"><b>Comments</b></td>
+             <td>{{s.comment}}</td>
+             </tr>
+             </table>
+             <br><br>
+         </div>
+       </div>
+     </div> -->
+	
+	
+</div>	
+</div>
+</div>
