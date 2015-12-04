@@ -6,7 +6,7 @@ var nodemailer = require('nodemailer');
 
 module.exports = function(app, express) {
     var apiRouter = express.Router();
-    var mailList = ["jcasa050@fiu.edu"];
+    //var mailList = ["jcasa050@fiu.edu"];
     
     apiRouter.route('/events')
 
@@ -51,32 +51,32 @@ module.exports = function(app, express) {
             });
         
             // create reusable transporter object using SMTP transport
-            var transporter = nodemailer.createTransport({
-                host:'a2plcpnl0330.prod.iad2.secureserver.net',
-                port:465,
-                secure:true,
-                auth: {
-                    user: 'nodemail@amcustomprints.com',
-                    pass: 'spaceCC120'
-                }
-            });
-        
-            var i;
-            for (i = 0; i < mailList.length; i++){
-            var mailOptions = {
-                from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
-                to: mailList[i], // list of receivers
-                subject: "New Event: " + event.name, // Subject line
-                text: event.message + "\n" + event.month + "/" + event.day + "/" + event.year + "   " + event.hour + ":" + event.minutes
-            };
-            // send mail with defined transport object
-            transporter.sendMail(mailOptions, function(error, info){
-                if(error){
-                    return console.log(error);
-                }
-                console.log('Message sent: ' + info.response);
-            });
-            }
+//            var transporter = nodemailer.createTransport({
+//                host:'a2plcpnl0330.prod.iad2.secureserver.net',
+//                port:465,
+//                secure:true,
+//                auth: {
+//                    user: 'nodemail@amcustomprints.com',
+//                    pass: 'spaceCC120'
+//                }
+//            });
+//        
+//            var i;
+//            for (i = 0; i < mailList.length; i++){
+//            var mailOptions = {
+//                from: 'Masoud Sadjadi <vipadmin@fiu.edu>', // sender address
+//                to: mailList[i], // list of receivers
+//                subject: "New Event: " + event.name, // Subject line
+//                text: event.message + "\n" + event.month + "/" + event.day + "/" + event.year + "   " + event.hour + ":" + event.minutes
+//            };
+//            // send mail with defined transport object
+//            transporter.sendMail(mailOptions, function(error, info){
+//                if(error){
+//                    return console.log(error);
+//                }
+//                console.log('Message sent: ' + info.response);
+//            });
+//            }
         })
 
         .get(function(req, res) {
@@ -88,14 +88,15 @@ module.exports = function(app, express) {
             });
         })
 
-        .delete(function(req, res) {
-            Event.remove({
-                _id: req.params.event_id
-            }, function(err, event) {
-                if (err) res.send(err);
-                res.json({ message: 'Successfully deleted' });
-            });
+    apiRouter.delete('/events/:id', function(req, res){
+            console.log('delete in first evenRoutes entered ');
+        Event.remove({_id: req.params.id}, function(err, event){
+            if(err)
+                res.send(err);
+            res.json({message: 'successfully deleted!'});
         });
+    });    
+    
     
     
     

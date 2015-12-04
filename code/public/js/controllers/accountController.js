@@ -68,20 +68,24 @@ angular.module('accountController', ['satellizer','userService'])
 	vm.utype = token.type;
 	vm.editmode = false;
 	User.userFromEmail(token.mail).success(function(data){
-		vm.fName = data.f_name;
-		vm.lName = data.l_name;
-		vm.sex = data.sex;
-		vm.year =( data.year != null) ? data.year : "N/A" ;
-		vm.phone = (data.cell !=  null) ? data.cell : "N/A";
-		vm.depart = data.Department;
-		vm.maj = (data.major != null) ? data.major : "Please fill out Resume";
-		vm.project = (data.project != null) ? data.project : "N/A";
-		vm.skills =(data.skills != null) ?  data.skills : "Please fill out Resume";
-		vm.sum = data.userSummary;
+		vm.uData = data;
+		vm.uData.year =( data.year != null) ? data.year : "N/A" ;
+		vm.uData.cell = (data.cell !=  null) ? data.cell : "N/A";
+		vm.uData.major = (data.major != null) ? data.major : "Please fill out Resume";
+		vm.uData.project = (data.project != null) ? data.project : "N/A";
+		vm.uData.skills =(data.skills != null) ?  data.skills : "Please fill out Resume";
 	});
 
 	vm.toggleEditMode = function(){
 		vm.editmode = !vm.editmode;
+		if(!vm.editmode)
+		{
+			vm.uData.cell = angular.element(cell).html();
+			vm.uData.skills = angular.element(skills).html();
+			vm.uData.userSummary = angular.element(usum).html();
+			console.log(vm.uData.cell);
+			User.updateProfile(vm.mail, vm.uData);
+		}
 	}
 
 
