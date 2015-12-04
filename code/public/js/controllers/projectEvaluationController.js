@@ -20,22 +20,24 @@ angular.module('projectEvaluationControl', ['projectEvaluationService', 'userSer
         vm.saveEvaluation = function() {
             vm.processing = true;
             vm.message = '';
-            
+
+            //to send an Email to student user
             vm.emailData = {};
             var student = vm.feedback.student;
             var start = student.indexOf("<");
             var end = student.indexOf(">");
             vm.emailData.recipient = student.substring(start+1, end);
             vm.emailData.sender = 'Professor <fiu-vip@fiu.edu>';
-            vm.emailData.subject = 'New evaluation!';
+            vm.emailData.subject = 'Project Evaluation';
             var studentName = student.substring(0, start -1);
             vm.emailData.message = 'Dear ' + studentName + ',\n\nYou have received the following feedback on your evaluation:\n\n' + vm.feedback.feedbackMessage;
-            
-//            console.log(vm.emailData.recipient);
-//            console.log(vm.emailData.sender);
-//            console.log(vm.emailData.subject);
-//            console.log(vm.emailData.message);
-            
+
+            //for the Evaluation model
+            vm.feedback.student = studentName;
+            vm.feedback.email = vm.emailData.recipient;
+            vm.feedback.subjectTitle = vm.emailData.subject;
+            vm.feedback.feedbackMessage = vm.emailData.message;
+
             // use the create function
             Evaluations.create(vm.feedback)
                 .success(function(data) {
@@ -43,9 +45,9 @@ angular.module('projectEvaluationControl', ['projectEvaluationService', 'userSer
                     vm.feedback = {};
                     vm.message = data.message;
                     Mail.sendEmail(vm.emailData)
-                            .success(function(data) {
-                                console.log("Successful send!");
-                            })
+                        .success(function(data) {
+                            console.log("Successful send!");
+                        })
                 });
         };
 

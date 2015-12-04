@@ -6,6 +6,7 @@ var Schema   = mongoose.Schema;
 var EvaluationSchema = new Schema({
     project:     	    {type: String, required: true},
     student: 	        {type: String, required: true},
+    email:   	        {type: String, required: true},
     subjectTitle: 	    {type: String, required: true},
     feedbackMessage: 	{type: String, required: true}
 });
