@@ -1,5 +1,5 @@
 
-angular.module('eventCtrl', ['eventService', 'mailService'])
+angular.module('eventCtrl', ['eventService', 'mailService', 'subscriptionService'])
 
     .controller('eventController', function(Event) {
 
@@ -31,7 +31,7 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
         };
     })
 
-    .controller('eventCreateController', function($scope, $auth, Event, Mail) {
+    .controller('eventCreateController', function($scope, $auth, Event, Mail, Subscriptions) {
 
         var vm = this;
     
@@ -43,9 +43,6 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
 
         // function to create an event
         vm.saveEvent = function() {
-            console.log('hereasdf');
-            console.log(vm.eventData.date);
-            console.log(vm.eventData.datetime);
             vm.message = '';
             if (typeof vm.eventData.date == 'undefined'){
                 vm.message = 'Please select a date on the calendar';
@@ -54,28 +51,40 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
                     var d = new Date();
                     d.setHours( 0 );
                     d.setMinutes( 0 );
+                    d.setSeconds(0);
                     vm.eventData.datetime = d;
                 }
                 vm.processing = true;
-//                vm.message = '';
                 console.log(vm.eventData.date);
                 console.log(vm.eventData.datetime);
                 
-                // use the create function in the userService
                 Event.create(vm.eventData)
                     .success(function(data) {
                         vm.processing = false;
-                        vm.eventData = {};
                         vm.message = data.message;
                         vm.emailData = {};
-                        vm.emailData.sender = 'Masoud Sadjadi <vipadmin@fiu.edu';
-                        vm.emailData.recipient = ['eguer048@fiu.edu', 'jcasa050@fiu.edu'];
-                        vm.emailData.subject = 'New event';
-                        vm.emailData.message = 'Testing!';
-                        Mail.sendEmail(vm.emailData)
-                            .success(function(data) {
-                                console.log("Successful send!");
-                            })
+                    
+                        //get the subscriberslist from the subscriptionService
+                        Subscriptions.all()
+                            .success(function (data) {
+                                var list = [];
+                            
+                                for(i=0; i<data.length; i++){
+                                    list[i] = data[i].email;
+                                }
+                                console.log(list);
+                            
+                                vm.emailData.sender = 'Masoud Sadjadi <vipadmin@fiu.edu>';
+                                vm.emailData.recipient = list;
+                                vm.emailData.subject = "New Event: " + vm.eventData.name;
+                                vm.emailData.message = vm.eventData.message + "\n" + vm.eventData.date.toDateString() + " " + vm.eventData.datetime.toLocaleTimeString() + "\n" + "Events: http://vip-dev.cis.fiu.edu/events";
+                                Mail.sendEmail(vm.emailData)
+                                    .success(function(data) {
+                                        console.log("Successful send!");
+                                    })
+                            
+                            });
+                    
                     });
             }
         };
@@ -88,9 +97,6 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
 
     .controller('TimepickerDemoCtrl', function ($scope) {
     
-      $scope.$watch('mytime', function(v){
-          $scope.event.eventData.datetime = v;
-        });
     
       $scope.mytime = new Date(2015,12,2,0,0,0,0);
 
@@ -116,6 +122,7 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
         var d = new Date();
         d.setHours( 0 );
         d.setMinutes( 0 );
+        d.setSeconds(0);
         $scope.mytime = d;
       };
     $scope.update();
@@ -127,9 +134,6 @@ angular.module('eventCtrl', ['eventService', 'mailService'])
 
     .controller('DatepickerDemoCtrl', function ($scope) {
     
-    $scope.$watch('dt', function(v){
-      $scope.event.eventData.date = v;
-    });
     
     $scope.today = function() {
     $scope.dt = new Date();
