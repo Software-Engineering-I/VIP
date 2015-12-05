@@ -42,6 +42,7 @@ module.exports = function(app, express) {
                 }
                 console.log('Message sent: ' + info.response);
             });
+            res.json({message: "hello"});
         });
     return apiRouter;
 };

@@ -40,7 +40,7 @@ module.exports = function(app, express) {
             }
 
             // save the event and check for errors
-            mailList[mailList.length] = req.body.email;
+            //mailList[mailList.length] = req.body.email;
             event.save(function(err) {
                 if (err) {
                         return res.send(err);
