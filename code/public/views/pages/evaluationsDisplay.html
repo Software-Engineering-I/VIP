@@ -104,10 +104,10 @@ form {
 		
 <div ng-hide="evaluation">
 	<h3 align="center">{{user.header}} {{user.master}}</h3>
-	<div ng-repeat = "q in questions | filter: searchBox" >
+	<div ng-repeat = "q in questions" >
 	 <div ng-repeat = "stu in studentList" > 
        <div ng-if="stu.name == user.master">
-         <div ng-repeat ="s in stu.evaluations | filter: searchBox"> 
+         <div ng-repeat ="s in stu.evaluations"> 
              <br>
 			 <p ng-if="!s.ans1" align="center"><b>{{q.cc}}</b></p>
 			 <p ng-if="s.ans1" align="center">~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
