@@ -31,6 +31,17 @@ module.exports = function(app, express)
       });
 
 
+	  
+	  apiRouter.route('/peer')
+		.get(function(req,res){
+			peerEval.getPeerEvaluations(function(err,data){
+				if(err)
+					res.send(err);
+				res.json(data);
+			});
+		});
+		
+		
   return apiRouter
 };
 

@@ -17,7 +17,11 @@
     <div>
         <label>Student ID (To)</label>
         <div>
-            <input type="text" ng-model="req.peerID"><br><br>
+            <select id="peeres" ng-model="req.peerID" >
+                <option>Pick a peer</option>
+                <option ng-repeat="users in econtrol.peers"> {{ users }} </option>
+            </select>
+
         </div>
     </div>
 

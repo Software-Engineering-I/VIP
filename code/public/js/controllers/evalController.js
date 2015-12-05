@@ -1,7 +1,9 @@
-angular.module('evalControl', ['evalService'])
+angular.module('evalControl', ['evalService', 'userService'])
 
-    .controller('evalController', function(Evaluation)
+    .controller('evalController', function(Evaluation, $auth, User)
     {
+
+
         var vm = this ;
         vm.questions ;
         vm.sb = [] ;
@@ -35,4 +37,26 @@ angular.module('evalControl', ['evalService'])
                 }) ;
         };
 
+
+
+
+        //Grab logged in user data
+        //vm.token = $auth.getPayload();
+        //Store email of logged in user
+        //vm.email = vm.token.mail;
+
+        var token = $auth.getPayload();
+        //Store email of logged in user
+        vm.email = token.mail;
+        //vm.email = "lpuch002@fiu.edu"
+
+        User.studProjName(vm.email)
+            .success(function(data){
+                vm.projectName = data;
+            });
+
+        User.userPeers(vm.projectName, vm.email)
+            .success(function(data){
+                vm.peers = data;
+            });
     });
