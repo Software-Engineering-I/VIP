@@ -13,7 +13,7 @@
     </form>
     
 	<font color="white">
-    There are <strong>{{(member.members|filter:person).length}}</strong> contact(s)<span ng-show="person.length"> matching &quot;{{person}}&quot;</span> in database.	
+    There are <strong>{{(member.members|filter:person).length}}</strong> member(s)<span ng-show="person.length"> matching &quot;{{person}}&quot;</span> in database.	
         
 		<!-- Table with the data -->
 		<table width="100%" border="1">
@@ -32,8 +32,6 @@
             </tr>
 		
         </table>
-
-		There should be membership data above this message!
 		
 	</font>
 	
