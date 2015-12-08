@@ -26,12 +26,7 @@ p, h1, label, h3, h2 {
 
 .form-control {
     opacity: 0.8;
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
@@ -45,12 +40,7 @@ p, h1, label, h3, h2 {
 }
 .form-control:focus {
     opacity: 1.0;
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
   font-size: 14px;
-  line-height: 1.42857143;
   color: #555;
   background-color: #fff;
   background-image: none;
@@ -194,4 +184,8 @@ color: black;
 background-color: orange;
 border-radius: 32px;
 color: black;
+}
+
+.white-bg {
+  background-color: #fff;
 }

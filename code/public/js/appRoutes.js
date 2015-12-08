@@ -203,14 +203,14 @@ angular.module('appRoutes', ['ui.router'])
 		.state('tutorials', {
         url: '/tutorials',
         templateUrl:'/views/pages/tutorials.html',
-        controller: '',
-        controllerAs: ''
+        controller: 'tutorialController',
+        controllerAs: 'tutorial'
     })
 		.state('references', {
         url: '/references',
         templateUrl:'/views/pages/references.html',
-        controller: '',
-        controllerAs: ''
+        controller: 'referenceController',
+        controllerAs: 'reference'
     })
 
 	.state('evaluationsDisplay', {

@@ -30,5 +30,6 @@ angular.module('MyApp', [
     'eventCtrl',
     'eventService',
     'subscriptionService',
-    'mailService'
+    'mailService',
+    'helpController'
 ]);

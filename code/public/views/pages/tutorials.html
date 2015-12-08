@@ -1,35 +1,43 @@
-<br><br>
  <div class="container">
    <div class="row">
      <h1 class="text-center">Tutorial Videos</h1>
    </div>
-   <div class="row">
-     <div class="col-sd-8 col-md-offset-2">
-       <table class="table table-hover table-striped table-condensed table-bordered">
-         <thead>
-           <tr>
-             <th>Author</th>
-             <th>Youtube Video Link</th>
-             <th>Site Map Link</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr>
-             <td>Tiago Moore</td>
-             <td><a href=http://www.youtube.com/watch?v=QSBXdFoADAo>Resume Uploader Tutorial</a></td>
-           <td><a href=http://vip-dev.cis.fiu.edu/resume>Sitemap Link</a></td>
-           </tr>
-           <!-- Add your table entry here
-           <tr>
-             <td>Bob</td>
-             <td>youtube.com</td>
-             <td>vip/bob</td>
-           </tr>
-           --->
-         </tbody>
-       </table>
-     </div>
-   </div>
- </div>
 
+   <table class="white-bg table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Author</th>
+        <th>User Story</th>
+        <th>Youtube Video Link</th>
+        <th>Sitemap Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="links in tutorial.links">
+        <td style="width: 15%">{{ links.author }}</td>
+        <td style="width: 55%">{{ links.user_story }}</td>
+        <td style="width: 15%"><a target="_blank" ng-href="{{ links.link }}">Tutorial Link</a></td>
+        <td style="width: 15%"><a  target="_blank" ng-href= "{{ links.sitemap }}">Sitemap Link</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form class="form-inline" name="addTutorials" ng-submit="tutorial.addTurorial()">
+    <div class="clear h10"></div>
+    <p>Your name</p>
+    <input type="text" class="form-control" placeholder="Author" ng-model="tutorial.formData.author">
+
+    <p>Your user story</p>
+    <input type="text" class="form-control" placeholder="User Story" ng-model="tutorial.formData.user_story">
+
+    <p>Your youtube link</p>
+    <input type="text" class="form-control" placeholder="Youtube Link" ng-model="tutorial.formData.link">
+
+    <p>The link to your page. (vip-dev.cis.fiu.edu/about)</p>
+    <input type="text" class="form-control" placeholder="Sitemap (link to page)" ng-model="tutorial.formData.sitemap">
+    <p>make sure you input the correct link or else you will need to update it in Rockmongo</p>
+
+    <br></br>
+    <button type="submit" class="btn btn-success">Add</button>
+  </form>
 </div>

@@ -61,6 +61,7 @@ app.use(function(req, res, next) {
  var membershipRoutes = require('./app/routes/membershipRoutes')(app, express);
  var reviewRoutes = require('./app/routes/reviewRoutes')(app,express);
  var mailRoutes = require('./app/routes/mailRoutes')(app,express);
+ var helpRoutes = require('./app/routes/helpRoutes')(app,express);
  app.use('/report', reportRoutes);
  app.use('/api', apiRoutes);
  app.use('/auth', authRoutes);
@@ -78,6 +79,7 @@ app.use(function(req, res, next) {
  app.use('/membershipReport', membershipRoutes);
  app.use('/eval',reviewRoutes);
  app.use('/nodeemail', mailRoutes);
+ app.use('/help', helpRoutes);
 
  app.get('*', function(req, res) {
   res.sendFile(path.join(__dirname + '/public/views/index.html'));
