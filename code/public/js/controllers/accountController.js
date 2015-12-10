@@ -99,40 +99,44 @@ angular.module('accountController', ['satellizer','userService'])
     vm.type = 'create';
 
     vm.message = '';
-    Subscriptions.get(vm.subData)
+     // checks if user is already subscribed
+    Subscriptions.get(vm.mail)
     .success(function(data) {
                 vm.message = data.message;
 
-                if(vm.message === 'Email does not exist.')
+                if(vm.message === vm.mail)
                 {
-                    vm.checked = false;
+                    // subscriber checkbox is not checked if user is not subscribed
+                    vm.checked = true;
                 }
                 else
                 {
-                    vm.checked = true;
+                    // subscriber checkbox is checked if user is already subscribed
+                    vm.checked = false;
                 }
             });
 
+        // function subscribes user if checked or unsubscribes user if unchecked
         vm.subscribe = function() {
+            if(vm.checked)
+            {
 
-        if(vm.checked)
-        {
-            console.log(vm.subData.email);
-            Subscriptions.create(vm.subData)
-            .success(function(data) {
-                    vm.message = data.message;
-                });
-            alert('You subscribed');
-        } else
-        {
-            // delete from database
-            Subscriptions.delete(vm.subData)
-            .success(function(data) {
-                    vm.message = data.message;
-                });
-            alert('You unsubscribed');
-        }
-    };
+                // add user email to database
+                Subscriptions.create(vm.subData)
+                .success(function(data) {
+                        vm.message = data.message;
+                    });
+                alert('You subscribed');
+            } else
+            {
+                // delete user email from database
+                Subscriptions.delete(vm.mail)
+                .success(function(data) {
+                        vm.message = data.message;
+                    });
+                alert('You unsubscribed');
+            }
+        };
 
 
 })
