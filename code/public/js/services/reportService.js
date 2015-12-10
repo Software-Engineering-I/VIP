@@ -10,7 +10,7 @@ angular.module('reportService', [])
             return $http.post('/report/reports/', formData);
         };
 
-        reportFactory.get = function(formData) {
+        reportFactory.get = function() {
             return $http.get('/report/reports/');
         };
         // return our entire reportFactory object
