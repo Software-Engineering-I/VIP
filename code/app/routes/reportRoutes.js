@@ -31,6 +31,16 @@ module.exports = function(app, express) {
                 res.json({ message: 'Report created!' });
             });       
 
+        })
+
+        .get(function (req,res) {
+            Report.find({}, function (err, report) {
+                if(err)
+                    res.send(err);
+
+                res.json(report);
+            })
         });
+        
         return apiRouter;
 };

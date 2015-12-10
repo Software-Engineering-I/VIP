@@ -9,6 +9,10 @@ angular.module('reportService', [])
         reportFactory.create = function(formData) {
             return $http.post('/report/reports/', formData);
         };
+
+        reportFactory.get = function(formData) {
+            return $http.get('/report/reports/');
+        };
         // return our entire reportFactory object
         return reportFactory;
 
